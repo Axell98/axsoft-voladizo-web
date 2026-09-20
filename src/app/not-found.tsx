@@ -1,24 +1,38 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 text-center">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-200 p-8 space-y-6">
-        <img
-          src="/images/logo-sta-footer.png"
-          alt="Colegio Santo Tomás de Aquino"
-          className="h-16 mx-auto object-contain"
-        />
-        <div className="space-y-2">
-          <span className="text-5xl font-black text-[#0d59b2]">404</span>
-          <h1 className="text-xl font-bold text-slate-800">Página no encontrada</h1>
-          <p className="text-sm text-slate-500 leading-relaxed">
-            La página que buscas no existe o ha sido movida temporalmente.
+    <div
+      className="min-h-screen bg-[#111111] text-white flex flex-col items-center justify-center p-6 text-center"
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      <div className="max-w-md w-full space-y-8">
+        <div className="relative w-24 h-16 mx-auto">
+          <Image
+            src="/images/iconos/logo2.svg"
+            alt="Voladizo Logo"
+            fill
+            className="object-contain"
+          />
+        </div>
+        <div className="space-y-3">
+          <span
+            className="block text-7xl font-bold tracking-widest"
+            style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
+          >
+            404
+          </span>
+          <h1 className="text-xs font-bold uppercase tracking-[3px] text-neutral-300">
+            Página no encontrada
+          </h1>
+          <p className="text-sm text-neutral-400 font-light leading-relaxed">
+            La página que buscas no existe o ha sido movida.
           </p>
         </div>
         <Link
           href="/"
-          className="inline-block w-full py-3 rounded-full bg-[#0d59b2] hover:bg-[#094182] text-white font-bold text-sm shadow transition-all active:scale-95"
+          className="inline-flex items-center justify-center bg-white text-black px-8 py-4 font-bold text-xs uppercase tracking-[3px] hover:bg-neutral-200 transition-colors"
         >
           Volver al Inicio
         </Link>

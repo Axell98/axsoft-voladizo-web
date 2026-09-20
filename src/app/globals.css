@@ -21,6 +21,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: #73ba78;
+  /* Versión más oscura del verde para texto sobre fondo blanco (contraste AA en títulos grandes) */
+  --color-brand-dark: #3d8b47;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

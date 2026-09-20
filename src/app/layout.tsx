@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +14,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://santotomasdeaquino.edu.pe"),
-  title: "Colegio Santo Tomás de Aquino | Padres Dominicos",
-  description: "Colegio Santo Tomás de Aquino - Formando líderes con valores cristianos y excelencia académica en Lima, Perú.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    siteName: SITE_NAME,
+    locale: "es_PE",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

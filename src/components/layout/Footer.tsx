@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { SITE_CONTACT } from "@/lib/site";
 
 // =========================================================
 // ICONOS SVG LIMPIOS Y ELEGANTES (Sin dependencias externas)
@@ -265,15 +266,15 @@ export default function Footer() {
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
                   Oficina Principal
                 </span>
-                <p>Lima, Perú</p>
+                <p>{SITE_CONTACT.address}</p>
               </div>
 
               <div>
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
                   Teléfono / Móvil
                 </span>
-                <a href="tel:+51999999999" className="hover:text-white transition-colors font-medium">
-                  +51 999 999 999
+                <a href={SITE_CONTACT.phoneHref} className="hover:text-white transition-colors font-medium">
+                  {SITE_CONTACT.phone}
                 </a>
               </div>
 
@@ -281,8 +282,8 @@ export default function Footer() {
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
                   Consultas & Cotizaciones
                 </span>
-                <a href="mailto:contacto@voladizo.com" className="hover:text-white transition-colors">
-                  contacto@voladizo.com
+                <a href={`mailto:${SITE_CONTACT.email}`} className="hover:text-white transition-colors">
+                  {SITE_CONTACT.email}
                 </a>
               </div>
 
@@ -290,7 +291,7 @@ export default function Footer() {
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
                   Horario de Atención
                 </span>
-                <p>Lunes a Viernes: 8:30 am — 6:30 pm</p>
+                <p>{SITE_CONTACT.hours}</p>
               </div>
             </div>
           </div>

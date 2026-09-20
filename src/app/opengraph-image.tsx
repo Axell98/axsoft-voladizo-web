@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
+import { SITE_NAME } from "@/lib/site";
 
-export const alt = "Colegio Santo Tomás de Aquino | Padres Dominicos";
+export const alt = "Voladizo | Arquitectura y Construcción";
 export const size = {
   width: 1200,
   height: 630,
@@ -18,7 +19,7 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#0d59b2",
+          backgroundColor: "#111111",
           color: "white",
           fontFamily: "sans-serif",
           padding: "40px",
@@ -28,44 +29,28 @@ export default async function Image() {
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: "24px",
-          }}
-        >
-          <div
-            style={{
-              fontSize: 64,
-              fontWeight: 900,
-              letterSpacing: "-2px",
-              color: "#ffffff",
-              border: "4px solid #ffffff",
-              borderRadius: "16px",
-              padding: "10px 24px",
-              backgroundColor: "#094182",
-            }}
-          >
-            STA
-          </div>
-        </div>
-        <div
-          style={{
-            fontSize: 48,
+            fontSize: 120,
             fontWeight: 800,
-            marginBottom: "12px",
-            letterSpacing: "-1px",
+            letterSpacing: "18px",
+            textTransform: "uppercase",
+            border: "10px solid #ffffff",
+            padding: "24px 56px 24px 74px",
+            marginBottom: "36px",
           }}
         >
-          Colegio Santo Tomás de Aquino
+          {SITE_NAME}
         </div>
         <div
           style={{
-            fontSize: 26,
+            display: "flex",
+            fontSize: 30,
             fontWeight: 500,
-            color: "#93c5fd",
+            letterSpacing: "8px",
+            textTransform: "uppercase",
+            color: "#a3a3a3",
           }}
         >
-          Padres Dominicos — Formando líderes con valores cristianos en Lima
+          Arquitectura · Construcción · Diseño Interior
         </div>
       </div>
     ),

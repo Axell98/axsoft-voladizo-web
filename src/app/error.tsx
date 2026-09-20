@@ -14,12 +14,22 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center">
-      <h2 className="text-2xl font-bold text-slate-800 mb-2">Algo salió mal</h2>
-      <p className="text-slate-600 mb-6 text-sm">Ocurrió un error inesperado al cargar la página.</p>
+    <div
+      className="min-h-screen bg-[#111111] text-white flex flex-col items-center justify-center p-6 text-center"
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      <h2
+        className="text-3xl font-bold uppercase tracking-widest mb-3"
+        style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
+      >
+        Algo salió mal
+      </h2>
+      <p className="text-neutral-400 font-light mb-8 text-sm">
+        Ocurrió un error inesperado al cargar la página.
+      </p>
       <button
         onClick={() => reset()}
-        className="px-6 py-2.5 rounded-full bg-[#0d59b2] text-white font-bold text-sm shadow hover:bg-[#094182]"
+        className="bg-white text-black px-8 py-4 font-bold text-xs uppercase tracking-[3px] hover:bg-neutral-200 transition-colors cursor-pointer"
       >
         Reintentar
       </button>
