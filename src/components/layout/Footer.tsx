@@ -260,15 +260,16 @@ export default function Footer() {
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
                   Oficina Principal
                 </span>
-                <p>Lima, Perú</p>
+                <p>Av. Militar 2500, Lince / Lima, Peru
+                </p>
               </div>
 
               <div>
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
-                  Teléfono / Móvil
+                  Celular 
                 </span>
                 <a href="tel:+51999999999" className="hover:text-white transition-colors font-medium">
-                  +51 999 999 999
+                  +51 999 449 230
                 </a>
               </div>
 
@@ -281,12 +282,12 @@ export default function Footer() {
                 </a>
               </div>
 
-              <div>
+              {/* <div>
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
                   Horario de Atención
                 </span>
                 <p>Lunes a Viernes: 8:30 am — 6:30 pm</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
