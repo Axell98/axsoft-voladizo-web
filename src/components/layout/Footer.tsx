@@ -1,266 +1,336 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
-function CircleChevron() {
+// =========================================================
+// ICONOS SVG LIMPIOS Y ELEGANTES (Sin dependencias externas)
+// =========================================================
+function FacebookIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
-    <svg
-      className="w-4 h-4 text-white/80 shrink-0 group-hover:text-white group-hover:scale-110 transition-all"
-      viewBox="0 0 20 20"
-      fill="none"
-    >
-      <circle cx="10" cy="10" r="8.5" stroke="currentColor" strokeWidth="1.5" />
-      <path
-        d="M8.5 6.5L12 10L8.5 13.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg className={className} fill="currentColor" viewBox="0 0 320 512">
+      <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 448 512">
+      <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 448 512">
+      <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+    </svg>
+  );
+}
+
+function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 448 512">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+    </svg>
+  );
+}
+
+function ArrowUpIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
     </svg>
   );
 }
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="w-full bg-[#0d59b2] text-white pt-14 pb-14 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* GRID PRINCIPAL DE 4 COLUMNAS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 items-start">
+    <footer
+      className="w-full bg-[#0a0a0a] text-white relative z-20 overflow-hidden border-t border-neutral-900"
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      {/* ========================================================= */}
+      {/* 1. SECCIÓN CTA ARQUITECTÓNICA: "HABLEMOS DE TU PROYECTO" */}
+      {/* ========================================================= */}
+      <div className="border-b border-neutral-800/80 bg-gradient-to-b from-[#111111] to-[#0a0a0a] py-14 lg:py-16">
+        <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+            <div className="space-y-2 max-w-2xl">
+              <div className="inline-flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-xs font-semibold uppercase tracking-[3px] text-neutral-400">
+                  ¿Tienes una idea en mente?
+                </span>
+              </div>
+              <h2
+                className="text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white leading-tight"
+                style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
+              >
+                DISEÑEMOS Y CONSTRUYAMOS <br className="hidden sm:inline" />
+                TU PRÓXIMO ESPACIO.
+              </h2>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4 shrink-0">
+              <Link
+                href="/#contacto"
+                className="group relative inline-flex items-center justify-center bg-white text-black px-8 py-4 font-bold text-xs uppercase tracking-[3px] hover:bg-neutral-200 transition-all duration-300 shadow-lg"
+              >
+                <span className="pr-6">Contactar Ahora</span>
+                <span className="absolute right-5 w-3 h-[2px] bg-black transition-all duration-300 group-hover:w-6" />
+              </Link>
+
+              {/* <a
+                href="https://wa.me/51999999999"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 border border-neutral-700 bg-neutral-900/80 hover:bg-emerald-600 hover:border-emerald-600 text-white px-6 py-4 font-semibold text-xs uppercase tracking-[2px] transition-all duration-300"
+              >
+                <WhatsAppIcon className="w-4 h-4 text-emerald-400 group-hover:text-white" />
+                <span>WhatsApp</span>
+              </a> */}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ========================================================= */}
+      {/* 2. GRID PRINCIPAL ARQUITECTÓNICO (4 COLUMNAS)             */}
+      {/* ========================================================= */}
+      <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
           
-          {/* COLUMNA 1: LOGO, CONTACTO Y HORARIO */}
-          <div className="space-y-4 text-sm">
-            <Link href="/" className="inline-block mb-2">
-              <img
-                src="/images/logo-sta-footer.png"
-                alt="Colegio Santo Tomás de Aquino - Padres Dominicos"
-                className="h-16 w-auto object-contain drop-shadow-sm"
-              />
+          {/* COLUMNA 1: LOGO, DESCRIPCIÓN Y REDES (lg:col-span-4) */}
+          <div className="lg:col-span-4 space-y-6">
+            <Link href="/" className="inline-flex items-center gap-3.5 group">
+              <div className="relative w-12 h-9 sm:w-14 sm:h-10 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/images/iconos/logo2.svg"
+                  alt="Voladizo Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <span
+                className="text-2xl sm:text-3xl tracking-[0.14em] text-white uppercase font-bold"
+                style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
+              >
+                VOLADIZO
+              </span>
             </Link>
 
-            {/* Dirección */}
-            <div className="leading-relaxed text-white font-medium">
-              <p>Calle Rinconada de Sto. Domingo 209</p>
-              <p>Esquina con Alameda Chabuca Granda</p>
-              <p>Cercado de Lima</p>
-            </div>
+            <p className="text-neutral-400 text-sm leading-relaxed max-w-sm font-light">
+              Firma especializada en arquitectura contemporánea, ingeniería, construcción y diseño de interiores para proyectos residenciales, comerciales y corporativos de alta exigencia.
+            </p>
 
-            {/* Teléfonos */}
-            <div className="pt-1">
-              <p className="font-bold text-white tracking-wide text-base">
-                987 118 509 / 987 028 075
-              </p>
-            </div>
-
-            {/* Email */}
-            <div>
-              <a
-                href="mailto:informes@stomasdominicos.edu.pe"
-                className="text-white hover:underline font-medium break-all"
-              >
-                informes@stomasdominicos.edu.pe
-              </a>
-            </div>
-
-            {/* Horario de Atención */}
-            <div className="pt-2 leading-tight">
-              <p className="font-bold text-white mb-1.5 text-base">Horario de atención</p>
-              <p className="font-medium text-white/95">Lunes a Viernes</p>
-              <p className="font-medium text-white/90 mb-1">08:00 am a 05:00 pm</p>
-              <p className="font-medium text-white/95">Sábados</p>
-              <p className="font-medium text-white/90">08:00 am a 01:00 pm</p>
+            {/* Redes Sociales con estilo architectural tag */}
+            <div className="pt-2">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-[11px] font-bold uppercase tracking-[2.5px] text-neutral-400">
+                  Redes Sociales
+                </span>
+                <div className="flex-1 h-[1px] bg-neutral-800" />
+              </div>
+              <div className="flex items-center gap-2.5">
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
+                >
+                  <FacebookIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
+                >
+                  <InstagramIcon className="w-4 h-4" />
+                </a>
+                {/* <a
+                  href="#"
+                  aria-label="LinkedIn"
+                  className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
+                >
+                  <LinkedInIcon className="w-4 h-4" />
+                </a> */}
+                {/* <a
+                  href="https://wa.me/51999999999"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] text-neutral-300 flex items-center justify-center transition-all duration-300 group"
+                >
+                  <WhatsAppIcon className="w-4 h-4" />
+                </a> */}
+              </div>
             </div>
           </div>
 
-          {/* COLUMNA 2: NOSOTROS */}
-          <div className="space-y-4">
-            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Nosotros
-            </h3>
-            <ul className="space-y-2.5 text-sm sm:text-base font-semibold">
+          {/* COLUMNA 2: NAVEGACIÓN RÁPIDA (lg:col-span-2) */}
+          <div className="lg:col-span-2 space-y-4">
+            <div className="flex items-center gap-3 pb-2 border-b border-neutral-800">
+              <span className="text-xs font-bold uppercase tracking-[2.5px] text-white">
+                Navegación
+              </span>
+            </div>
+            <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/mision-vision" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Misión Visión</span>
+                <Link href="/" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+                  <span className="w-1.5 h-[1.5px] bg-neutral-600 group-hover:w-3 group-hover:bg-white transition-all duration-200" />
+                  Inicio
                 </Link>
               </li>
               <li>
-                <Link href="/identidad-dominicana" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Identidad Dominicana</span>
+                <Link href="/#quienes-somos" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+                  <span className="w-1.5 h-[1.5px] bg-neutral-600 group-hover:w-3 group-hover:bg-white transition-all duration-200" />
+                  Quiénes Somos
                 </Link>
               </li>
               <li>
-                <Link href="/nuestra-historia" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Nuestra Historia</span>
+                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+                  <span className="w-1.5 h-[1.5px] bg-neutral-600 group-hover:w-3 group-hover:bg-white transition-all duration-200" />
+                  Servicios
                 </Link>
               </li>
               <li>
-                <Link href="/nuestro-patron" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Nuestro Patrón</span>
+                <Link href="/#equipo" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+                  <span className="w-1.5 h-[1.5px] bg-neutral-600 group-hover:w-3 group-hover:bg-white transition-all duration-200" />
+                  Nuestro Equipo
                 </Link>
               </li>
               <li>
-                <Link href="/directores" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Nuestros Directores</span>
+                <Link href="/#proyectos" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+                  <span className="w-1.5 h-[1.5px] bg-neutral-600 group-hover:w-3 group-hover:bg-white transition-all duration-200" />
+                  Proyectos
                 </Link>
               </li>
               <li>
-                <Link href="/autoridades" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Nuestras Autoridades</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/simbolos" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Nuestros Símbolos</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/egresados" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Nuestros Egresados</span>
+                <Link href="/#contacto" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+                  <span className="w-1.5 h-[1.5px] bg-neutral-600 group-hover:w-3 group-hover:bg-white transition-all duration-200" />
+                  Contacto
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* COLUMNA 3: PROPUESTA EDUCATIVA */}
-          <div className="space-y-4">
-            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Propuesta Educativa
-            </h3>
-            <ul className="space-y-2.5 text-sm sm:text-base font-semibold">
+          {/* COLUMNA 3: ESPECIALIDADES / SERVICIOS (lg:col-span-3) */}
+          <div className="lg:col-span-3 space-y-4">
+            <div className="flex items-center gap-3 pb-2 border-b border-neutral-800">
+              <span className="text-xs font-bold uppercase tracking-[2.5px] text-white">
+                Servicios
+              </span>
+            </div>
+            <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/propuesta-educativa" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Nuestra Propuesta</span>
+                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
+                  Diseño e Ingeniería
                 </Link>
               </li>
               <li>
-                <Link href="/primaria" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Primaria</span>
+                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
+                  Construcción y Remodelación
                 </Link>
               </li>
               <li>
-                <Link href="/secundaria" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Secundaria</span>
+                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
+                  Diseño Interior y Mobiliario
                 </Link>
               </li>
               <li>
-                <Link href="/ingles-cambridge" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Inglés Certificación Cambridge</span>
+                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
+                  Gestión y Supervisión de Obra
                 </Link>
               </li>
               <li>
-                <Link href="/psicopedagogico" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Dpto. Psicopedagógico</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/pastoral" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Pastoral Aquinense</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/talleres" className="hover:underline flex items-center gap-2 text-white group">
-                  <CircleChevron />
-                  <span>Talleres Gratuitos</span>
+                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
+                  Expedientes Técnicos & Licencias
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* COLUMNA 4: INSIGNIA ORDEN DOMINICANA Y REDES */}
-          <div className="flex flex-col items-center justify-start space-y-6 pt-2">
-            {/* Insignia Orden Dominicana */}
-            <div className="w-36 h-36 flex items-center justify-center">
-              <img
-                src="/images/orden-dominicana.png"
-                alt="Orden Dominicana"
-                className="w-full h-full object-contain drop-shadow-md"
-              />
+          {/* COLUMNA 4: UBICACIÓN & CONTACTO (lg:col-span-3) */}
+          <div className="lg:col-span-3 space-y-4">
+            <div className="flex items-center gap-3 pb-2 border-b border-neutral-800">
+              <span className="text-xs font-bold uppercase tracking-[2.5px] text-white">
+                Contacto Directo
+              </span>
             </div>
+            <div className="space-y-4 text-sm text-neutral-400 font-light leading-relaxed">
+              <div>
+                <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
+                  Oficina Principal
+                </span>
+                <p>Lima, Perú</p>
+              </div>
 
-            {/* Redes Sociales: Círculos blancos con ícono azul */}
-            <div className="flex items-center gap-4">
-              {/* Instagram */}
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-10 h-10 rounded-full bg-white text-[#0d59b2] flex items-center justify-center hover:bg-slate-100 hover:scale-110 transition-all shadow-md"
-              >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-              </a>
+              <div>
+                <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
+                  Teléfono / Móvil
+                </span>
+                <a href="tel:+51999999999" className="hover:text-white transition-colors font-medium">
+                  +51 999 999 999
+                </a>
+              </div>
 
-              {/* Facebook */}
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="w-10 h-10 rounded-full bg-white text-[#0d59b2] flex items-center justify-center hover:bg-slate-100 hover:scale-110 transition-all shadow-md"
-              >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </a>
+              <div>
+                <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
+                  Consultas & Cotizaciones
+                </span>
+                <a href="mailto:contacto@voladizo.com" className="hover:text-white transition-colors">
+                  contacto@voladizo.com
+                </a>
+              </div>
 
-              {/* TikTok */}
-              <a
-                href="https://tiktok.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="TikTok"
-                className="w-10 h-10 rounded-full bg-white text-[#0d59b2] flex items-center justify-center hover:bg-slate-100 hover:scale-110 transition-all shadow-md"
-              >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.5 2.78 1.19-.03 2.31-.69 2.87-1.74.32-.57.44-1.23.44-1.88.03-4.8.01-9.61.02-14.41z" />
-                </svg>
-              </a>
+              <div>
+                <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
+                  Horario de Atención
+                </span>
+                <p>Lunes a Viernes: 8:30 am — 6:30 pm</p>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
 
-            {/* BOTÓN FLOTANTE DE WHATSAPP PREMIUM */}
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 group">
-        {/* Tooltip flotante al pasar el mouse */}
-        <div className="hidden sm:flex items-center gap-2 bg-slate-900/90 backdrop-blur-md text-white px-3.5 py-2 rounded-xl text-xs font-semibold shadow-xl border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
-          <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-          <span>¡Contáctanos!</span>
-        </div>
+      {/* ========================================================= */}
+      {/* 3. BARRA INFERIOR DE DERECHOS RESERVADOS & BACK TO TOP     */}
+      {/* ========================================================= */}
+      <div className="border-t border-neutral-900 bg-black py-6">
+        <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-light">
+            <p>
+              © {new Date().getFullYear()} <span className="text-neutral-300 font-medium tracking-wider">VOLADIZO</span> Arquitectura & Construcción. Todos los derechos reservados.
+            </p>
 
-        {/* Botón Principal con Anillo Pulsante */}
-        <a
-          href="https://wa.me/51987118509?text=Hola%2C%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20Colegio%20Santo%20Tom%C3%A1s%20de%20Aquino"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Contactar por WhatsApp"
-          className="relative w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/40 hover:shadow-2xl hover:shadow-[#25D366]/60 transition-all duration-300 hover:scale-110 active:scale-95"
-        >
-          {/* Ocultar el pulso animado */}
-          <span className="absolute -inset-1 rounded-full bg-[#25D366]/30 animate-ping pointer-events-none" />
-          
-          <svg className="w-7 h-7 fill-current relative z-10 drop-shadow-sm" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-          </svg>
-        </a>
+            <div className="flex items-center gap-6">
+              <Link href="/privacidad" className="hover:text-neutral-300 transition-colors">
+                Políticas de Privacidad
+              </Link>
+              <span className="w-1 h-1 rounded-full bg-neutral-800" />
+              <Link href="/terminos" className="hover:text-neutral-300 transition-colors">
+                Términos y Condiciones
+              </Link>
+              <span className="w-1 h-1 rounded-full bg-neutral-800" />
+              <button
+                onClick={scrollToTop}
+                aria-label="Volver arriba"
+                className="inline-flex items-center gap-1.5 text-neutral-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <span>Subir</span>
+                <ArrowUpIcon className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );
