@@ -173,7 +173,7 @@ export default function Footer() {
           {/* COLUMNA 2: NAVEGACIÓN RÁPIDA (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3 pb-2 border-b border-neutral-800">
-              <span className="text-xs font-bold uppercase tracking-[2.5px] text-white">
+              <span className="text-xs font-bold uppercase tracking-[2.5px] text-[var(--color1)]">
                 Navegación
               </span>
             </div>
@@ -220,7 +220,7 @@ export default function Footer() {
           {/* COLUMNA 3: ESPECIALIDADES / SERVICIOS (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
             <div className="flex items-center gap-3 pb-2 border-b border-neutral-800">
-              <span className="text-xs font-bold uppercase tracking-[2.5px] text-white">
+              <span className="text-xs font-bold uppercase tracking-[2.5px] text-[var(--color1)]">
                 Servicios
               </span>
             </div>
@@ -251,8 +251,8 @@ export default function Footer() {
           {/* COLUMNA 4: UBICACIÓN & CONTACTO (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
             <div className="flex items-center gap-3 pb-2 border-b border-neutral-800">
-              <span className="text-xs font-bold uppercase tracking-[2.5px] text-white">
-                Contacto Directo
+              <span className="text-xs font-bold uppercase tracking-[2.5px] text-[var(--color1)]">
+                Contacto
               </span>
             </div>
             <div className="space-y-4 text-sm text-neutral-400 font-light leading-relaxed">

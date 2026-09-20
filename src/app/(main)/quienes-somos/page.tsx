@@ -178,7 +178,7 @@ export default function QuienesSomosPage() {
                 Inicio
               </Link>
               <span className="mx-2 text-white/80">»</span>
-              <span className="text-white">Quiénes Somos</span>
+              <span className="text-[var(--color1)]">Quiénes Somos</span>
             </div>
 
           </div>

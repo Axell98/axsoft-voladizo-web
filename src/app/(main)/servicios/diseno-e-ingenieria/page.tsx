@@ -80,7 +80,9 @@ export default function DisenoIngenieriaPage() {
                 Inicio
               </Link>
               <span className="mx-2 text-white/80">»</span>
-              <span className="text-white">Diseño e Ingeniería</span>
+              <span className="text-white">Servicios</span>
+              <span className="mx-2 text-white/80">»</span>
+              <span className="text-[var(--color1)]">Diseño e Ingeniería</span>
             </div>
           </div>
         </div>
@@ -92,42 +94,45 @@ export default function DisenoIngenieriaPage() {
       <section className="section-full clearfix pt-20 pb-32 bg-white text-black relative z-20 overflow-hidden">
         <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
           
-          {/* HEADER DE LA SECCIÓN */}
-          <div className="mb-14 sm:mb-16">
-            <div className="mb-2">
-              <span className="text-xs sm:text-sm font-semibold tracking-[3.5px] uppercase text-neutral-500">
-                Excelencia Técnica
-              </span>
-            </div>
-            <h2
-              className="text-3xl sm:text-4xl lg:text-[42px] font-bold uppercase tracking-tight text-neutral-950 leading-tight"
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              Diseño e Ingeniería
-            </h2>
-            <div className="w-12 h-[3px] bg-black mt-4" />
-          </div>
-
-          {/* GRID PRINCIPAL: COMPOSICIÓN VISUAL + BLOQUES DE INFORMACIÓN */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          {/* GRID PRINCIPAL: 2 COLUMNAS (TÍTULO + SLIDER A LA IZQUIERDA / BLOQUES A LA DERECHA) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
             
-            {/* COLUMNA IZQUIERDA: SLIDER LIMPIO CON FLECHAS DE NAVEGACIÓN */}
-            <div className="lg:col-span-6 relative">
-              {/* Marco gris desplazado (.m-carousel-1 style) */}
-              <div
-                className="hidden sm:block absolute pointer-events-none z-0"
-                style={{
-                  top: "30px",
-                  left: "-30px",
-                  width: "100%",
-                  height: "100%",
-                  border: "20px solid rgba(0, 0, 0, 0.06)",
-                  boxSizing: "border-box",
-                }}
-              />
+            {/* COLUMNA IZQUIERDA: TÍTULO DE SECCIÓN + SLIDER LIMPIO */}
+            <div className="lg:col-span-6 flex flex-col">
+              
+              {/* HEADER DE LA SECCIÓN (DENTRO DE LA COLUMNA IZQUIERDA) */}
+              <div className="mb-8">
+                <div className="mb-2">
+                  <span className="text-xs sm:text-sm font-semibold tracking-[3.5px] uppercase text-neutral-500">
+                    Excelencia Técnica
+                  </span>
+                </div>
+                <h2
+                  className="text-3xl sm:text-4xl lg:text-[42px] font-bold uppercase tracking-tight text-neutral-950 leading-tight"
+                  style={{ fontFamily: "'Oswald', sans-serif" }}
+                >
+                  Diseño e Ingeniería
+                </h2>
+                <div className="w-12 h-[3px] bg-black mt-4" />
+              </div>
 
-              {/* CONTENEDOR DEL SLIDER FULL-BLEED (PROPORCIÓN HORIZONTAL PANORÁMICA) */}
-              <div className="relative z-10 w-full h-[280px] sm:h-[340px] lg:h-[380px] bg-neutral-900 shadow-xl overflow-hidden group">
+              {/* CONTENEDOR DEL SLIDER CON MARCO ARQUITECTÓNICO DESPLAZADO */}
+              <div className="relative mt-2">
+                {/* Marco gris desplazado (.m-carousel-1 style) */}
+                <div
+                  className="hidden sm:block absolute pointer-events-none z-0"
+                  style={{
+                    top: "30px",
+                    left: "-30px",
+                    width: "100%",
+                    height: "100%",
+                    border: "20px solid rgba(0, 0, 0, 0.06)",
+                    boxSizing: "border-box",
+                  }}
+                />
+
+                {/* CONTENEDOR DEL SLIDER FULL-BLEED (PROPORCIÓN HORIZONTAL PANORÁMICA) */}
+                <div className="relative z-10 w-full h-[280px] sm:h-[340px] lg:h-[380px] bg-neutral-900 shadow-xl overflow-hidden group">
                 {/* IMÁGENES CON TRANSICIÓN SUAVE FULL BLEED */}
                 {serviceSlides.map((slide, idx) => (
                   <div
@@ -187,8 +192,9 @@ export default function DisenoIngenieriaPage() {
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* COLUMNA DERECHA: LOS 3 BLOQUES EXACTOS */}
+          {/* COLUMNA DERECHA: LOS 3 BLOQUES EXACTOS */}
             <div className="lg:col-span-6 flex flex-col gap-6">
               
               {/* BLOQUE 1: DISEÑO ARQUITECTÓNICO CONCEPTUAL */}
