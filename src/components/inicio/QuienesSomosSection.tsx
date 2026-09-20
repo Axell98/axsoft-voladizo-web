@@ -45,78 +45,50 @@ export default function QuienesSomosSection() {
         <div className="section-content">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* ========================================================= */}
-            {/* COLUMNA IZQUIERDA: Tipografía exacta de web.html          */}
+            {/* COLUMNA IZQUIERDA: Tipografía Armonizada y Proporcional   */}
             {/* ========================================================= */}
             <div className="lg:col-span-6 text-black pt-1">
-              {/* .font-30 .font-weight-300 ('Quiénes Somos') */}
-              <span
-                className="uppercase block mb-3.5 leading-none"
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontWeight: 300,
-                  fontSize: "30px",
-                  lineHeight: "36px",
-                  color: "#000000",
-                }}
-              >
-                Quiénes Somos
-              </span>
-
-              {/* h2 .font-40 ('TRANSFORMANDO ESPACIOS Y REALIDADES') */}
-              <h2
-                className="uppercase mb-6 tracking-tight"
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontWeight: 600,
-                  fontSize: "38px",
-                  lineHeight: "44px",
-                  color: "#000000",
-                }}
-              >
-                Transformando Espacios <br />
-                y Realidades
-              </h2>
-
-             
-              {/* SÍNTESIS DE VISIÓN & ENFOQUE */}
-              <p
-                className="mb-8 text-[#666666]"
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontWeight: 400,
-                  fontSize: "13.5px",
-                  lineHeight: "24px",
-                }}
-              >
-                Somos una empresa especializada en diseño, construcción, remodelación e implementación de espacios comerciales, Retail e industriales
-              </p>
-
-              {/* TAGS SINTÉTICOS DE IDENTIDAD */}
-              <div className="flex flex-wrap gap-2.5 mb-9">
-                <span className="text-[11px] font-semibold uppercase tracking-wider px-3 py-1.5 bg-neutral-100 text-neutral-800 border border-neutral-200">
-                  Enfoque Minimalista
-                </span>
-                <span className="text-[11px] font-semibold uppercase tracking-wider px-3 py-1.5 bg-neutral-100 text-neutral-800 border border-neutral-200">
-                  Solución Funcional
+              {/* Subtítulo / Overline */}
+              <div className="mb-3">
+                <span className="text-xs sm:text-sm font-normal uppercase tracking-[3.5px] text-black">
+                  Quiénes Somos
                 </span>
               </div>
 
-              {/* BOTÓN .btn-half .site-button */}
+              {/* Título Principal H2 */}
+              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold uppercase tracking-tight text-neutral-950 leading-[1.15] mb-6">
+                Transformando Espacios <br className="hidden sm:inline" />
+                y Realidades
+              </h2>
+
+              {/* Párrafos de Visión, Alcance y Enfoque */}
+              <p className="text-base sm:text-[15.5px] text-neutral-600 font-light leading-relaxed mb-4">
+                Somos una empresa especializada en diseño arquitectónico, ingeniería, construcción, remodelación e implementación de espacios comerciales, corporativos, Retail e industriales.
+              </p>
+
+              <p className="text-sm sm:text-[14.5px] text-neutral-500 font-light leading-relaxed mb-8">
+                Fusionamos rigor técnico, innovación constructiva y diseño de vanguardia para materializar proyectos con los más altos estándares de eficiencia, precisión y durabilidad.
+              </p>
+
+              {/* Tags de Identidad & Enfoque */}
+              <div className="flex flex-wrap gap-2.5 mb-9">
+                <span className="text-xs font-medium uppercase tracking-wider px-3.5 py-1.5 bg-neutral-100 text-neutral-800 border border-neutral-200">
+                  Enfoque Minimalista
+                </span>
+                <span className="text-xs font-medium uppercase tracking-wider px-3.5 py-1.5 bg-neutral-100 text-neutral-800 border border-neutral-200">
+                  Solución Funcional
+                </span>
+                <span className="text-xs font-medium uppercase tracking-wider px-3.5 py-1.5 bg-neutral-100 text-neutral-800 border border-neutral-200">
+                  Alta Precisión
+                </span>
+              </div>
+
+              {/* Botón Call to Action */}
               <Link
                 href="/nosotros"
                 className="btn-half group relative inline-flex items-center bg-black px-8 py-4 shadow-sm hover:bg-neutral-900 transition-colors cursor-pointer"
-                style={{ backgroundColor: "#000000" }}
               >
-                <span
-                  className="text-white uppercase pr-9 block"
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontWeight: 600,
-                    fontSize: "12px",
-                    letterSpacing: "5px",
-                    color: "#ffffff",
-                  }}
-                >
+                <span className="text-white uppercase pr-9 block text-xs font-bold tracking-[4px]">
                   Conoce Más
                 </span>
                 <span className="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-[1.5px] bg-white transition-all duration-300 group-hover:w-8" />

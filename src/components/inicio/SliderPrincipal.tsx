@@ -19,8 +19,8 @@ export const defaultArctitSlides: SlideItem[] = [
   {
     id: 1,
     number: "01",
-    meta: ["house", "Architecture"],
-    title: "Small modern house",
+    meta: ["Oficina", "Arquitectura"],
+    title: "Diseño de oficinas KIA",
     href: "/#proyectos",
     image: "/images/inicio/slider/slider1.jpg",
     overlay: 5,
@@ -28,8 +28,8 @@ export const defaultArctitSlides: SlideItem[] = [
   {
     id: 2,
     number: "02",
-    meta: ["Architecture", "Home"],
-    title: "Bloom Office interior",
+    meta: ["Oficina", "Arquitectura"],
+    title: "Diseño de Concesionario Isuzu",
     href: "/#proyectos",
     image: "/images/inicio/slider/slider2.jpg",
     overlay: 5,
@@ -268,9 +268,9 @@ export default function SliderPrincipal({
         </div>
 
         {/* =================================================================== */}
-        {/* 2. CAPA FLOTANTE DE TÍTULOS Y METAS (Idéntico a captura: Title Case) */}
+        {/* 2. CAPA FLOTANTE DE TÍTULOS Y METAS (Totalmente Responsive)          */}
         {/* =================================================================== */}
-        <div className="dsn-slider-content absolute inset-0 w-full h-[calc(100%-80px)] pointer-events-none z-10 flex flex-col justify-end pb-8 sm:pb-12 lg:pb-16 px-6 sm:px-12 lg:px-16 max-w-[1400px]">
+        <div className="dsn-slider-content absolute inset-0 w-full h-[calc(100%-80px)] pointer-events-none z-10 flex flex-col justify-end pb-6 sm:pb-10 lg:pb-14 px-6 sm:px-12 lg:px-16">
           {slides.map((slide, idx) => {
             const isActive = idx === activeIndex;
             const words = slide.title.split(" ");
@@ -281,19 +281,19 @@ export default function SliderPrincipal({
                 ref={(el) => {
                   contentRefs.current[idx] = el;
                 }}
-                className={`slide-content transition-opacity duration-300 ${
+                className={`slide-content transition-opacity duration-300 max-w-full md:max-w-[62%] lg:max-w-[60%] xl:max-w-[58%] ${
                   isActive
                     ? "dsn-active opacity-100 visible z-10 pointer-events-auto"
                     : "opacity-0 invisible z-0 pointer-events-none absolute"
                 }`}
               >
                 <div className="content relative">
-                  {/* Metas: ARCHITECTURE | HOME con separador vertical blanco */}
-                  <div className="metas inline-flex items-center gap-3 mb-4 sm:mb-6">
+                  {/* Metas: OFICINA | ARQUITECTURA con separador vertical blanco */}
+                  <div className="metas inline-flex items-center gap-3 mb-3 sm:mb-4 lg:mb-5">
                     {slide.meta.map((m, mIdx) => (
                       <span
                         key={mIdx}
-                        className="relative uppercase text-xs sm:text-[13px] tracking-[2px] font-medium text-white pr-3 mr-1 last:pr-0 last:mr-0 after:content-[''] after:absolute after:top-1/2 after:-translate-y-1/2 after:right-0 after:w-[1.5px] after:h-3.5 after:bg-white/80 last:after:hidden"
+                        className="relative uppercase text-[11px] sm:text-xs lg:text-[13px] tracking-[2.5px] font-semibold text-white/90 pr-3 mr-1 last:pr-0 last:mr-0 after:content-[''] after:absolute after:top-1/2 after:-translate-y-1/2 after:right-0 after:w-[1.5px] after:h-3.5 after:bg-white/70 last:after:hidden"
                       >
                         {m}
                       </span>
@@ -302,8 +302,8 @@ export default function SliderPrincipal({
 
                   <div className="block" />
 
-                  {/* Título en Title Case (e.g. "Bloom Office interior") con peso bold y caracteres cinéticos */}
-                  <h1 className="title line-title user-no-selection text-4xl sm:text-6xl md:text-7xl lg:text-[74px] font-bold text-white leading-[1.08] tracking-tight">
+                  {/* Título adaptativo con tipografía fluida y sin colisiones */}
+                  <h1 className="title line-title user-no-selection text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-bold text-white leading-[1.12] sm:leading-[1.08] tracking-tight">
                     <Link
                       href={slide.href}
                       className="effect-ajax hover:text-neutral-200 transition-colors inline-block"
