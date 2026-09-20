@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export interface FeatureItem {
   id: number;
   title: string;
   icon: string;
   image: string;
+  href?: string;
   description: string;
 }
 
@@ -17,6 +19,7 @@ const defaultFeatures: FeatureItem[] = [
     title: "DISEÑO E INGENIERÍA",
     icon: "/images/iconos/servi2_icon1.svg",
     image: "/images/inicio/servicios/servicio1/servicio_disenio.png",
+    href: "/servicios/diseno-e-ingenieria",
     description:
       "Desarrollo de anteproyectos y expedientes técnicos de arquitectura e ingeniería. Cálculos avanzados y planificación integral que garantizan la estabilidad, eficiencia y viabilidad técnica en proyectos complejos.",
   },
@@ -25,6 +28,7 @@ const defaultFeatures: FeatureItem[] = [
     title: "CONSTRUCCIÓN Y REMODELACIÓN",
     icon: "/images/iconos/servi2_icon2.svg",
     image: "/images/inicio/servicios/servicio2/servicio_construccion.png",
+    href: "/servicios/diseno-e-ingenieria", // o landing correspondiente
     description:
       "Ejecución de proyectos residenciales, comerciales e industriales bajo estrictas normas de seguridad y eficiencia operativa. Renovamos y optimizamos espacios corporativos y comerciales mediante intervenciones de calidad superior.",
   },
@@ -33,6 +37,7 @@ const defaultFeatures: FeatureItem[] = [
     title: "DISEÑO INTERIOR Y MOBILIARIO",
     icon: "/images/iconos/servi2_icon3.svg",
     image: "/images/inicio/servicios/servicio3/servicio_disenio_interior.jpg",
+    href: "/servicios/diseno-e-ingenieria",
     description:
       "Creación de ambientes vanguardistas y funcionales que redefinen la experiencia de cada espacio. Integramos diseño estético, estética contemporánea y soluciones de mobiliario a la medida.",
   },
@@ -41,6 +46,7 @@ const defaultFeatures: FeatureItem[] = [
     title: "GESTIÓN Y SUPERVISIÓN",
     icon: "/images/iconos/servi2_icon4.svg",
     image: "/images/inicio/servicios/servicio4/servicio_supervicion.png",
+    href: "/servicios/diseno-e-ingenieria",
     description:
       "Control riguroso de cada etapa del proyecto. Aseguramos el cumplimiento estricto de los plazos, el presupuesto acordado y los más altos estándares de calidad constructiva y seguridad.",
   },
@@ -155,6 +161,18 @@ export default function ServiciosSection({ items = defaultFeatures }: ServiciosS
                   <p className="text-[12.5px] sm:text-[13.5px] leading-relaxed text-neutral-300 font-light max-w-[380px]">
                     {item.description}
                   </p>
+                  {item.href && (
+                    <div className="mt-3 pt-1">
+                      <Link
+                        href={item.href}
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] uppercase font-bold tracking-[2px] text-white hover:text-neutral-300 underline underline-offset-4 decoration-white/40 hover:decoration-white transition-colors"
+                      >
+                        <span>Ver Detalles</span>
+                        <span className="text-xs">»</span>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
 
