@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BeforeAfterDiagonal from "@/components/inicio/BeforeAfterDiagonal";
@@ -9,12 +9,18 @@ import BeforeAfterDiagonal from "@/components/inicio/BeforeAfterDiagonal";
 // DATOS & CONTENIDO DEL TEMPLATE ABOUT-1 CON INFORMACIÓN DEL USUARIO
 // =========================================================
 
-const aboutGallery = [
-  "/images/inicio/quienes-somos/pic1.jpg",
-  "/images/inicio/quienes-somos/pic2.jpg",
-  "/images/inicio/quienes-somos/pic3.jpg",
-  "/images/inicio/quienes-somos/pic4.jpg",
-  "/images/inicio/quienes-somos/pic5.jpg",
+interface GalleryItem {
+  id: number;
+  image: string;
+  href?: string;
+}
+
+const galleryItems: GalleryItem[] = [
+  { id: 1, image: "/images/inicio/quienes-somos/pic1.jpg" },
+  { id: 2, image: "/images/inicio/quienes-somos/pic2.jpg" },
+  { id: 3, image: "/images/inicio/quienes-somos/pic3.jpg" },
+  { id: 4, image: "/images/inicio/quienes-somos/pic4.jpg" },
+  { id: 5, image: "/images/inicio/quienes-somos/pic5.jpg" },
 ];
 
 interface ServiceTab {
@@ -81,7 +87,20 @@ const teamList = [
 export default function QuienesSomosPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState<string>("tab1");
-  const [mediaMode, setMediaMode] = useState<"beforeAfter" | "gallery">("beforeAfter");
+  const [mediaMode, setMediaMode] = useState<"beforeAfter" | "carousel">("beforeAfter");
+
+  const total = galleryItems.length;
+  const nextGallery = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % total);
+  }, [total]);
+
+  useEffect(() => {
+    if (mediaMode !== "carousel") return;
+    const timer = setInterval(() => {
+      nextGallery();
+    }, 5500);
+    return () => clearInterval(timer);
+  }, [nextGallery, mediaMode]);
 
   const currentService = servicesTabs.find((s) => s.id === activeTab) || servicesTabs[0];
 
@@ -137,76 +156,97 @@ export default function QuienesSomosPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             
             {/* COLUMNA IZQUIERDA: CARRUSEL PORTRAIT / ANTES-DESPUÉS */}
-            <div className="lg:col-span-6">
-              <div className="relative mx-auto max-w-lg lg:max-w-none">
-                {/* Selector de modo */}
-                <div className="flex items-center gap-2 mb-4">
-                  <button
-                    type="button"
-                    onClick={() => setMediaMode("beforeAfter")}
-                    className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-                      mediaMode === "beforeAfter"
-                        ? "bg-black text-white shadow-md"
-                        : "bg-white text-black hover:bg-neutral-200 border border-neutral-300"
-                    }`}
-                  >
-                    Antes / Después
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setMediaMode("gallery")}
-                    className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-                      mediaMode === "gallery"
-                        ? "bg-black text-white shadow-md"
-                        : "bg-white text-black hover:bg-neutral-200 border border-neutral-300"
-                    }`}
-                  >
-                    Galería de Proyectos
-                  </button>
-                </div>
-
-                {mediaMode === "beforeAfter" ? (
-                  <div className="h-[380px] sm:h-[460px] w-full bg-white rounded-none shadow-2xl overflow-hidden border border-neutral-200">
-                    <BeforeAfterDiagonal
-                      beforeImage="/images/inicio/quienes-somos/before.jpg"
-                      afterImage="/images/inicio/quienes-somos/after.jpg"
-                      beforeLabel="Antes"
-                      afterLabel="Después"
-                      slantOffset={12}
-                    />
-                  </div>
-                ) : (
-                  <div className="relative h-[380px] sm:h-[460px] w-full bg-white shadow-2xl overflow-hidden border border-neutral-200 group">
-                    <Image
-                      src={aboutGallery[currentSlide]}
-                      alt="Galería Voladizo"
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute bottom-4 right-4 flex gap-2 z-20">
-                      <button
-                        onClick={() =>
-                          setCurrentSlide((prev) => (prev === 0 ? aboutGallery.length - 1 : prev - 1))
-                        }
-                        className="w-10 h-10 bg-black/80 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer"
-                        aria-label="Anterior"
-                      >
-                        ←
-                      </button>
-                      <button
-                        onClick={() =>
-                          setCurrentSlide((prev) => (prev + 1) % aboutGallery.length)
-                        }
-                        className="w-10 h-10 bg-black/80 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer"
-                        aria-label="Siguiente"
-                      >
-                        →
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+           <div className="lg:col-span-6">
+                         {/* SELECTOR SUTIL DE ESTILOS (ANTES/DESPUÉS vs SLIDER) */}
+                         <div className="flex items-center gap-2 mb-4 ml-0 lg:ml-16">
+                           <button
+                             type="button"
+                             onClick={() => setMediaMode("beforeAfter")}
+                             className={`px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                               mediaMode === "beforeAfter"
+                                 ? "bg-black text-white shadow-sm"
+                                 : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                             }`}
+                           >
+                             Antes y Después
+                           </button>
+                           <button
+                             type="button"
+                             onClick={() => setMediaMode("carousel")}
+                             className={`px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                               mediaMode === "carousel"
+                                 ? "bg-black text-white shadow-sm"
+                                 : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                             }`}
+                           >
+                             Galería Slider
+                           </button>
+                         </div>
+           
+                         <div className="relative ml-0 lg:ml-16 mb-16 lg:mb-20">
+                           {/* MARCO GRIS DESPLAZADO (.m-carousel-1:after) */}
+                           <div
+                             className="hidden sm:block absolute pointer-events-none z-0"
+                             style={{
+                               top: "70px",
+                               left: "-70px",
+                               width: "100%",
+                               height: "100%",
+                               border: "30px solid rgba(0, 0, 0, 0.1)",
+                               boxSizing: "border-box",
+                             }}
+                           />
+           
+                           {mediaMode === "beforeAfter" ? (
+                             /* COMPARADOR DIAGONAL INTERACTIVO ANTES Y DESPUÉS */
+                             <BeforeAfterDiagonal
+                               beforeImage="/images/inicio/quienes-somos/before.jpg"
+                               afterImage="/images/inicio/quienes-somos/after.jpg"
+                               beforeLabel="Antes"
+                               afterLabel="Después"
+                               initialPos={50}
+                               slantOffset={12}
+                             />
+                           ) : (
+                             /* CONTENEDOR DEL SLIDER ORIGINAL (100% PRESERVADO) */
+                             <div className="relative z-10 w-full h-[300px] sm:h-[350px] lg:h-[390px] bg-neutral-100 shadow-xl overflow-hidden group">
+                               {galleryItems.map((item, idx) => (
+                                 <div
+                                   key={item.id}
+                                   className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${
+                                     idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                                   }`}
+                                 >
+                                   <Image
+                                     src={item.image}
+                                     alt={`Building Design ${idx + 1}`}
+                                     fill
+                                     priority={idx === 1}
+                                     sizes="(max-width: 1024px) 100vw, 60vw"
+                                     className="object-cover object-center group-hover:scale-105 transition-transform duration-1000 ease-out"
+                                   />
+                                 </div>
+                               ))}
+           
+                               {/* INDICADORES VERTICALES (.owl-dots) */}
+                               <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20 flex flex-col items-end gap-3.5 pointer-events-auto pr-0">
+                                 {galleryItems.map((_, dotIdx) => (
+                                   <button
+                                     key={dotIdx}
+                                     onClick={() => setCurrentSlide(dotIdx)}
+                                     type="button"
+                                     aria-label={`Slide ${dotIdx + 1}`}
+                                     className="h-[3px] bg-black transition-all duration-300 cursor-pointer"
+                                     style={{
+                                       width: dotIdx === currentSlide ? "50px" : "14px",
+                                     }}
+                                   />
+                                 ))}
+                               </div>
+                             </div>
+                           )}
+                         </div>
+                       </div>
 
             {/* COLUMNA DERECHA: TEXTO ABOUT US (Idéntico a estructura de template) */}
             <div className="lg:col-span-6 space-y-6">
@@ -248,18 +288,6 @@ export default function QuienesSomosPage() {
                     Nuestra visión integra la estética contemporánea con la viabilidad constructiva para el desarrollo inmobiliario nacional.
                   </p>
                 </div>
-              </div>
-
-              <div className="pt-2">
-                <Link
-                  href="/#contacto"
-                  className="group relative inline-flex items-center bg-black text-white px-8 py-4 shadow-sm hover:bg-neutral-800 transition-colors cursor-pointer"
-                >
-                  <span className="uppercase pr-9 block text-xs font-bold tracking-[4px]">
-                    Contáctanos
-                  </span>
-                  <span className="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-[1.5px] bg-white transition-all duration-300 group-hover:w-8" />
-                </Link>
               </div>
             </div>
 

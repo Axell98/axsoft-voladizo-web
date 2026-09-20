@@ -145,13 +145,6 @@ export default function Footer() {
               <div className="flex items-center gap-2.5">
                 <a
                   href="#"
-                  aria-label="Facebook"
-                  className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
-                >
-                  <FacebookIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href="#"
                   aria-label="Instagram"
                   className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
                 >
