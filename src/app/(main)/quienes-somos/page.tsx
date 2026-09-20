@@ -23,44 +23,6 @@ const galleryItems: GalleryItem[] = [
   { id: 5, image: "/images/inicio/quienes-somos/pic5.jpg" },
 ];
 
-interface ServiceTab {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-}
-
-const servicesTabs: ServiceTab[] = [
-  {
-    id: "tab1",
-    title: "DISEÑO E INGENIERÍA",
-    description:
-      "Desarrollo de anteproyectos y expedientes técnicos de arquitectura e ingeniería. Planificación integral que garantiza viabilidad y estabilidad técnica.",
-    image: "/images/inicio/servicios/servicio1/servicio_disenio.png",
-  },
-  {
-    id: "tab2",
-    title: "CONSTRUCCIÓN Y REMODELACIÓN",
-    description:
-      "Ejecución de obras comerciales, retail e industriales bajo estrictos estándares de seguridad y calidad constructiva superior.",
-    image: "/images/inicio/servicios/servicio2/servicio_construccion.png",
-  },
-  {
-    id: "tab3",
-    title: "DISEÑO INTERIOR Y MOBILIARIO",
-    description:
-      "Ambientes contemporáneos y funcionales con estética sofisticada y soluciones a la medida para espacios comerciales y corporativos.",
-    image: "/images/inicio/servicios/servicio3/servicio_disenio_interior.jpg",
-  },
-  {
-    id: "tab4",
-    title: "GESTIÓN Y SUPERVISIÓN",
-    description:
-      "Control riguroso de alcance, plazos y presupuesto acordado, asegurando el cumplimiento estricto de cada requerimiento del proyecto.",
-    image: "/images/inicio/servicios/servicio4/servicio_supervicion.png",
-  },
-];
-
 const teamList = [
   {
     name: "Arq. Renzo Alvarez",
@@ -86,7 +48,6 @@ const teamList = [
 
 export default function QuienesSomosPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeTab, setActiveTab] = useState<string>("tab1");
   const [mediaMode, setMediaMode] = useState<"beforeAfter" | "carousel">("beforeAfter");
 
   const total = galleryItems.length;
@@ -101,8 +62,6 @@ export default function QuienesSomosPage() {
     }, 5500);
     return () => clearInterval(timer);
   }, [nextGallery, mediaMode]);
-
-  const currentService = servicesTabs.find((s) => s.id === activeTab) || servicesTabs[0];
 
   return (
     <div
@@ -372,102 +331,7 @@ export default function QuienesSomosPage() {
       </section>
 
       {/* ========================================================= */}
-      {/* 4. OUR SERVICES SECTION (section-full bg-black circle-block-outer) */}
-      {/* ========================================================= */}
-      <section className="py-20 lg:py-28 bg-[#111111] text-white relative z-10 overflow-hidden">
-        <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
-          
-          {/* HEADER DE SECCIÓN */}
-          <div className="section-head text-left mb-12">
-            <h2
-              className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-white mb-3"
-              style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
-            >
-              NUESTROS SERVICIOS
-            </h2>
-            <div className="w-16 h-[3px] bg-white" />
-          </div>
-
-          {/* 3 COLUMNAS INTERACTIVAS DE ABOUT-1: TAB LINKS + CENTER IMAGE */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* COLUMNA IZQUIERDA (TABS 1 & 2) */}
-            <div className="lg:col-span-4 space-y-4">
-              {servicesTabs.slice(0, 2).map((srv) => {
-                const isActive = activeTab === srv.id;
-                return (
-                  <div
-                    key={srv.id}
-                    onMouseEnter={() => setActiveTab(srv.id)}
-                    onClick={() => setActiveTab(srv.id)}
-                    className={`p-6 border transition-all cursor-pointer ${
-                      isActive
-                        ? "bg-white text-black border-white shadow-xl"
-                        : "bg-neutral-900/80 text-white border-neutral-800 hover:border-neutral-600"
-                    }`}
-                  >
-                    <h4 className="text-xs font-bold uppercase tracking-[2px] mb-2">
-                      {srv.title}
-                    </h4>
-                    <p className={`text-xs leading-relaxed font-light ${isActive ? "text-neutral-700" : "text-neutral-400"}`}>
-                      {srv.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* COLUMNA CENTRAL (IMAGEN DINÁMICA DEL TAB ACTIVO) */}
-            <div className="lg:col-span-4">
-              <div className="relative h-[340px] sm:h-[400px] w-full bg-neutral-900 border border-neutral-800 overflow-hidden shadow-2xl">
-                <Image
-                  src={currentService.image}
-                  alt={currentService.title}
-                  fill
-                  className="object-cover transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-center">
-                  <span className="text-[11px] font-bold uppercase tracking-[3px] bg-black/80 px-4 py-1.5 border border-white/20 text-white">
-                    {currentService.title}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* COLUMNA DERECHA (TABS 3 & 4) */}
-            <div className="lg:col-span-4 space-y-4">
-              {servicesTabs.slice(2, 4).map((srv) => {
-                const isActive = activeTab === srv.id;
-                return (
-                  <div
-                    key={srv.id}
-                    onMouseEnter={() => setActiveTab(srv.id)}
-                    onClick={() => setActiveTab(srv.id)}
-                    className={`p-6 border transition-all cursor-pointer ${
-                      isActive
-                        ? "bg-white text-black border-white shadow-xl"
-                        : "bg-neutral-900/80 text-white border-neutral-800 hover:border-neutral-600"
-                    }`}
-                  >
-                    <h4 className="text-xs font-bold uppercase tracking-[2px] mb-2">
-                      {srv.title}
-                    </h4>
-                    <p className={`text-xs leading-relaxed font-light ${isActive ? "text-neutral-700" : "text-neutral-400"}`}>
-                      {srv.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* 5. NUESTRO EQUIPO / EXPERTOS (OUR EXPERTS SECTION)        */}
+      {/* 4. NUESTRO EQUIPO / EXPERTOS (OUR EXPERTS SECTION)        */}
       {/* ========================================================= */}
       <section className="py-20 lg:py-28 bg-[#f5f5f5] text-black border-t border-neutral-200">
         <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">

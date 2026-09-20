@@ -85,7 +85,7 @@ export default function QuienesSomosSection() {
 
               {/* Botón Call to Action */}
               <Link
-                href="/nosotros"
+                href="/quienes-somos"
                 className="btn-half group relative inline-flex items-center bg-black px-8 py-4 shadow-sm hover:bg-neutral-900 transition-colors cursor-pointer"
               >
                 <span className="text-white uppercase pr-9 block text-xs font-bold tracking-[4px]">

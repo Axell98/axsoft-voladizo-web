@@ -245,11 +245,6 @@ export default function Footer() {
                   Gestión y Supervisión de Obra
                 </Link>
               </li>
-              <li>
-                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
-                  Expedientes Técnicos & Licencias
-                </Link>
-              </li>
             </ul>
           </div>
 
