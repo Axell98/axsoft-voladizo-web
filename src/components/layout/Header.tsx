@@ -25,9 +25,10 @@ const navItems: NavItem[] = [
     name: "Servicios",
     href: "/#servicios",
     children: [
-      { name: "Diseño Arquitectónico", href: "/#servicios" },
-      { name: "Construcción", href: "/#servicios" },
-      { name: "Consultoría y Asesoría", href: "/#servicios" },
+      { name: "Diseño e Ingeniería", href: "/servicios/diseno-e-ingenieria" },
+      { name: "Construcción y Remodelación", href: "/#servicios" },
+      { name: "Diseño Interior y Mobiliario", href: "/#servicios" },
+      { name: "Gestión y Supervisión", href: "/#servicios" },
     ],
   },
   {

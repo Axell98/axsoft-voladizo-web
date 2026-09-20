@@ -7,8 +7,8 @@ export const SITE_DESCRIPTION =
 
 // TODO: reemplazar por los datos reales del cliente.
 export const SITE_CONTACT = {
-  address: "Lima, Perú",
-  phone: "+51 999 999 999",
+  address: "Av. Militar 2500, Lince / Lima, Peru",
+  phone: "+51 999 449 230",
   phoneHref: "tel:+51999999999",
   email: "contacto@voladizo.com",
   hours: "Lunes a Viernes: 8:30 am — 6:30 pm",

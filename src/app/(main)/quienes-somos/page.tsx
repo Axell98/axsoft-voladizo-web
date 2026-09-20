@@ -6,8 +6,109 @@ import Link from "next/link";
 import BeforeAfterDiagonal from "@/components/inicio/BeforeAfterDiagonal";
 
 // =========================================================
-// DATOS & CONTENIDO DEL TEMPLATE ABOUT-1 CON INFORMACIÓN DEL USUARIO
+// ICONOS DE REDES SOCIALES ESTILO SQUARE EXACTOS
 // =========================================================
+function FacebookIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 320 512">
+      <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+    </svg>
+  );
+}
+
+function TwitterIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 512 512">
+      <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 448 512">
+      <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+    </svg>
+  );
+}
+
+function YoutubeIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 576 512">
+      <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.583V174.334l142.739 81.666-142.739 81.666z" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 448 512">
+      <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+    </svg>
+  );
+}
+
+// =========================================================
+// DATOS DE EQUIPO
+// =========================================================
+interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  image: string;
+  socials?: {
+    facebook?: string;
+    twitter?: string;
+    linkedin?: string;
+    youtube?: string;
+    instagram?: string;
+  };
+}
+
+const featuredLeader: TeamMember = {
+  id: 1,
+  name: "Arq. Renzo Alvarez",
+  role: "Gerente General",
+  image: "/images/inicio/equipo/gerente_general.jpg",
+  socials: {
+    facebook: "#",
+    twitter: "#",
+    linkedin: "#",
+    youtube: "#",
+    instagram: "#",
+  },
+};
+
+const teamMembers: TeamMember[] = [
+  {
+    id: 2,
+    name: "Laura Maglia",
+    role: "Jefe Comercial",
+    image: "/images/inicio/equipo/personal1.jpg",
+    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
+  },
+  {
+    id: 3,
+    name: "Taylor Roberts",
+    role: "Coordinador de Obra",
+    image: "/images/inicio/equipo/pic3.jpg",
+    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
+  },
+  {
+    id: 4,
+    name: "Robert Willson",
+    role: "Supervisor de Proyectos",
+    image: "/images/inicio/equipo/pic4.jpg",
+    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
+  },
+  {
+    id: 5,
+    name: "Austin Evon",
+    role: "Asociado de Proyectos",
+    image: "/images/inicio/equipo/pic5.jpg",
+    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
+  },
+];
 
 interface GalleryItem {
   id: number;
@@ -23,70 +124,8 @@ const galleryItems: GalleryItem[] = [
   { id: 5, image: "/images/inicio/quienes-somos/pic5.jpg" },
 ];
 
-interface ServiceTab {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-}
-
-const servicesTabs: ServiceTab[] = [
-  {
-    id: "tab1",
-    title: "DISEÑO E INGENIERÍA",
-    description:
-      "Desarrollo de anteproyectos y expedientes técnicos de arquitectura e ingeniería. Planificación integral que garantiza viabilidad y estabilidad técnica.",
-    image: "/images/inicio/servicios/servicio1/servicio_disenio.png",
-  },
-  {
-    id: "tab2",
-    title: "CONSTRUCCIÓN Y REMODELACIÓN",
-    description:
-      "Ejecución de obras comerciales, retail e industriales bajo estrictos estándares de seguridad y calidad constructiva superior.",
-    image: "/images/inicio/servicios/servicio2/servicio_construccion.png",
-  },
-  {
-    id: "tab3",
-    title: "DISEÑO INTERIOR Y MOBILIARIO",
-    description:
-      "Ambientes contemporáneos y funcionales con estética sofisticada y soluciones a la medida para espacios comerciales y corporativos.",
-    image: "/images/inicio/servicios/servicio3/servicio_disenio_interior.jpg",
-  },
-  {
-    id: "tab4",
-    title: "GESTIÓN Y SUPERVISIÓN",
-    description:
-      "Control riguroso de alcance, plazos y presupuesto acordado, asegurando el cumplimiento estricto de cada requerimiento del proyecto.",
-    image: "/images/inicio/servicios/servicio4/servicio_supervicion.png",
-  },
-];
-
-const teamList = [
-  {
-    name: "Arq. Renzo Alvarez",
-    role: "Gerente General",
-    image: "/images/inicio/equipo/gerente_general.jpg",
-  },
-  {
-    name: "Laura Maglia",
-    role: "Jefe Comercial",
-    image: "/images/inicio/equipo/personal1.jpg",
-  },
-  {
-    name: "Taylor Roberts",
-    role: "Coordinador de Obra",
-    image: "/images/inicio/equipo/pic3.jpg",
-  },
-  {
-    name: "Robert Willson",
-    role: "Supervisor de Proyectos",
-    image: "/images/inicio/equipo/pic4.jpg",
-  },
-];
-
 export default function QuienesSomosPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeTab, setActiveTab] = useState<string>("tab1");
   const [mediaMode, setMediaMode] = useState<"beforeAfter" | "carousel">("beforeAfter");
 
   const total = galleryItems.length;
@@ -101,8 +140,6 @@ export default function QuienesSomosPage() {
     }, 5500);
     return () => clearInterval(timer);
   }, [nextGallery, mediaMode]);
-
-  const currentService = servicesTabs.find((s) => s.id === activeTab) || servicesTabs[0];
 
   return (
     <div
@@ -130,7 +167,7 @@ export default function QuienesSomosPage() {
             <div className="relative py-10 sm:py-14 pl-6 sm:pl-8 border-t-[8px] sm:border-t-[10px] border-b-[8px] sm:border-b-[10px] border-l-[8px] sm:border-l-[10px] border-white w-[160px] sm:w-[220px] mb-8 after:content-[''] after:absolute after:right-0 after:top-0 after:w-[8px] sm:after:w-[10px] after:h-[35px] sm:after:h-[45px] after:bg-white before:content-[''] before:absolute before:right-0 before:bottom-0 before:w-[8px] sm:before:w-[10px] before:h-[35px] sm:before:h-[45px] before:bg-white">
               <div className="w-[280px] sm:w-[480px] md:w-[600px] lg:w-[680px]">
                 <h2 className="text-white text-base sm:text-lg md:text-xl font-light uppercase tracking-[4px] sm:tracking-[5px] leading-relaxed">
-                  FUSING LOGIC WITH IMAGINATION AND TRUTH WITH DISCOVERY.
+                  TRANSFORMANDO ESPACIOS Y REALIDADES CON VISIÓN ARQUITECTÓNICA.
                 </h2>
               </div>
             </div>
@@ -138,10 +175,10 @@ export default function QuienesSomosPage() {
             {/* BREADCRUMB ROW */}
             <div className="text-white text-xs sm:text-sm font-medium tracking-[2px]">
               <Link href="/" className="hover:text-neutral-300 transition-colors">
-                Home
+                Inicio
               </Link>
               <span className="mx-2 text-white/80">»</span>
-              <span className="text-white">About 1</span>
+              <span className="text-[var(--color1)]">Quiénes Somos</span>
             </div>
 
           </div>
@@ -372,142 +409,249 @@ export default function QuienesSomosPage() {
       </section>
 
       {/* ========================================================= */}
-      {/* 4. OUR SERVICES SECTION (section-full bg-black circle-block-outer) */}
+      {/* 4. NUESTRA VISIÓN (Pilares Estratégicos & Expansión)       */}
       {/* ========================================================= */}
-      <section className="py-20 lg:py-28 bg-[#111111] text-white relative z-10 overflow-hidden">
+      <section className="py-20 lg:py-28 bg-[#141414] text-white relative z-10 overflow-hidden">
         <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
-          
-          {/* HEADER DE SECCIÓN */}
-          <div className="section-head text-left mb-12">
-            <h2
-              className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-white mb-3"
-              style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
-            >
-              NUESTROS SERVICIOS
-            </h2>
-            <div className="w-16 h-[3px] bg-white" />
-          </div>
-
-          {/* 3 COLUMNAS INTERACTIVAS DE ABOUT-1: TAB LINKS + CENTER IMAGE */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
-            {/* COLUMNA IZQUIERDA (TABS 1 & 2) */}
-            <div className="lg:col-span-4 space-y-4">
-              {servicesTabs.slice(0, 2).map((srv) => {
-                const isActive = activeTab === srv.id;
-                return (
-                  <div
-                    key={srv.id}
-                    onMouseEnter={() => setActiveTab(srv.id)}
-                    onClick={() => setActiveTab(srv.id)}
-                    className={`p-6 border transition-all cursor-pointer ${
-                      isActive
-                        ? "bg-white text-black border-white shadow-xl"
-                        : "bg-neutral-900/80 text-white border-neutral-800 hover:border-neutral-600"
-                    }`}
-                  >
-                    <h4 className="text-xs font-bold uppercase tracking-[2px] mb-2">
-                      {srv.title}
-                    </h4>
-                    <p className={`text-xs leading-relaxed font-light ${isActive ? "text-neutral-700" : "text-neutral-400"}`}>
-                      {srv.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* COLUMNA CENTRAL (IMAGEN DINÁMICA DEL TAB ACTIVO) */}
-            <div className="lg:col-span-4">
-              <div className="relative h-[340px] sm:h-[400px] w-full bg-neutral-900 border border-neutral-800 overflow-hidden shadow-2xl">
+            {/* LADO IZQUIERDO: IMAGEN ARQUITECTÓNICA DE PROYECTO */}
+            <div className="lg:col-span-6 order-2 lg:order-1 relative">
+              <div className="relative h-[380px] sm:h-[480px] w-full bg-neutral-900 border border-neutral-800 shadow-2xl overflow-hidden group">
                 <Image
-                  src={currentService.image}
-                  alt={currentService.title}
+                  src="/images/inicio/quienes-somos/after.jpg"
+                  alt="Nuestra Visión Voladizo"
                   fill
-                  className="object-cover transition-all duration-700"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-center">
-                  <span className="text-[11px] font-bold uppercase tracking-[3px] bg-black/80 px-4 py-1.5 border border-white/20 text-white">
-                    {currentService.title}
+                {/* <div className="absolute bottom-6 left-6 right-6">
+                  <span className="text-[11px] font-bold uppercase tracking-[3px] bg-black/80 px-4 py-2 border border-white/20 text-white inline-block">
+                    Impacto Sostenible & Vanguardia
                   </span>
+                </div> */}
+              </div>
+            </div>
+
+            {/* LADO DERECHO: CONTENIDO DE VISIÓN */}
+            <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
+              <div className="section-head text-left">
+                <span className="text-xs font-bold uppercase tracking-[3px] text-neutral-400 block mb-2">
+                  Horizonte Estratégico
+                </span>
+                <h2
+                  className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white mb-4"
+                  style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
+                >
+                  NUESTRA VISIÓN
+                </h2>
+                <div className="w-16 h-[3px] bg-white mb-6" />
+              </div>
+
+              {/* 3 Bloques de Visión */}
+              <div className="space-y-4 pt-2">
+                {/* Pilar 1: Referente Nacional */}
+                <div className="bg-neutral-900/80 p-6 border border-neutral-800 hover:border-neutral-600 transition-colors shadow-lg space-y-2">
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="w-2.5 h-2.5 rounded-full border border-white block shrink-0" />
+                    <h3
+                      className="text-base sm:text-lg font-bold uppercase tracking-wide text-white"
+                      style={{ fontFamily: "'Oswald', sans-serif" }}
+                    >
+                      Referente Nacional
+                    </h3>
+                  </div>
+                  <p className="text-xs sm:text-[13.5px] text-neutral-300 font-light leading-relaxed pl-5">
+                    Ser el líder en remodelaciones y ampliaciones integrales y sostenibles.
+                  </p>
+                </div>
+
+                {/* Pilar 2: Procesos Modernos */}
+                <div className="bg-neutral-900/80 p-6 border border-neutral-800 hover:border-neutral-600 transition-colors shadow-lg space-y-2">
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="w-2.5 h-2.5 rounded-full border border-white block shrink-0" />
+                    <h3
+                      className="text-base sm:text-lg font-bold uppercase tracking-wide text-white"
+                      style={{ fontFamily: "'Oswald', sans-serif" }}
+                    >
+                      Procesos Modernos
+                    </h3>
+                  </div>
+                  <p className="text-xs sm:text-[13.5px] text-neutral-300 font-light leading-relaxed pl-5">
+                    Liderar el sector construcción con procesos eficientes y tecnología de vanguardia.
+                  </p>
+                </div>
+
+                {/* Pilar 3: Expansión Regional */}
+                <div className="bg-neutral-900/80 p-6 border border-neutral-800 hover:border-neutral-600 transition-colors shadow-lg space-y-2">
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="w-2.5 h-2.5 rounded-full border border-white block shrink-0" />
+                    <h3
+                      className="text-base sm:text-lg font-bold uppercase tracking-wide text-white"
+                      style={{ fontFamily: "'Oswald', sans-serif" }}
+                    >
+                      Expansión Regional
+                    </h3>
+                  </div>
+                  <p className="text-xs sm:text-[13.5px] text-neutral-300 font-light leading-relaxed pl-5">
+                    Expandir el legado de Voladizo a nivel regional con impacto sostenible.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* COLUMNA DERECHA (TABS 3 & 4) */}
-            <div className="lg:col-span-4 space-y-4">
-              {servicesTabs.slice(2, 4).map((srv) => {
-                const isActive = activeTab === srv.id;
-                return (
-                  <div
-                    key={srv.id}
-                    onMouseEnter={() => setActiveTab(srv.id)}
-                    onClick={() => setActiveTab(srv.id)}
-                    className={`p-6 border transition-all cursor-pointer ${
-                      isActive
-                        ? "bg-white text-black border-white shadow-xl"
-                        : "bg-neutral-900/80 text-white border-neutral-800 hover:border-neutral-600"
-                    }`}
-                  >
-                    <h4 className="text-xs font-bold uppercase tracking-[2px] mb-2">
-                      {srv.title}
-                    </h4>
-                    <p className={`text-xs leading-relaxed font-light ${isActive ? "text-neutral-700" : "text-neutral-400"}`}>
-                      {srv.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
           </div>
-
         </div>
       </section>
 
       {/* ========================================================= */}
       {/* 5. NUESTRO EQUIPO / EXPERTOS (OUR EXPERTS SECTION)        */}
       {/* ========================================================= */}
-      <section className="py-20 lg:py-28 bg-[#f5f5f5] text-black border-t border-neutral-200">
+      <section
+        id="equipo"
+        className="section-full py-20 lg:py-28 bg-white bg-repeat text-black relative z-10 border-t border-neutral-200"
+        style={{
+          fontFamily: "'Poppins', sans-serif",
+          backgroundImage: "url('/images/quienes-somos/ptn-1.png')",
+        }}
+      >
         <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
-          
-          <div className="section-head text-left mb-12">
-            <span className="text-xs font-bold uppercase tracking-[3px] text-neutral-500 block mb-2">
-              Liderazgo & Talento
-            </span>
-            <h2
-              className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-black mb-3"
-              style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
-            >
-              NUESTRO EQUIPO
-            </h2>
-            <div className="w-16 h-[3px] bg-black" />
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+            
+            {/* COLUMNA IZQUIERDA: TÍTULO Y LÍDER DESTACADO */}
+            <div className="lg:col-span-6 flex flex-col items-center lg:items-start">
+              {/* Título de sección */}
+              <div className="mb-8 w-full text-left">
+                <h2
+                  className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-black mb-3"
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                >
+                  NUESTRO EQUIPO
+                </h2>
+                <div className="w-16 h-[3px] bg-black" />
+              </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamList.map((member) => (
-              <div key={member.name} className="bg-white border border-neutral-200 overflow-hidden shadow-sm group">
-                <div className="relative h-[300px] w-full bg-neutral-100 overflow-hidden">
+              {/* Tarjeta de Líder Principal */}
+              <div className="w-full max-w-[480px]">
+                <div className="relative w-full h-[460px] sm:h-[540px] lg:h-[600px] bg-neutral-100 overflow-hidden shadow-sm group">
                   <Image
-                    src={member.image}
-                    alt={member.name}
+                    src={featuredLeader.image}
+                    alt={featuredLeader.name}
                     fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                    priority
                   />
                 </div>
-                <div className="p-5 text-center bg-white">
-                  <h3 className="text-base font-semibold text-black uppercase tracking-wide">
-                    {member.name}
+
+                {/* Información del Líder */}
+                <div className="text-center pt-6 pb-2">
+                  <h3
+                    className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-black"
+                    style={{ fontFamily: "'Poppins', sans-serif" }}
+                  >
+                    {featuredLeader.name}
                   </h3>
-                  <p className="text-xs text-neutral-500 font-light mt-1">
-                    {member.role}
+                  <p
+                    className="text-sm sm:text-base text-neutral-500 mt-1 mb-4 font-light"
+                    style={{ fontFamily: "'Poppins', sans-serif" }}
+                  >
+                    {featuredLeader.role}
                   </p>
+
+                  {/* Redes Sociales Cuadradas con Borde Fino */}
+                  {/* <ul className="flex items-center justify-center gap-1.5">
+                    <li>
+                      <a
+                        href={featuredLeader.socials?.facebook || "#"}
+                        aria-label="Facebook"
+                        className="w-8 h-8 border border-neutral-300 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-colors"
+                      >
+                        <FacebookIcon className="w-3 h-3" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={featuredLeader.socials?.twitter || "#"}
+                        aria-label="Twitter"
+                        className="w-8 h-8 border border-neutral-300 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-colors"
+                      >
+                        <TwitterIcon className="w-3 h-3" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={featuredLeader.socials?.linkedin || "#"}
+                        aria-label="LinkedIn"
+                        className="w-8 h-8 border border-neutral-300 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-colors"
+                      >
+                        <LinkedInIcon className="w-3 h-3" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={featuredLeader.socials?.youtube || "#"}
+                        aria-label="YouTube"
+                        className="w-8 h-8 border border-neutral-300 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-colors"
+                      >
+                        <YoutubeIcon className="w-3 h-3" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={featuredLeader.socials?.instagram || "#"}
+                        aria-label="Instagram"
+                        className="w-8 h-8 border border-neutral-300 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-colors"
+                      >
+                        <InstagramIcon className="w-3 h-3" />
+                      </a>
+                    </li>
+                  </ul> */}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
 
+            {/* COLUMNA DERECHA: GRID 2x2 DE INTEGRANTES DEL EQUIPO CON L-BRACKET */}
+            <div className="lg:col-span-6 w-full pt-4 lg:pt-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 w-full">
+                {teamMembers.map((member) => (
+                  <div key={member.id} className="relative flex flex-col">
+                    {/* Contenedor de Imagen */}
+                    <div className="relative w-full h-[230px] sm:h-[260px] bg-neutral-100 overflow-hidden group">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                    </div>
+
+                    {/* Info del Integrante con Acento Angular en L */}
+                    <div className="relative pt-4 pb-2 text-center w-full">
+                      {/* Acento geométrico en esquina inferior izquierda (.wt-team-info:before & :after) */}
+                      <div className="absolute left-0 bottom-0 w-8 h-[2.5px] bg-black" />
+                      <div className="absolute left-0 bottom-0 w-[2.5px] h-8 bg-black" />
+
+                      <h4
+                        className="text-sm sm:text-base font-bold uppercase tracking-wider text-black"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                      >
+                        {member.name}
+                      </h4>
+                      <p
+                        className="text-xs text-neutral-500 mt-1 font-light pb-3"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                      >
+                        {member.role}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 

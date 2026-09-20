@@ -174,7 +174,7 @@ export default function Footer() {
           {/* COLUMNA 2: NAVEGACIÓN RÁPIDA (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3 pb-2 border-b border-neutral-800">
-              <span className="text-xs font-bold uppercase tracking-[2.5px] text-white">
+              <span className="text-xs font-bold uppercase tracking-[2.5px] text-[var(--color1)]">
                 Navegación
               </span>
             </div>
@@ -221,7 +221,7 @@ export default function Footer() {
           {/* COLUMNA 3: ESPECIALIDADES / SERVICIOS (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
             <div className="flex items-center gap-3 pb-2 border-b border-neutral-800">
-              <span className="text-xs font-bold uppercase tracking-[2.5px] text-white">
+              <span className="text-xs font-bold uppercase tracking-[2.5px] text-[var(--color1)]">
                 Servicios
               </span>
             </div>
@@ -246,19 +246,14 @@ export default function Footer() {
                   Gestión y Supervisión de Obra
                 </Link>
               </li>
-              <li>
-                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
-                  Expedientes Técnicos & Licencias
-                </Link>
-              </li>
             </ul>
           </div>
 
           {/* COLUMNA 4: UBICACIÓN & CONTACTO (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
             <div className="flex items-center gap-3 pb-2 border-b border-neutral-800">
-              <span className="text-xs font-bold uppercase tracking-[2.5px] text-white">
-                Contacto Directo
+              <span className="text-xs font-bold uppercase tracking-[2.5px] text-[var(--color1)]">
+                Contacto
               </span>
             </div>
             <div className="space-y-4 text-sm text-neutral-400 font-light leading-relaxed">
@@ -271,7 +266,7 @@ export default function Footer() {
 
               <div>
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
-                  Teléfono / Móvil
+                  Celular 
                 </span>
                 <a href={SITE_CONTACT.phoneHref} className="hover:text-white transition-colors font-medium">
                   {SITE_CONTACT.phone}
@@ -287,7 +282,7 @@ export default function Footer() {
                 </a>
               </div>
 
-              <div>
+              {/* <div>
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
                   Horario de Atención
                 </span>
