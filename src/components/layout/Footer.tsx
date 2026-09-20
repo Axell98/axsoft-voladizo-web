@@ -73,9 +73,13 @@ export default function Footer() {
                 className="text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white leading-tight"
                 style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
               >
-                DISEÑEMOS Y CONSTRUYAMOS <br className="hidden sm:inline" />
-                TU PRÓXIMO ESPACIO.
+                TRANSFORMEMOS TU ESPACIO <br className="hidden sm:inline" />
+                EN UNA REALIDAD.
               </h2>
+               <p className="text-neutral-400 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
+            Contáctanos hoy para coordinar una reunión de asesoría técnica y diseño arquitectónico para tu proyecto.
+          </p>
+              
             </div>
 
             <div className="flex flex-wrap items-center gap-4 shrink-0">
@@ -188,7 +192,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#quienes-somos" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+                <Link href="/quienes-somos" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
                   <span className="w-1.5 h-[1.5px] bg-neutral-600 group-hover:w-3 group-hover:bg-white transition-all duration-200" />
                   Quiénes Somos
                 </Link>

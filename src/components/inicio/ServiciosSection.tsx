@@ -15,7 +15,7 @@ const defaultFeatures: FeatureItem[] = [
   {
     id: 1,
     title: "DISEÑO E INGENIERÍA",
-    icon: "/images/iconos/servi_icon1.png",
+    icon: "/images/iconos/servi2_icon1.svg",
     image: "/images/inicio/servicios/servicio1/servicio_disenio.png",
     description:
       "Desarrollo de anteproyectos y expedientes técnicos de arquitectura e ingeniería. Cálculos avanzados y planificación integral que garantizan la estabilidad, eficiencia y viabilidad técnica en proyectos complejos.",
@@ -23,7 +23,7 @@ const defaultFeatures: FeatureItem[] = [
   {
     id: 2,
     title: "CONSTRUCCIÓN Y REMODELACIÓN",
-    icon: "/images/iconos/servi_icon2.png",
+    icon: "/images/iconos/servi2_icon2.svg",
     image: "/images/inicio/servicios/servicio2/servicio_construccion.png",
     description:
       "Ejecución de proyectos residenciales, comerciales e industriales bajo estrictas normas de seguridad y eficiencia operativa. Renovamos y optimizamos espacios corporativos y comerciales mediante intervenciones de calidad superior.",
@@ -31,7 +31,7 @@ const defaultFeatures: FeatureItem[] = [
   {
     id: 3,
     title: "DISEÑO INTERIOR Y MOBILIARIO",
-    icon: "/images/iconos/servi_icon3.png",
+    icon: "/images/iconos/servi2_icon3.svg",
     image: "/images/inicio/servicios/servicio3/servicio_disenio_interior.jpg",
     description:
       "Creación de ambientes vanguardistas y funcionales que redefinen la experiencia de cada espacio. Integramos diseño estético, estética contemporánea y soluciones de mobiliario a la medida.",
@@ -39,7 +39,7 @@ const defaultFeatures: FeatureItem[] = [
   {
     id: 4,
     title: "GESTIÓN Y SUPERVISIÓN",
-    icon: "/images/iconos/servi_icon1.png",
+    icon: "/images/iconos/servi2_icon4.svg",
     image: "/images/inicio/servicios/servicio4/servicio_supervicion.png",
     description:
       "Control riguroso de cada etapa del proyecto. Aseguramos el cumplimiento estricto de los plazos, el presupuesto acordado y los más altos estándares de calidad constructiva y seguridad.",

@@ -19,7 +19,7 @@ const navItems: NavItem[] = [
   { name: "Inicio", href: "/" },
   {
     name: "Quienes Somos",
-    href: "/#quienes-somos",
+    href: "/quienes-somos",
   },
   {
     name: "Servicios",
@@ -39,7 +39,6 @@ const navItems: NavItem[] = [
       { name: "En Ejecución", href: "/#proyectos" },
     ],
   },
-  { name: "Contactanos", href: "/#contacto" },
 ];
 
 export default function Header() {
@@ -97,8 +96,8 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* 2. NAVEGACIÓN DESKTOP (Estilo Modern Template Flotante) */}
-          <nav className="hidden md:flex items-center">
+          {/* 2. NAVEGACIÓN DESKTOP (Alineada a la Derecha) */}
+          <nav className="hidden md:flex items-center ml-auto mr-4 lg:mr-6">
             <ul className="flex items-center m-0 p-0 list-none">
               {navItems.map((item) => {
                 const hasChild = Boolean(item.children && item.children.length > 0);
