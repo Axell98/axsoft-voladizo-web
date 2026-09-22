@@ -95,39 +95,31 @@ export default function PorQueElegirnosSection() {
 
       <div className="relative max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
         {/* ========================================================= */}
-        {/* ENCABEZADO                                                */}
-        {/* ========================================================= */}
-        <div className="text-center mb-14 lg:mb-20">
-          <div
-            className={`inline-flex items-center gap-4 ${revealProps(visible, 0).className}`}
-            style={revealProps(visible, 0).style}
-          >
-            <span aria-hidden="true" className="w-10 sm:w-14 h-px bg-brand" />
-            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[4px] text-brand-dark">
-              Excelencia en diseño
-            </span>
-            <span aria-hidden="true" className="w-10 sm:w-14 h-px bg-brand" />
-          </div>
+        {/* ENCABEZADO CON LÍNEAS LATERALES (ESTILO TRAYECTORIA) */}
+        <div className="flex items-center justify-center gap-4 sm:gap-6 mb-14 lg:mb-20">
+          <span
+            aria-hidden="true"
+            className={`hidden sm:block h-px w-12 lg:w-24 bg-brand origin-right duration-1000 transition-transform motion-reduce:transition-none motion-reduce:scale-x-100 ${
+              visible ? "scale-x-100" : "scale-x-0"
+            }`}
+          />
 
           <h2
             id="por-que-elegirnos-titulo"
-            className={`font-oswald-bold uppercase tracking-tight leading-[1.05] text-4xl sm:text-6xl lg:text-7xl mt-5 ${
+            className={`font-oswald-bold text-center uppercase tracking-tight leading-none text-3xl sm:text-5xl lg:text-6xl ${
               revealProps(visible, 100).className
             }`}
             style={revealProps(visible, 100).style}
           >
-            ¿Por qué{" "}
-            <span className="relative inline-block isolate">
-              elegirnos?
-              {/* Resaltador que se dibuja detrás de la palabra */}
-              <span
-                aria-hidden="true"
-                className={`absolute -inset-x-1 bottom-[8%] h-[34%] bg-brand -z-10 origin-left transition-transform duration-1000 delay-700 ease-out motion-reduce:transition-none motion-reduce:scale-x-100 ${
-                  visible ? "scale-x-100" : "scale-x-0"
-                }`}
-              />
-            </span>
+            ¿Por qué <span className="text-brand">elegirnos?</span>
           </h2>
+
+          <span
+            aria-hidden="true"
+            className={`hidden sm:block h-px w-12 lg:w-24 bg-brand origin-left duration-1000 transition-transform motion-reduce:transition-none motion-reduce:scale-x-100 ${
+              visible ? "scale-x-100" : "scale-x-0"
+            }`}
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-start">
@@ -135,12 +127,12 @@ export default function PorQueElegirnosSection() {
           {/* COLUMNA IZQUIERDA: PROMESA + VENTAJAS                     */}
           {/* ========================================================= */}
           <div className="lg:col-span-6">
-            <div className={revealProps(visible, 200, "left").className} style={revealProps(visible, 200, "left").style}>
+            {/* <div className={revealProps(visible, 200, "left").className} style={revealProps(visible, 200, "left").style}>
               <span className="inline-flex items-center gap-2.5 border border-brand/60 bg-brand/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[3px] text-brand-dark">
                 <span aria-hidden="true" className="w-2 h-2 rounded-full bg-brand animate-pulse" />
                 Nuestra promesa
               </span>
-            </div>
+            </div> */}
 
             <p
               className={`mt-7 text-lg sm:text-xl leading-relaxed text-neutral-600 font-light ${

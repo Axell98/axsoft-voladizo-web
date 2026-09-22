@@ -66,10 +66,6 @@ export default function QuienesSomosSection() {
                 Somos una empresa especializada en diseño arquitectónico, ingeniería, construcción, remodelación e implementación de espacios comerciales, corporativos, Retail e industriales.
               </p>
 
-              <p className="text-sm sm:text-[14.5px] text-neutral-500 font-light leading-relaxed mb-8">
-                Fusionamos rigor técnico, innovación constructiva y diseño de vanguardia para materializar proyectos con los más altos estándares de eficiencia, precisión y durabilidad.
-              </p>
-
               {/* Tags de Identidad & Enfoque */}
               <div className="flex flex-wrap gap-2.5 mb-9">
                 <span className="text-xs font-medium uppercase tracking-wider px-3.5 py-1.5 bg-neutral-100 text-neutral-800 border border-neutral-200">

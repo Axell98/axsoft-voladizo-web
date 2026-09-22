@@ -110,8 +110,7 @@ export default function ContactoSection() {
               />
 
               <div className="relative">
-                <span className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[3px] text-brand">
-                  <span className="w-8 h-px bg-brand" />
+                <span className="text-[11px] font-bold uppercase tracking-[3px] text-brand block">
                   Contacto
                 </span>
 
