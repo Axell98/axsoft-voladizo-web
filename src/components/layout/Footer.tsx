@@ -287,7 +287,7 @@ export default function Footer() {
                   Horario de Atención
                 </span>
                 <p>{SITE_CONTACT.hours}</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
