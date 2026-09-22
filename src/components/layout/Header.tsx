@@ -107,12 +107,12 @@ export default function Header() {
                   <li key={item.name} className="relative group">
                     <Link
                       href={item.href}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-4 text-[13px] font-semibold tracking-[2px] text-white/90 hover:text-white uppercase transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-4 text-[13px] font-semibold tracking-[2px] text-white/90 hover:text-brand uppercase transition-colors"
                     >
                       <span>{item.name}</span>
                       {hasChild && (
                         <svg
-                          className="w-3 h-3 text-white/60 transition-transform duration-200 group-hover:rotate-180"
+                          className="w-3 h-3 text-white/60 transition-transform duration-200 group-hover:rotate-180 group-hover:text-brand"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -138,7 +138,7 @@ export default function Header() {
                             >
                               <Link
                                 href={sub.href}
-                                className="block px-5 py-3 text-[12px] uppercase tracking-[1.5px] text-neutral-300 hover:text-white hover:bg-white/10 transition-colors"
+                                className="block px-5 py-3 text-[12px] uppercase tracking-[1.5px] text-neutral-300 hover:text-brand hover:bg-white/5 transition-colors"
                               >
                                 {sub.name}
                               </Link>
@@ -157,7 +157,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center">
             <Link
               href="/#contacto"
-              className="inline-flex items-center justify-center px-6 py-2.5 text-[12px] font-bold uppercase tracking-[2px] text-white bg-white/10 hover:bg-white hover:text-black border border-white/20 transition-all duration-300 backdrop-blur-sm shadow-sm"
+              className="inline-flex items-center justify-center px-6 py-2.5 text-[12px] font-bold uppercase tracking-[2px] text-white bg-white/10 hover:bg-brand hover:text-black border border-white/20 hover:border-brand transition-all duration-300 backdrop-blur-sm shadow-sm"
             >
               Contactar
             </Link>
@@ -271,7 +271,7 @@ export default function Header() {
                       <Link
                         href={item.href}
                         onClick={() => !hasChild && setMobileMenuOpen(false)}
-                        className="text-[13px] font-semibold tracking-[2px] uppercase text-black hover:text-neutral-500 transition-colors"
+                        className="text-[13px] font-semibold tracking-[2px] uppercase text-black hover:text-brand transition-colors"
                       >
                         {item.name}
                       </Link>
@@ -280,12 +280,12 @@ export default function Header() {
                         <button
                           type="button"
                           onClick={() => toggleMobileSubmenu(item.name)}
-                          className="p-2 text-black hover:text-neutral-500 transition-transform"
+                          className="p-2 text-black hover:text-brand transition-transform"
                           aria-label={`Desplegar submenú de ${item.name}`}
                         >
                           <svg
                             className={`w-4 h-4 transition-transform duration-200 ${
-                              isOpen ? "rotate-90" : ""
+                              isOpen ? "rotate-90 text-brand" : ""
                             }`}
                             fill="none"
                             stroke="currentColor"
@@ -310,7 +310,7 @@ export default function Header() {
                             <Link
                               href={sub.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="text-[12px] uppercase tracking-[1px] text-neutral-700 hover:text-black transition-colors"
+                              className="text-[12px] uppercase tracking-[1px] text-neutral-700 hover:text-brand transition-colors"
                             >
                               {sub.name}
                             </Link>
@@ -330,7 +330,7 @@ export default function Header() {
           <Link
             href="/#contacto"
             onClick={() => setMobileMenuOpen(false)}
-            className="w-full flex items-center justify-center py-3 text-[12px] font-bold uppercase tracking-[2px] text-white bg-black hover:bg-neutral-800 transition-colors shadow-sm"
+            className="w-full flex items-center justify-center py-3 text-[12px] font-bold uppercase tracking-[2px] text-white bg-black hover:bg-brand hover:text-black transition-colors shadow-sm"
           >
             Contactar
           </Link>

@@ -102,18 +102,15 @@ export default function DisenoIngenieriaPage() {
               
               {/* HEADER DE LA SECCIÓN (DENTRO DE LA COLUMNA IZQUIERDA) */}
               <div className="mb-8">
-                <div className="mb-2">
-                  <span className="text-xs sm:text-sm font-semibold tracking-[3.5px] uppercase text-neutral-500">
-                    Excelencia Técnica
-                  </span>
-                </div>
+                <span className="text-[11px] font-bold uppercase tracking-[3px] text-brand block mb-2">
+                  Excelencia Técnica
+                </span>
                 <h2
-                  className="text-3xl sm:text-4xl lg:text-[42px] font-bold uppercase tracking-tight text-neutral-950 leading-tight"
-                  style={{ fontFamily: "'Oswald', sans-serif" }}
+                  className="font-oswald-bold uppercase text-3xl sm:text-4xl lg:text-[42px] leading-[1.1] tracking-tight text-neutral-950"
                 >
-                  Diseño e Ingeniería
+                  Diseño e <span className="text-brand">Ingeniería</span>
                 </h2>
-                <div className="w-12 h-[3px] bg-black mt-4" />
+                <div className="w-12 h-[3px] bg-brand mt-4" />
               </div>
 
               {/* CONTENEDOR DEL SLIDER CON MARCO ARQUITECTÓNICO DESPLAZADO */}
@@ -154,13 +151,18 @@ export default function DisenoIngenieriaPage() {
                   </div>
                 ))}
 
-                {/* BOTONES COMPACTOS RECTANGULARES EN LA ESQUINA INFERIOR DERECHA */}
-                <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5">
+                {/* CONTADOR EN ESQUINA INFERIOR IZQUIERDA */}
+                <div className="absolute bottom-4 left-4 z-20 bg-black/75 backdrop-blur-sm px-3 py-1 text-white text-xs font-mono tracking-wider border border-white/10">
+                  {currentSlide + 1} / {serviceSlides.length}
+                </div>
+
+                {/* BOTONES COMPACTOS RECTANGULARES EN ESQUINA INFERIOR DERECHA (ESTILO SQUARE) */}
+                <div className="absolute bottom-0 right-0 z-20 flex items-stretch">
                   <button
                     onClick={prevSlide}
                     type="button"
-                    aria-label="Anterior imagen"
-                    className="w-7 h-9 sm:w-8 sm:h-10 bg-[#6e7170] hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer shadow-md group"
+                    aria-label="Imagen anterior"
+                    className="w-7 h-9 sm:w-8 sm:h-10 bg-[#6e7170] hover:bg-black text-white flex items-center justify-center transition-colors border-r border-white/20 cursor-pointer shadow-md group"
                   >
                     <svg
                       className="w-3.5 h-3.5 sm:w-4 sm:h-4 transform transition-transform group-hover:-translate-x-0.5"
@@ -172,7 +174,6 @@ export default function DisenoIngenieriaPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
-
                   <button
                     onClick={nextSlide}
                     type="button"
@@ -208,22 +209,21 @@ export default function DisenoIngenieriaPage() {
                     01
                   </span>
                   <h3
-                    className="text-lg sm:text-xl font-bold uppercase tracking-[1.5px] text-neutral-950"
-                    style={{ fontFamily: "'Oswald', sans-serif" }}
+                    className="font-oswald-bold text-base sm:text-lg font-bold uppercase tracking-[1.5px] text-neutral-950"
                   >
                     Diseño Arquitectónico Conceptual
                   </h3>
                 </div>
 
-                <ul className="space-y-3 text-sm text-neutral-600 font-light leading-relaxed">
+                <ul className="space-y-3 text-xs sm:text-[13.5px] text-neutral-600 font-light leading-relaxed">
                   <li className="flex items-start gap-3">
-                    <span className="w-1.5 h-1.5 bg-black mt-2 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 bg-brand mt-1.5 flex-shrink-0" />
                     <span>
                       Cabidas arquitectónicas, Estudios de pre inversión: pre factibilidad y factibilidad para proyectos de edificaciones, infraestructura e industria en general.
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="w-1.5 h-1.5 bg-black mt-2 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 bg-brand mt-1.5 flex-shrink-0" />
                     <span>
                       Desarrollo de Anteproyectos y Expedientes Técnicos de arquitectura e ingeniería.
                     </span>
@@ -242,14 +242,13 @@ export default function DisenoIngenieriaPage() {
                     02
                   </span>
                   <h3
-                    className="text-lg sm:text-xl font-bold uppercase tracking-[1.5px] text-neutral-950"
-                    style={{ fontFamily: "'Oswald', sans-serif" }}
+                    className="font-oswald-bold text-base sm:text-lg font-bold uppercase tracking-[1.5px] text-neutral-950"
                   >
                     Cálculos y Sistemas
                   </h3>
                 </div>
 
-                <p className="text-sm text-neutral-600 font-light leading-relaxed">
+                <p className="text-xs sm:text-[13.5px] text-neutral-600 font-light leading-relaxed">
                   Especialistas en softwares de diseño asegurando la estabilidad y eficiencia en proyectos de alta complejidad técnica.
                 </p>
               </div>
@@ -265,14 +264,13 @@ export default function DisenoIngenieriaPage() {
                     03
                   </span>
                   <h3
-                    className="text-lg sm:text-xl font-bold uppercase tracking-[1.5px] text-neutral-950"
-                    style={{ fontFamily: "'Oswald', sans-serif" }}
+                    className="font-oswald-bold text-base sm:text-lg font-bold uppercase tracking-[1.5px] text-neutral-950"
                   >
                     Planificación y Viabilidad
                   </h3>
                 </div>
 
-                <p className="text-sm text-neutral-600 font-light leading-relaxed">
+                <p className="text-xs sm:text-[13.5px] text-neutral-600 font-light leading-relaxed">
                   Expertos en planificación urbana y estudios de viabilidad técnica para proyectos de alta precisión que requieren cumplimiento normativo riguroso.
                 </p>
               </div>

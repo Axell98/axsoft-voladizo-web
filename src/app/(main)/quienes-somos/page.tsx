@@ -285,43 +285,40 @@ export default function QuienesSomosPage() {
                          </div>
                        </div>
 
-            {/* COLUMNA DERECHA: TEXTO ABOUT US (Idéntico a estructura de template) */}
-            <div className="lg:col-span-6 space-y-6">
-              <span
-                className="text-2xl sm:text-3xl font-light uppercase text-black block tracking-tight"
-                style={{ fontWeight: 300 }}
-              >
-                Quiénes Somos
+            {/* COLUMNA DERECHA: TEXTO ABOUT US (Sincronizado con Inicio) */}
+            <div className="lg:col-span-6 space-y-4">
+              <span className="text-[11px] font-bold uppercase tracking-[3px] text-brand block mb-2">
+                Descubre
               </span>
 
-              <h2
-                className="text-3xl sm:text-4xl lg:text-[40px] font-semibold uppercase text-black leading-[1.15] tracking-tight"
-                style={{ fontWeight: 600 }}
-              >
-                TRANSFORMANDO ESPACIOS <br className="hidden sm:inline" />
-                Y REALIDADES
+              <h2 className="font-oswald-bold uppercase text-3xl sm:text-4xl lg:text-[42px] leading-[1.1] tracking-tight text-neutral-950 mb-3">
+                Quiénes <span className="text-brand">Somos</span>
               </h2>
 
-              <p className="text-sm sm:text-base font-medium text-neutral-900 leading-relaxed">
-                Somos una empresa especializada en diseño, construcción, remodelación e implementación de espacios comerciales, Retail e industriales.
+              <p className="text-base sm:text-lg font-semibold text-neutral-900 leading-snug mb-3">
+                Transformando espacios y realidades con visión arquitectónica.
+              </p>
+
+              <p className="text-base sm:text-[15.5px] text-neutral-600 font-light leading-relaxed mb-6">
+                Somos una empresa especializada en diseño arquitectónico, ingeniería, construcción, remodelación e implementación de espacios comerciales, corporativos, Retail e industriales.
               </p>
 
               {/* 2 Bloques con la información de las imágenes del usuario */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                 <div className="bg-white p-6 border-l-4 border-black shadow-sm space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-[2px] text-black">
+                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-[2px] text-black">
                     ENFOQUE MINIMALISTA
                   </h4>
-                  <p className="text-xs sm:text-[13px] text-neutral-600 font-light leading-relaxed">
+                  <p className="text-xs sm:text-[13.5px] text-neutral-600 font-light leading-relaxed">
                     Arquitectura minimalista y funcional que redefine cada espacio mediante la sofisticación y la simplicidad técnica.
                   </p>
                 </div>
 
                 <div className="bg-white p-6 border-l-4 border-black shadow-sm space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-[2px] text-black">
+                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-[2px] text-black">
                     SOLUCIÓN FUNCIONAL
                   </h4>
-                  <p className="text-xs sm:text-[13px] text-neutral-600 font-light leading-relaxed">
+                  <p className="text-xs sm:text-[13.5px] text-neutral-600 font-light leading-relaxed">
                     Nuestra visión integra la estética contemporánea con la viabilidad constructiva para el desarrollo inmobiliario nacional.
                   </p>
                 </div>
@@ -342,19 +339,18 @@ export default function QuienesSomosPage() {
             {/* LADO IZQUIERDO: TEXTOS DE MISIÓN */}
             <div className="lg:col-span-6 space-y-6">
               <div className="section-head text-left">
-                <span className="text-xs font-bold uppercase tracking-[3px] text-neutral-400 block mb-2">
+                <span className="text-[11px] font-bold uppercase tracking-[3px] text-brand block mb-2">
                   Propósito Institucional
                 </span>
                 <h2
-                  className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-black mb-4"
-                  style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
+                  className="font-oswald-bold uppercase text-3xl sm:text-4xl lg:text-[42px] leading-[1.1] tracking-tight text-neutral-950 mb-4"
                 >
-                  NUESTRA MISIÓN
+                  NUESTRA <span className="text-brand">MISIÓN</span>
                 </h2>
                 <div className="w-16 h-[3px] bg-black mb-6" />
               </div>
 
-              <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-light">
+              <p className="text-base sm:text-[15.5px] text-neutral-600 leading-relaxed font-light">
                 Satisfacer las expectativas de nuestros clientes, desarrollando sus proyectos con calidad, altos estándares de seguridad, cumpliendo el alcance, plazo y presupuesto acordado.
               </p>
 
@@ -365,12 +361,11 @@ export default function QuienesSomosPage() {
                     01
                   </div>
                   <h3
-                    className="text-base font-bold uppercase tracking-wide text-black"
-                    style={{ fontFamily: "'Oswald', sans-serif" }}
+                    className="font-oswald-bold text-sm sm:text-base font-bold uppercase tracking-wide text-black"
                   >
                     Personalización
                   </h3>
-                  <p className="text-xs sm:text-[13px] text-neutral-600 font-light leading-relaxed">
+                  <p className="text-xs sm:text-[13.5px] text-neutral-600 font-light leading-relaxed">
                     Satisfacemos las necesidades específicas de cada cliente mediante soluciones innovadoras.
                   </p>
                 </div>
@@ -380,12 +375,11 @@ export default function QuienesSomosPage() {
                     02
                   </div>
                   <h3
-                    className="text-base font-bold uppercase tracking-wide text-black"
-                    style={{ fontFamily: "'Oswald', sans-serif" }}
+                    className="font-oswald-bold text-sm sm:text-base font-bold uppercase tracking-wide text-black"
                   >
                     Vanguardia
                   </h3>
-                  <p className="text-xs sm:text-[13px] text-neutral-600 font-light leading-relaxed">
+                  <p className="text-xs sm:text-[13.5px] text-neutral-600 font-light leading-relaxed">
                     Calidad constructiva superior y diseños que desafían el paso del tiempo con elegancia.
                   </p>
                 </div>
@@ -425,27 +419,21 @@ export default function QuienesSomosPage() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                {/* <div className="absolute bottom-6 left-6 right-6">
-                  <span className="text-[11px] font-bold uppercase tracking-[3px] bg-black/80 px-4 py-2 border border-white/20 text-white inline-block">
-                    Impacto Sostenible & Vanguardia
-                  </span>
-                </div> */}
               </div>
             </div>
 
             {/* LADO DERECHO: CONTENIDO DE VISIÓN */}
             <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
               <div className="section-head text-left">
-                <span className="text-xs font-bold uppercase tracking-[3px] text-neutral-400 block mb-2">
+                <span className="text-[11px] font-bold uppercase tracking-[3px] text-brand block mb-2">
                   Horizonte Estratégico
                 </span>
                 <h2
-                  className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white mb-4"
-                  style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
+                  className="font-oswald-bold uppercase text-3xl sm:text-4xl lg:text-[42px] leading-[1.1] tracking-tight text-white mb-4"
                 >
-                  NUESTRA VISIÓN
+                  NUESTRA <span className="text-brand">VISIÓN</span>
                 </h2>
-                <div className="w-16 h-[3px] bg-white mb-6" />
+                <div className="w-16 h-[3px] bg-brand mb-6" />
               </div>
 
               {/* 3 Bloques de Visión */}
@@ -453,10 +441,9 @@ export default function QuienesSomosPage() {
                 {/* Pilar 1: Referente Nacional */}
                 <div className="bg-neutral-900/80 p-6 border border-neutral-800 hover:border-neutral-600 transition-colors shadow-lg space-y-2">
                   <div className="flex items-center gap-3 mb-1">
-                    <span className="w-2.5 h-2.5 rounded-full border border-white block shrink-0" />
+                    <span className="w-2.5 h-2.5 rounded-full border border-brand bg-brand/20 block shrink-0" />
                     <h3
-                      className="text-base sm:text-lg font-bold uppercase tracking-wide text-white"
-                      style={{ fontFamily: "'Oswald', sans-serif" }}
+                      className="font-oswald-bold text-sm sm:text-base font-bold uppercase tracking-wide text-white"
                     >
                       Referente Nacional
                     </h3>
@@ -469,10 +456,9 @@ export default function QuienesSomosPage() {
                 {/* Pilar 2: Procesos Modernos */}
                 <div className="bg-neutral-900/80 p-6 border border-neutral-800 hover:border-neutral-600 transition-colors shadow-lg space-y-2">
                   <div className="flex items-center gap-3 mb-1">
-                    <span className="w-2.5 h-2.5 rounded-full border border-white block shrink-0" />
+                    <span className="w-2.5 h-2.5 rounded-full border border-brand bg-brand/20 block shrink-0" />
                     <h3
-                      className="text-base sm:text-lg font-bold uppercase tracking-wide text-white"
-                      style={{ fontFamily: "'Oswald', sans-serif" }}
+                      className="font-oswald-bold text-sm sm:text-base font-bold uppercase tracking-wide text-white"
                     >
                       Procesos Modernos
                     </h3>
@@ -485,10 +471,9 @@ export default function QuienesSomosPage() {
                 {/* Pilar 3: Expansión Regional */}
                 <div className="bg-neutral-900/80 p-6 border border-neutral-800 hover:border-neutral-600 transition-colors shadow-lg space-y-2">
                   <div className="flex items-center gap-3 mb-1">
-                    <span className="w-2.5 h-2.5 rounded-full border border-white block shrink-0" />
+                    <span className="w-2.5 h-2.5 rounded-full border border-brand bg-brand/20 block shrink-0" />
                     <h3
-                      className="text-base sm:text-lg font-bold uppercase tracking-wide text-white"
-                      style={{ fontFamily: "'Oswald', sans-serif" }}
+                      className="font-oswald-bold text-sm sm:text-base font-bold uppercase tracking-wide text-white"
                     >
                       Expansión Regional
                     </h3>
@@ -522,11 +507,13 @@ export default function QuienesSomosPage() {
             <div className="lg:col-span-6 flex flex-col items-center lg:items-start">
               {/* Título de sección */}
               <div className="mb-8 w-full text-left">
+                <span className="text-[11px] font-bold uppercase tracking-[3px] text-brand block mb-2">
+                  Conoce a
+                </span>
                 <h2
-                  className="text-3xl sm:text-4xl font-bold uppercase tracking-tight text-black mb-3"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                  className="font-oswald-bold uppercase text-3xl sm:text-4xl lg:text-[42px] leading-[1.1] tracking-tight text-neutral-950 mb-3"
                 >
-                  NUESTRO EQUIPO
+                  NUESTRO <span className="text-brand">EQUIPO</span>
                 </h2>
                 <div className="w-16 h-[3px] bg-black" />
               </div>

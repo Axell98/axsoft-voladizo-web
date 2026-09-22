@@ -49,20 +49,22 @@ export default function QuienesSomosSection() {
             {/* ========================================================= */}
             <div className="lg:col-span-6 text-black pt-1">
               {/* Subtítulo / Overline */}
-              <div className="mb-3">
-                <span className="text-xs sm:text-sm font-normal uppercase tracking-[3.5px] text-black">
-                  Quiénes Somos
-                </span>
-              </div>
+              <span className="text-[11px] font-bold uppercase tracking-[3px] text-brand block mb-3">
+                Descubre
+              </span>
 
               {/* Título Principal H2 */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold uppercase tracking-tight text-neutral-950 leading-[1.15] mb-6">
-                Transformando Espacios <br className="hidden sm:inline" />
-                y Realidades
+              <h2 className="font-oswald-bold uppercase text-3xl sm:text-4xl lg:text-[42px] leading-[1.1] tracking-tight text-neutral-950 mb-4">
+                Quiénes <span className="text-brand">Somos</span>
               </h2>
 
-              {/* Párrafos de Visión, Alcance y Enfoque */}
-              <p className="text-base sm:text-[15.5px] text-neutral-600 font-light leading-relaxed mb-4">
+              {/* Frase destacada en negrita */}
+              <p className="text-base sm:text-lg font-semibold text-neutral-900 leading-snug mb-4">
+                Transformando espacios y realidades con visión arquitectónica.
+              </p>
+
+              {/* Párrafo descriptivo */}
+              <p className="text-sm sm:text-[15.5px] text-neutral-600 font-light leading-relaxed mb-6">
                 Somos una empresa especializada en diseño arquitectónico, ingeniería, construcción, remodelación e implementación de espacios comerciales, corporativos, Retail e industriales.
               </p>
 
