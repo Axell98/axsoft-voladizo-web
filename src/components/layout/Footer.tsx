@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { SITE_CONTACT } from "@/lib/site";
 
 // =========================================================
@@ -47,7 +48,15 @@ function ArrowUpIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
-export default function Footer() {
+interface FooterProps {
+  showCta?: boolean;
+}
+
+export default function Footer({ showCta }: FooterProps) {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const shouldShowCta = showCta !== undefined ? showCta : !isHome;
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -60,51 +69,42 @@ export default function Footer() {
       {/* ========================================================= */}
       {/* 1. SECCIÓN CTA ARQUITECTÓNICA: "HABLEMOS DE TU PROYECTO" */}
       {/* ========================================================= */}
-      <div className="border-b border-neutral-800/80 bg-gradient-to-b from-[#111111] to-[#0a0a0a] py-14 lg:py-16">
-        <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-xs font-semibold uppercase tracking-[3px] text-neutral-400">
-                  ¿Tienes una idea en mente?
-                </span>
+      {shouldShowCta && (
+        <div className="border-b border-neutral-800/80 bg-gradient-to-b from-[#111111] to-[#0a0a0a] py-14 lg:py-16">
+          <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+              <div className="space-y-2 max-w-2xl">
+                <div className="inline-flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-xs font-semibold uppercase tracking-[3px] text-neutral-400">
+                    ¿Tienes una idea en mente?
+                  </span>
+                </div>
+                <h2
+                  className="text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white leading-tight"
+                  style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
+                >
+                  TRANSFORMEMOS TU ESPACIO <br className="hidden sm:inline" />
+                  EN UNA REALIDAD.
+                </h2>
+                <p className="text-neutral-400 text-sm sm:text-base font-light max-w-xl leading-relaxed">
+                  Contáctanos hoy para coordinar una reunión de asesoría técnica y diseño arquitectónico para tu proyecto.
+                </p>
               </div>
-              <h2
-                className="text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white leading-tight"
-                style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
-              >
-                TRANSFORMEMOS TU ESPACIO <br className="hidden sm:inline" />
-                EN UNA REALIDAD.
-              </h2>
-               <p className="text-neutral-400 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
-            Contáctanos hoy para coordinar una reunión de asesoría técnica y diseño arquitectónico para tu proyecto.
-          </p>
-              
-            </div>
 
-            <div className="flex flex-wrap items-center gap-4 shrink-0">
-              <Link
-                href="/#contacto"
-                className="group relative inline-flex items-center justify-center bg-white text-black px-8 py-4 font-bold text-xs uppercase tracking-[3px] hover:bg-neutral-200 transition-all duration-300 shadow-lg"
-              >
-                <span className="pr-6">Contactar Ahora</span>
-                <span className="absolute right-5 w-3 h-[2px] bg-black transition-all duration-300 group-hover:w-6" />
-              </Link>
-
-              {/* <a
-                href="https://wa.me/51999999999"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 border border-neutral-700 bg-neutral-900/80 hover:bg-emerald-600 hover:border-emerald-600 text-white px-6 py-4 font-semibold text-xs uppercase tracking-[2px] transition-all duration-300"
-              >
-                <WhatsAppIcon className="w-4 h-4 text-emerald-400 group-hover:text-white" />
-                <span>WhatsApp</span>
-              </a> */}
+              <div className="flex flex-wrap items-center gap-4 shrink-0">
+                <Link
+                  href="/#contacto"
+                  className="group relative inline-flex items-center justify-center bg-white text-black px-8 py-4 font-bold text-xs uppercase tracking-[3px] hover:bg-neutral-200 transition-all duration-300 shadow-lg"
+                >
+                  <span className="pr-6">Contactar Ahora</span>
+                  <span className="absolute right-5 w-3 h-[2px] bg-black transition-all duration-300 group-hover:w-6" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* ========================================================= */}
       {/* 2. GRID PRINCIPAL ARQUITECTÓNICO (4 COLUMNAS)             */}
