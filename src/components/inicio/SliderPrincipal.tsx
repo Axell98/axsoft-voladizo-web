@@ -281,11 +281,10 @@ export default function SliderPrincipal({
                 ref={(el) => {
                   contentRefs.current[idx] = el;
                 }}
-                className={`slide-content transition-opacity duration-300 max-w-full md:max-w-[62%] lg:max-w-[60%] xl:max-w-[58%] ${
-                  isActive
+                className={`slide-content transition-opacity duration-300 max-w-full md:max-w-[62%] lg:max-w-[60%] xl:max-w-[58%] ${isActive
                     ? "dsn-active opacity-100 visible z-10 pointer-events-auto"
                     : "opacity-0 invisible z-0 pointer-events-none absolute"
-                }`}
+                  }`}
               >
                 <div className="content relative">
                   {/* Metas: OFICINA | ARQUITECTURA con separador vertical blanco */}
@@ -459,7 +458,7 @@ export default function SliderPrincipal({
                 >
                   {nextSlideItem.number} -
                 </span>
-                <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-[2px] text-white whitespace-nowrap group-hover:text-neutral-300 transition-colors">
+                <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-[2px] text-[#73BA78] whitespace-nowrap group-hover:text-white transition-colors">
                   {nextSlideItem.title}
                 </h3>
               </div>

@@ -68,12 +68,18 @@ export default function EquipoSection() {
   return (
     <section
       id="equipo"
-      className="section-full clearfix py-20 lg:py-28 relative z-20 overflow-hidden bg-black lg:bg-transparent"
+      className="section-full clearfix py-20 lg:py-28 relative z-20 overflow-hidden bg-[#141414] lg:bg-transparent"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
-      {/* Fondo dividido a pantalla completa 50/50 (Izquierda: Negro / Derecha: Gris Claro #f5f5f5) */}
+      {/* Fondo dividido a pantalla completa 50/50 (Izquierda: #141414 / Derecha: Gris Claro #f5f5f5) */}
       <div className="absolute inset-0 pointer-events-none z-0 hidden lg:flex">
-        <div className="w-1/2 h-full bg-black" />
+        <div className="w-1/2 h-full bg-[#141414] relative overflow-hidden">
+          {/* Figura geométrica anclada a los bordes exactos (derecho e inferior) de la zona negra */}
+          <div
+            aria-hidden="true"
+            className="absolute -right-40 -bottom-30 w-[320px] xl:w-[380px] h-[320px] xl:h-[380px] border-[28px] xl:border-[34px] border-white/[0.045] rotate-45 pointer-events-none"
+          />
+        </div>
         <div className="w-1/2 h-full bg-[#f5f5f5]" />
       </div>
 
@@ -81,27 +87,24 @@ export default function EquipoSection() {
       <div className="max-w-[1340px] mx-auto px-8 sm:px-12 lg:px-16 xl:px-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* ========================================================= */}
-          {/* COLUMNA IZQUIERDA (lg:col-span-6): Fondo Negro & Líder    */}
+          {/* COLUMNA IZQUIERDA (lg:col-span-6): Fondo #141414 & Líder  */}
           {/* ========================================================= */}
-          <div className="lg:col-span-6 bg-black lg:bg-transparent text-white pt-2 pb-6 lg:py-4 flex flex-col justify-between relative overflow-hidden">
-            {/* Figura geométrica decorativa en esquina */}
+          <div className="lg:col-span-6 bg-[#141414] lg:bg-transparent text-white pt-2 pb-6 lg:py-4 flex flex-col justify-between relative overflow-hidden lg:overflow-visible">
+            {/* Figura geométrica para pantallas móviles */}
             <div
               aria-hidden="true"
-              className="absolute -right-24 -bottom-24 w-80 h-80 border-[32px] border-white/[0.04] rotate-45 pointer-events-none"
+              className="lg:hidden absolute -right-14 -bottom-14 w-52 h-52 border-[24px] border-white/[0.045] rotate-45 pointer-events-none"
             />
 
-            {/* Título de la sección sincronizado con estilo QuienesSomos */}
-            <div className="mb-8 text-left relative z-10">
-              <span className="text-xs sm:text-sm font-normal uppercase tracking-[3.5px] text-neutral-400 block mb-2">
+            {/* Título de la sección sincronizado con estilo ContactoSection */}
+            <div className="mb-6 text-left relative z-10">
+              <span className="text-[11px] font-bold uppercase tracking-[3px] text-brand block">
                 Conoce a
               </span>
-              <h2
-                className="text-3xl sm:text-4xl lg:text-[40px] font-semibold uppercase tracking-tight text-white leading-[1.15] mb-3"
-                style={{ fontFamily: "'Poppins', sans-serif" }}
-              >
-                Nuestro Equipo
+
+              <h2 className="font-oswald-bold uppercase text-3xl sm:text-4xl lg:text-[42px] leading-[1.1] tracking-tight mt-5 mb-5 text-white">
+                Nuestro <span className="text-brand">Equipo</span>
               </h2>
-              <div className="w-16 h-[3px] bg-white" />
             </div>
 
             {/* Tarjeta de Líder Principal */}
