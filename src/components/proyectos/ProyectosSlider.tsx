@@ -81,113 +81,58 @@ export default function ProyectosSlider({ proyectos }: ProyectosSliderProps) {
   return (
     <section
       aria-label="Comparativa de proyectos"
-      className="relative bg-[#141414] text-white overflow-hidden py-16 lg:py-20"
+      className="relative bg-white text-black overflow-hidden py-16 lg:py-24"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
-      <div className="max-w-[1180px] mx-auto px-6 sm:px-12 lg:px-16">
-        {/* ========================================================= */}
-        {/* BARRA SUPERIOR: CONTADOR + ÍNDICE + FLECHAS               */}
-        {/* ========================================================= */}
-        <div className="flex items-center gap-4 sm:gap-6 mb-10 lg:mb-14">
-          <span
-            className="shrink-0 text-xs font-bold uppercase tracking-[2px] text-neutral-500"
-            style={{ fontFamily: "'Oswald', sans-serif" }}
-          >
-            <span className="text-brand text-base">{numero}</span> / {totalLabel}
-          </span>
+      {/* Trama de plano arquitectónico de fondo, igual que ¿Por qué elegirnos? */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,0,0,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.045) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+          maskImage: "radial-gradient(ellipse at center, black 25%, transparent 72%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 25%, transparent 72%)",
+        }}
+      />
 
-          {/* Índice numerado: navegación directa a cualquier proyecto */}
-          <div
-            role="tablist"
-            aria-label="Ir a un proyecto"
-            className="flex-1 flex items-center gap-2 overflow-x-auto scrollbar-hide"
-          >
-            {proyectos.map((p, idx) => {
-              const isActive = idx === activeIndex;
-              return (
-                <button
-                  key={p.slug}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-label={`Proyecto ${idx + 1}: ${p.titulo}`}
-                  onClick={() => goTo(idx)}
-                  className={`shrink-0 w-8 h-8 flex items-center justify-center text-[11px] font-bold uppercase tracking-wide border transition-all cursor-pointer ${
-                    isActive
-                      ? "bg-brand text-black border-brand"
-                      : "bg-transparent text-neutral-500 border-white/15 hover:border-brand/60 hover:text-white"
-                  }`}
-                >
-                  {idx + 1}
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="hidden sm:flex items-center gap-3 shrink-0">
-            <button
-              type="button"
-              onClick={prev}
-              aria-label="Proyecto anterior"
-              className="group relative w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white transition-all focus:outline-none cursor-pointer"
-            >
-              <svg
-                className="absolute inset-0 w-full h-full text-white/30 group-hover:text-brand transition-colors group-hover:animate-spin-slow"
-                viewBox="0 0 104 104"
-                aria-hidden="true"
-              >
-                <circle cx="52" cy="52" r="48" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 6 4 6" />
-              </svg>
-              <ArrowIcon direction="prev" className="w-5 h-4 relative z-10" />
-            </button>
-            <button
-              type="button"
-              onClick={next}
-              aria-label="Siguiente proyecto"
-              className="group relative w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white transition-all focus:outline-none cursor-pointer"
-            >
-              <svg
-                className="absolute inset-0 w-full h-full text-white/30 group-hover:text-brand transition-colors group-hover:animate-spin-slow"
-                viewBox="0 0 104 104"
-                aria-hidden="true"
-              >
-                <circle cx="52" cy="52" r="48" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 6 4 6" />
-              </svg>
-              <ArrowIcon direction="next" className="w-5 h-4 relative z-10" />
-            </button>
-          </div>
-        </div>
-
+      <div className="relative max-w-[1180px] mx-auto px-6 sm:px-12 lg:px-16">
         {/* ========================================================= */}
         {/* CONTENIDO DEL PROYECTO ACTIVO (cambia texto + imagen)     */}
         {/* ========================================================= */}
         <div key={proyecto.slug} className="animate-fadeIn" aria-live="polite">
           <div className="text-center mb-8 lg:mb-10">
-            <span className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[3px] text-brand">
+            <span
+              className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[3px] text-brand-dark"
+              style={{ fontFamily: "'Oswald', sans-serif" }}
+            >
               <span aria-hidden="true" className="w-8 h-px bg-brand" />
-              Proyecto {numero}
+              Proyecto {numero} <span className="text-neutral-400">/ {totalLabel}</span>
               <span aria-hidden="true" className="w-8 h-px bg-brand" />
             </span>
             <h2 className="font-oswald-bold uppercase tracking-tight leading-[1.1] text-2xl sm:text-4xl lg:text-5xl mt-4">
-              {tituloBase} {tituloResaltado && <span className="text-brand">{tituloResaltado}</span>}
+              {tituloBase} {tituloResaltado && <span className="text-brand-dark">{tituloResaltado}</span>}
             </h2>
           </div>
 
           {/* Comparador antes/después (arrastrable) */}
-          <BeforeAfterDiagonal
-            beforeImage={proyecto.comparacion?.antesImagen ?? proyecto.imagen}
-            afterImage={proyecto.comparacion?.despuesImagen ?? proyecto.imagen}
-            beforeLabel={proyecto.comparacion?.antesLabel ?? "Antes"}
-            afterLabel={proyecto.comparacion?.despuesLabel ?? "Después"}
-            heightClassName="h-[280px] sm:h-[420px] lg:h-[560px]"
-          />
+          <div className="shadow-xl">
+            <BeforeAfterDiagonal
+              beforeImage={proyecto.comparacion?.antesImagen ?? proyecto.imagen}
+              afterImage={proyecto.comparacion?.despuesImagen ?? proyecto.imagen}
+              beforeLabel={proyecto.comparacion?.antesLabel ?? "Antes"}
+              afterLabel={proyecto.comparacion?.despuesLabel ?? "Después"}
+              heightClassName="h-[280px] sm:h-[420px] lg:h-[560px]"
+            />
+          </div>
 
           {/* Ficha técnica */}
           <dl className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {metaItems.map((m) => (
-              <div key={m.label} className="bg-[#1e1e1e] px-5 py-4 border-l-[3px] border-brand">
-                <dt className="font-oswald-bold uppercase tracking-wide text-xs sm:text-sm text-brand">{m.label}</dt>
-                <dd className="mt-1 text-sm uppercase tracking-wide text-white">{m.value}</dd>
+              <div key={m.label} className="bg-neutral-50 border border-neutral-200 px-5 py-4 border-l-[3px] border-l-brand">
+                <dt className="font-oswald-bold uppercase tracking-wide text-xs sm:text-sm text-brand-dark">{m.label}</dt>
+                <dd className="mt-1 text-sm uppercase tracking-wide text-black">{m.value}</dd>
               </div>
             ))}
           </dl>
@@ -198,7 +143,7 @@ export default function ProyectosSlider({ proyectos }: ProyectosSliderProps) {
               <button
                 type="button"
                 onClick={() => setActiveVideo(proyecto.videoId!)}
-                className="group inline-flex items-center gap-3 border border-white/20 hover:border-brand px-6 py-3.5 text-xs font-bold uppercase tracking-[2.5px] text-white hover:text-brand transition-all cursor-pointer"
+                className="group inline-flex items-center gap-3 border border-black/15 hover:border-brand px-6 py-3.5 text-xs font-bold uppercase tracking-[2.5px] text-black hover:text-brand-dark transition-all cursor-pointer"
               >
                 <span className="w-8 h-8 rounded-full bg-brand text-black flex items-center justify-center transition-transform group-hover:scale-110">
                   <PlayIcon className="w-3.5 h-3.5 ml-0.5" />
@@ -209,23 +154,47 @@ export default function ProyectosSlider({ proyectos }: ProyectosSliderProps) {
           )}
         </div>
 
-        {/* Flechas en móvil (debajo del contenido, ya que arriba se ocultan en pantallas chicas) */}
-        <div className="flex sm:hidden items-center justify-center gap-4 mt-10">
+        {/* ========================================================= */}
+        {/* NAVEGACIÓN INFERIOR: SOLO ANTERIOR / SIGUIENTE            */}
+        {/* ========================================================= */}
+        <div className="flex items-center justify-center gap-6 sm:gap-8 mt-12 lg:mt-16">
           <button
             type="button"
             onClick={prev}
             aria-label="Proyecto anterior"
-            className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white cursor-pointer"
+            className="group relative w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-black transition-all focus:outline-none cursor-pointer"
           >
-            <ArrowIcon direction="prev" className="w-5 h-4" />
+            <svg
+              className="absolute inset-0 w-full h-full text-black/20 group-hover:text-brand transition-colors group-hover:animate-spin-slow"
+              viewBox="0 0 104 104"
+              aria-hidden="true"
+            >
+              <circle cx="52" cy="52" r="48" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 6 4 6" />
+            </svg>
+            <ArrowIcon direction="prev" className="w-5 h-4 relative z-10" />
           </button>
+
+          <span
+            className="shrink-0 text-xs font-bold uppercase tracking-[2px] text-neutral-500 select-none"
+            style={{ fontFamily: "'Oswald', sans-serif" }}
+          >
+            <span className="text-brand-dark text-base">{numero}</span> / {totalLabel}
+          </span>
+
           <button
             type="button"
             onClick={next}
             aria-label="Siguiente proyecto"
-            className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white cursor-pointer"
+            className="group relative w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-black transition-all focus:outline-none cursor-pointer"
           >
-            <ArrowIcon direction="next" className="w-5 h-4" />
+            <svg
+              className="absolute inset-0 w-full h-full text-black/20 group-hover:text-brand transition-colors group-hover:animate-spin-slow"
+              viewBox="0 0 104 104"
+              aria-hidden="true"
+            >
+              <circle cx="52" cy="52" r="48" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 6 4 6" />
+            </svg>
+            <ArrowIcon direction="next" className="w-5 h-4 relative z-10" />
           </button>
         </div>
       </div>
