@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { CATEGORIAS, proyectos, TOTAL_PROYECTOS, type Proyecto } from "@/features/proyectos/data";
+import { proyectos, TOTAL_PROYECTOS, type Proyecto } from "@/features/proyectos/data";
 import { REVEAL_BASE, revealProps, useReveal } from "@/lib/use-reveal";
 
-// El home solo adelanta los primeros 4 proyectos; los 11 completos están en /proyectos.
-const PROYECTOS_HOME = proyectos.slice(0, 4);
+// El home solo adelanta los primeros 5 proyectos; los 11 completos están en /proyectos.
+const PROYECTOS_HOME = proyectos.slice(0, 5);
 
 export default function ProyectosSection() {
   const { ref, visible } = useReveal<HTMLElement>();
@@ -19,9 +19,9 @@ export default function ProyectosSection() {
       className="relative bg-[#f5f5f5] text-black overflow-hidden py-20 lg:py-28"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
-      {/* Contenedor un poco más ancho que el resto del sitio, para que las 4
+      {/* Contenedor un poco más ancho que el resto del sitio, para que las 5
           tarjetas se vean grandes sin necesitar slider ni recortarse. */}
-      <div className="max-w-[1760px] mx-auto px-6 sm:px-10 lg:px-12 xl:px-14">
+      <div className="max-w-[2200px] mx-auto px-6 sm:px-8 lg:px-8 xl:px-10">
         {/* ========================================================= */}
         {/* TÍTULO CON LÍNEAS LATERALES (mismo diseño que Trayectoria) */}
         {/* ========================================================= */}
@@ -49,9 +49,9 @@ export default function ProyectosSection() {
         </div>
 
         {/* ========================================================= */}
-        {/* GRILLA DE PROYECTOS (4, centrados, sin slider)            */}
+        {/* GRILLA DE PROYECTOS (5, centrados, sin slider)            */}
         {/* ========================================================= */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 lg:gap-9">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {PROYECTOS_HOME.map((p, idx) => {
             const anim = revealProps(visible, 200 + idx * 120);
             return (
@@ -92,9 +92,28 @@ export default function ProyectosSection() {
 // =========================================================
 // SUBCOMPONENTES
 // =========================================================
+// Cruz (+) en la esquina superior izquierda: desde el punto central, los
+// brazos hacia arriba y la izquierda son cortos (el "tick" de la cruz),
+// mientras que los brazos hacia abajo y la derecha se extienden por completo,
+// como en la referencia de la plantilla original.
+function CruzHover() {
+  return (
+    <div aria-hidden="true" className="absolute top-3 sm:top-4 right-6 sm:right-8 bottom-6 sm:bottom-8 left-2 sm:left-3 pointer-events-none">
+      {/* brazo derecho: se extiende hasta el borde */}
+      <span className="absolute left-0 top-0 h-px w-full bg-white opacity-0 scale-x-0 origin-left transition-all duration-500 ease-out group-hover:scale-x-100 group-hover:opacity-100" />
+      {/* brazo inferior: se extiende hasta el borde */}
+      <span className="absolute left-0 top-0 w-px h-full bg-white opacity-0 scale-y-0 origin-top transition-all duration-500 ease-out delay-100 group-hover:scale-y-100 group-hover:opacity-100" />
+      {/* brazo superior: tick corto */}
+      <span className="absolute left-0 top-0 -translate-y-full w-px h-4 bg-white opacity-0 scale-y-0 origin-bottom transition-all duration-500 ease-out group-hover:scale-y-100 group-hover:opacity-100" />
+      {/* brazo izquierdo: tick corto */}
+      <span className="absolute left-0 top-0 -translate-x-full h-px w-4 bg-white opacity-0 scale-x-0 origin-right transition-all duration-500 ease-out group-hover:scale-x-100 group-hover:opacity-100" />
+    </div>
+  );
+}
+
 function TarjetaProyecto({ proyecto }: { proyecto: Proyecto }) {
   return (
-    <article className="group relative w-full aspect-4/5 overflow-hidden bg-neutral-900 shadow-lg">
+    <article className="group relative w-full aspect-2/3 overflow-hidden bg-neutral-900 shadow-lg">
       <Image
         src={proyecto.imagen}
         alt={proyecto.titulo}
@@ -102,16 +121,20 @@ function TarjetaProyecto({ proyecto }: { proyecto: Proyecto }) {
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 30vw"
         className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-        <span className="inline-block bg-brand px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[2.5px] text-black">
-          {CATEGORIAS[proyecto.categoria]}
-        </span>
-        <h3 className="mt-3 font-oswald-bold uppercase tracking-wide text-lg sm:text-xl text-white leading-tight">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/40" />
+      <div className="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+      <CruzHover />
+
+      <div className="absolute inset-x-0 top-0 px-6 sm:px-7 pt-14 sm:pt-16">
+        <h3 className="font-oswald-bold uppercase tracking-wide text-lg sm:text-xl text-white leading-tight">
           {proyecto.titulo}
         </h3>
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
         {proyecto.locacion && (
-          <p className="mt-1.5 text-xs text-neutral-300 font-light uppercase tracking-wide">{proyecto.locacion}</p>
+          <p className="text-xs text-neutral-300 font-light uppercase tracking-wide">{proyecto.locacion}</p>
         )}
         <span
           aria-hidden="true"
