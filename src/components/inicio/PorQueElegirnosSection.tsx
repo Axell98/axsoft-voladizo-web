@@ -4,8 +4,8 @@ import Image from "next/image";
 import { revealProps, useReveal } from "@/lib/use-reveal";
 
 // TODO: reemplazar por las imágenes del brochure (proyectos en vertical, proporción 4:5)
-const IMAGEN_PROYECTOS = "/images/inicio/servicios/servicio1/3.jpg";
-const IMAGEN_VANGUARDIA = "/images/inicio/servicios/servicio2/5-sm.jpg";
+const IMAGEN_PROYECTOS = "/images/inicio/por_que_elegirnos/disenio de edificio Los olivos.jpg";
+const IMAGEN_VANGUARDIA = "/images/inicio/por_que_elegirnos/disenio_4.jpg";
 
 // =========================================================
 // ICONOS SVG
@@ -126,7 +126,7 @@ export default function PorQueElegirnosSection() {
           {/* ========================================================= */}
           {/* COLUMNA IZQUIERDA: PROMESA + VENTAJAS                     */}
           {/* ========================================================= */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-5">
             {/* <div className={revealProps(visible, 200, "left").className} style={revealProps(visible, 200, "left").style}>
               <span className="inline-flex items-center gap-2.5 border border-brand/60 bg-brand/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[3px] text-brand-dark">
                 <span aria-hidden="true" className="w-2 h-2 rounded-full bg-brand animate-pulse" />
@@ -173,25 +173,25 @@ export default function PorQueElegirnosSection() {
           {/* ========================================================= */}
           {/* COLUMNA DERECHA: TARJETAS CON IMAGEN                      */}
           {/* ========================================================= */}
-          <div className="lg:col-span-6 relative">
+          <div className="lg:col-span-7 relative">
             {/* Marco decorativo desplazado */}
             <div
               aria-hidden="true"
               className="hidden sm:block absolute -top-8 -right-8 w-3/4 h-[62%] border-[20px] border-black/[0.06] pointer-events-none"
             />
 
-            <div className="relative grid grid-cols-2 gap-5 sm:gap-8">
+            <div className="relative grid grid-cols-2 gap-6 sm:gap-10">
               {showcase.map((item, idx) => {
                 const anim = revealProps(visible, 350 + idx * 200);
                 return (
                   <div key={item.id} className={`${anim.className} ${idx === 1 ? "mt-10 sm:mt-16" : ""}`} style={anim.style}>
                     <figure className="group">
-                      <div className="relative aspect-[4/5] overflow-hidden bg-neutral-200 shadow-xl">
+                      <div className="relative aspect-3/4 overflow-hidden bg-neutral-200 shadow-xl">
                         <Image
                           src={item.image}
                           alt={item.alt}
                           fill
-                          sizes="(max-width: 1024px) 45vw, 300px"
+                          sizes="(max-width: 1024px) 45vw, 420px"
                           className={`object-cover ${item.position} transition-transform duration-[1500ms] ease-out group-hover:scale-105`}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

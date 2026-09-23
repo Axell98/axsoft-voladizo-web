@@ -78,7 +78,6 @@ export default function ContactoSection() {
 
   return (
     <section
-      id="contacto"
       ref={ref}
       className="relative bg-[#f5f5f5] text-black overflow-hidden py-20 lg:py-28"
       style={{ fontFamily: "'Poppins', sans-serif" }}

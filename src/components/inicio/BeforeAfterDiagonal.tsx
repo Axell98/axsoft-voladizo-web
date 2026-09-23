@@ -10,6 +10,8 @@ interface BeforeAfterDiagonalProps {
   afterLabel?: string;
   initialPos?: number;
   slantOffset?: number;
+  /** Clases de alto responsive; por defecto el tamaño usado en las secciones del home. */
+  heightClassName?: string;
 }
 
 export default function BeforeAfterDiagonal({
@@ -19,6 +21,7 @@ export default function BeforeAfterDiagonal({
   afterLabel = "Después",
   initialPos = 50,
   slantOffset = 12,
+  heightClassName = "h-[300px] sm:h-[350px] lg:h-[390px]",
 }: BeforeAfterDiagonalProps) {
   const [sliderPos, setSliderPos] = useState<number>(initialPos);
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -86,7 +89,7 @@ export default function BeforeAfterDiagonal({
       ref={containerRef}
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
-      className="relative z-10 w-full h-[300px] sm:h-[350px] lg:h-[390px] bg-neutral-900 shadow-2xl overflow-hidden select-none cursor-ew-resize group"
+      className={`relative z-10 w-full ${heightClassName} bg-neutral-900 shadow-2xl overflow-hidden select-none cursor-ew-resize group`}
       style={{ touchAction: "none" }}
     >
       {/* 1. CAPA INFERIOR: FOTO "ANTES" */}

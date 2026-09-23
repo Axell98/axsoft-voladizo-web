@@ -94,7 +94,7 @@ export default function Footer({ showCta }: FooterProps) {
 
               <div className="flex flex-wrap items-center gap-4 shrink-0">
                 <Link
-                  href="/#contacto"
+                  href="/contacto"
                   className="group relative inline-flex items-center justify-center bg-white text-black px-8 py-4 font-bold text-xs uppercase tracking-[3px] hover:bg-neutral-200 transition-all duration-300 shadow-lg"
                 >
                   <span className="pr-6">Contactar Ahora</span>
@@ -204,13 +204,13 @@ export default function Footer({ showCta }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href="/#proyectos" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+                <Link href="/proyectos" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
                   <span className="w-1.5 h-[1.5px] bg-neutral-600 group-hover:w-3 group-hover:bg-white transition-all duration-200" />
                   Proyectos
                 </Link>
               </li>
               <li>
-                <Link href="/#contacto" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+                <Link href="/contacto" className="text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
                   <span className="w-1.5 h-[1.5px] bg-neutral-600 group-hover:w-3 group-hover:bg-white transition-all duration-200" />
                   Contacto
                 </Link>

@@ -9,7 +9,7 @@ export const SITE_DESCRIPTION =
 export const SITE_CONTACT = {
   address: "Av. Militar 2500, Lince / Lima, Peru",
   phone: "+51 999 449 230",
-  phoneHref: "tel:+51999999999",
+  phoneHref: "tel:+51999449230",
   email: "contacto@voladizo.com",
   hours: "Lunes a Viernes: 8:30 am — 6:30 pm",
 };

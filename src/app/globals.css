@@ -84,4 +84,14 @@ body {
   animation: spinSlow 18s linear infinite;
 }
 
+/* Oculta la barra de scroll en sliders horizontales sin quitar el scroll nativo (touch/rueda) */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 

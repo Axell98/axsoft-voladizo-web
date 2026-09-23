@@ -33,11 +33,12 @@ const navItems: NavItem[] = [
   },
   {
     name: "Proyectos",
-    href: "/#proyectos",
+    href: "/proyectos",
+    // TODO: cuando exista filtro por categoría, apuntar cada uno a /proyectos?categoria=...
     children: [
-      { name: "Residenciales", href: "/#proyectos" },
-      { name: "Comerciales", href: "/#proyectos" },
-      { name: "En Ejecución", href: "/#proyectos" },
+      { name: "Residenciales", href: "/proyectos" },
+      { name: "Comerciales", href: "/proyectos" },
+      { name: "En Ejecución", href: "/proyectos" },
     ],
   },
 ];
@@ -156,7 +157,7 @@ export default function Header() {
           {/* 3. BOTÓN CONTACTO RÁPIDO (DESKTOP) */}
           <div className="hidden lg:flex items-center">
             <Link
-              href="/#contacto"
+              href="/contacto"
               className="inline-flex items-center justify-center px-6 py-2.5 text-[12px] font-bold uppercase tracking-[2px] text-white bg-white/10 hover:bg-brand hover:text-black border border-white/20 hover:border-brand transition-all duration-300 backdrop-blur-sm shadow-sm"
             >
               Contactar
@@ -328,7 +329,7 @@ export default function Header() {
         {/* Footer del drawer móvil */}
         <div className="p-6 border-t border-gray-100">
           <Link
-            href="/#contacto"
+            href="/contacto"
             onClick={() => setMobileMenuOpen(false)}
             className="w-full flex items-center justify-center py-3 text-[12px] font-bold uppercase tracking-[2px] text-white bg-black hover:bg-brand hover:text-black transition-colors shadow-sm"
           >
