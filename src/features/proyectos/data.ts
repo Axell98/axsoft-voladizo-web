@@ -21,6 +21,7 @@ export interface Proyecto {
   titulo: string;
   categoria: CategoriaProyecto;
   locacion?: string;
+  descripcion?: string;
   /** Avance de ejecución, ej. "100%" */
   ejecucion?: string;
   anio?: number;
@@ -43,6 +44,7 @@ export const proyectos: Proyecto[] = [
     titulo: "Diseño Edificio Multifamiliar",
     categoria: "residencial",
     locacion: "San Borja, Lima",
+    descripcion: "Desarrollo integral de arquitectura residencial moderna con optimización espacial y acabados de alta calidad.",
     ejecucion: "100%",
     anio: 2020,
     imagen: "/images/proyectos/proyecto_01_2.jpg",
@@ -59,6 +61,7 @@ export const proyectos: Proyecto[] = [
     titulo: "Diseño de Oficinas KIA",
     categoria: "oficinas",
     locacion: "San Luis, Lima",
+    descripcion: "Espacios de trabajo funcionales y vanguardistas diseñados bajo la identidad y dinamismo corporativo de la marca.",
     // TODO: imagen provisional (foto real del proyecto pendiente)
     imagen: "/images/inicio/slider/slider1.jpg",
   },
@@ -66,9 +69,9 @@ export const proyectos: Proyecto[] = [
     // Proyecto 3
     slug: "vivienda-unifamiliar-pucallpa",
     titulo: "Diseño y Ejecución Vivienda Unifamiliar",
-    // TODO: confirmar categoría con el cliente (asumida "residencial" por tratarse de una vivienda)
     categoria: "residencial",
     locacion: "Pucallpa, Ucayali",
+    descripcion: "Diseño bioclimático adaptado al confort térmico regional con integración armónica con el entorno natural.",
     // TODO: imagen provisional (foto real del proyecto pendiente)
     imagen: "/images/inicio/quienes-somos/pic5.jpg",
   },
@@ -78,17 +81,17 @@ export const proyectos: Proyecto[] = [
     titulo: "Diseño de Concesionario Isuzu",
     categoria: "comercial",
     locacion: "San Luis, Lima",
+    descripcion: "Infraestructura comercial y showroom automotriz concebido para optimizar la exhibición y flujo de clientes.",
     // TODO: imagen provisional (foto real del proyecto pendiente)
     imagen: "/images/inicio/slider/slider2.jpg",
   },
   {
     // Proyecto 5
-    // Estas 3 fotos SÍ son reales (traen el logo de Voladizo en la ropa del personal y el
-    // letrero BCP visible): exterior terminado + interior en demolición + supervisión de obra.
-    // TODO: confirmar título exacto, locación y año con el cliente.
     slug: "agencia-bancaria-bcp",
     titulo: "Diseño y Construcción Agencia Bancaria BCP",
     categoria: "comercial",
+    locacion: "Lima, Perú",
+    descripcion: "Remodelación integral y acondicionamiento cumpliendo estrictos estándares de seguridad y eficiencia operativa.",
     imagen: "/images/inicio/servicios/servicio1/servicio_disenio.png",
     comparacion: {
       antesImagen: "/images/inicio/servicios/servicio2/servicio_construccion.jpg",

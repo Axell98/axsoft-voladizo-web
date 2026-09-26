@@ -19,10 +19,10 @@ export const defaultArctitSlides: SlideItem[] = [
   {
     id: 1,
     number: "01",
-    meta: ["Oficina", "Arquitectura"],
-    title: "Diseño de oficinas KIA",
+    meta: ["Diseño", "Arquitectura"],
+    title: "Amazon Specialties",
     href: "/proyectos",
-    image: "/images/inicio/slider/slider1.jpg",
+    image: "/images/inicio/slider/planta_amazon.jpg",
     overlay: 5,
   },
   {

@@ -98,15 +98,15 @@ export default function ProyectosSection() {
 // como en la referencia de la plantilla original.
 function CruzHover() {
   return (
-    <div aria-hidden="true" className="absolute top-3 sm:top-4 right-6 sm:right-8 bottom-6 sm:bottom-8 left-2 sm:left-3 pointer-events-none">
-      {/* brazo derecho: se extiende hasta el borde */}
+    <div aria-hidden="true" className="absolute top-5 sm:top-6 right-5 sm:right-6 bottom-5 sm:bottom-6 left-5 sm:left-6 pointer-events-none z-20">
+      {/* brazo derecho: se extiende horizontalmente hacia la derecha */}
       <span className="absolute left-0 top-0 h-px w-full bg-white opacity-0 scale-x-0 origin-left transition-all duration-500 ease-out group-hover:scale-x-100 group-hover:opacity-100" />
-      {/* brazo inferior: se extiende hasta el borde */}
+      {/* brazo inferior: se extiende verticalmente hacia abajo */}
       <span className="absolute left-0 top-0 w-px h-full bg-white opacity-0 scale-y-0 origin-top transition-all duration-500 ease-out delay-100 group-hover:scale-y-100 group-hover:opacity-100" />
-      {/* brazo superior: tick corto */}
-      <span className="absolute left-0 top-0 -translate-y-full w-px h-4 bg-white opacity-0 scale-y-0 origin-bottom transition-all duration-500 ease-out group-hover:scale-y-100 group-hover:opacity-100" />
-      {/* brazo izquierdo: tick corto */}
-      <span className="absolute left-0 top-0 -translate-x-full h-px w-4 bg-white opacity-0 scale-x-0 origin-right transition-all duration-500 ease-out group-hover:scale-x-100 group-hover:opacity-100" />
+      {/* brazo superior: tick corto hacia arriba */}
+      <span className="absolute left-0 top-0 -translate-y-full w-px h-3.5 bg-white opacity-0 scale-y-0 origin-bottom transition-all duration-500 ease-out group-hover:scale-y-100 group-hover:opacity-100" />
+      {/* brazo izquierdo: tick corto hacia la izquierda */}
+      <span className="absolute left-0 top-0 -translate-x-full h-px w-3.5 bg-white opacity-0 scale-x-0 origin-right transition-all duration-500 ease-out group-hover:scale-x-100 group-hover:opacity-100" />
     </div>
   );
 }
@@ -126,13 +126,18 @@ function TarjetaProyecto({ proyecto }: { proyecto: Proyecto }) {
 
       <CruzHover />
 
-      <div className="absolute inset-x-0 top-0 px-6 sm:px-7 pt-14 sm:pt-16">
-        <h3 className="font-oswald-bold uppercase tracking-wide text-lg sm:text-xl text-white leading-tight">
+      <div className="absolute inset-x-0 top-0 pl-8 sm:pl-9 pr-6 sm:pr-7 pt-9 sm:pt-10">
+        <h3 className="font-oswald-bold uppercase tracking-wider text-xl sm:text-2xl text-white leading-tight drop-shadow-sm">
           {proyecto.titulo}
         </h3>
+        {proyecto.descripcion && (
+          <p className="mt-4 text-[13.5px] sm:text-[14.5px] text-neutral-200 font-light leading-relaxed line-clamp-4 opacity-0 translate-y-2 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+            {proyecto.descripcion}
+          </p>
+        )}
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+      <div className="absolute inset-x-0 bottom-0 pl-8 sm:pl-9 pr-6 sm:pr-7 pb-6 sm:pb-7">
         {proyecto.locacion && (
           <p className="text-xs text-neutral-300 font-light uppercase tracking-wide">{proyecto.locacion}</p>
         )}
