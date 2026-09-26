@@ -113,7 +113,11 @@ function CruzHover() {
 
 function TarjetaProyecto({ proyecto }: { proyecto: Proyecto }) {
   return (
-    <article className="group relative w-full aspect-2/3 overflow-hidden bg-neutral-900 shadow-lg">
+    <Link
+      href="/proyectos"
+      aria-label={`Ver detalles de ${proyecto.titulo}`}
+      className="group relative block w-full aspect-2/3 overflow-hidden bg-neutral-900 shadow-lg"
+    >
       <Image
         src={proyecto.imagen}
         alt={proyecto.titulo}
@@ -146,6 +150,14 @@ function TarjetaProyecto({ proyecto }: { proyecto: Proyecto }) {
           className="block mt-3 h-[3px] w-8 bg-brand transition-all duration-300 group-hover:w-16"
         />
       </div>
-    </article>
+
+      {/* Indicador vertical "VER MÁS" en el lateral derecho */}
+      <div className="absolute right-5 sm:right-6 bottom-5 sm:bottom-6 flex flex-col items-center gap-2.5 pointer-events-none opacity-0 translate-y-2 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+        <span className="[writing-mode:vertical-rl] rotate-180 text-[10px] font-bold uppercase tracking-[3px] text-white">
+          Ver Más
+        </span>
+        <span aria-hidden="true" className="w-3.5 h-[2px] bg-brand" />
+      </div>
+    </Link>
   );
 }
