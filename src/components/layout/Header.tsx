@@ -33,13 +33,7 @@ const navItems: NavItem[] = [
   },
   {
     name: "Proyectos",
-    href: "/proyectos",
-    // TODO: cuando exista filtro por categoría, apuntar cada uno a /proyectos?categoria=...
-    children: [
-      { name: "Residenciales", href: "/proyectos" },
-      { name: "Comerciales", href: "/proyectos" },
-      { name: "En Ejecución", href: "/proyectos" },
-    ],
+    href: "/#proyectos",
   },
 ];
 

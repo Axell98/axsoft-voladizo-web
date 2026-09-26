@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import VideoModal from "@/components/proyectos/VideoModal";
 import { type Proyecto, CATEGORIAS } from "@/features/proyectos/data";
 
 interface Props {
@@ -37,6 +38,7 @@ export default function ProyectoDetalleInteractivo({ proyecto }: Props) {
         ];
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const currentSlide = slides[activeIndex] || slides[0];
 
   const handlePrev = () => {
@@ -265,8 +267,8 @@ export default function ProyectoDetalleInteractivo({ proyecto }: Props) {
                 </div>
               </div>
 
-              {/* Botón Volver a Proyectos */}
-              <div className="flex items-center">
+              {/* Botones de acción: Ver más proyectos y Ver video */}
+              <div className="flex flex-wrap items-center gap-4">
                 <Link
                   href="/proyectos"
                   className="group relative inline-flex items-center bg-black hover:bg-brand px-8 py-4 text-white hover:text-black font-bold uppercase text-xs tracking-[3px] transition-colors duration-300 shadow-sm"
@@ -277,12 +279,32 @@ export default function ProyectoDetalleInteractivo({ proyecto }: Props) {
                     className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-[1.5px] bg-current transition-all duration-300 group-hover:w-7"
                   />
                 </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveVideo(proyecto.videoId || "1iUeq78m0wk")}
+                  className="group inline-flex items-center gap-3 bg-neutral-100 hover:bg-neutral-200 border border-neutral-300 px-7 py-4 text-xs font-bold uppercase tracking-[2.5px] text-neutral-900 transition-all duration-300 cursor-pointer shadow-xs"
+                >
+                  <span className="w-6 h-6 rounded-full bg-brand text-black flex items-center justify-center transition-transform group-hover:scale-110">
+                    <svg className="w-3 h-3 ml-0.5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5.14v13.72c0 .8.87 1.29 1.55.87l10.72-6.86a1 1 0 000-1.72L9.55 4.27A1 1 0 008 5.14z" />
+                    </svg>
+                  </span>
+                  Ver Video
+                </button>
               </div>
             </div>
 
           </div>
         </div>
       </section>
+
+      {/* Modal de video de YouTube */}
+      <VideoModal
+        videoId={activeVideo}
+        title={`Video: ${proyecto.titulo}`}
+        onClose={() => setActiveVideo(null)}
+      />
     </div>
   );
 }

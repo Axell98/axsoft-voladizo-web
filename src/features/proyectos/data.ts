@@ -56,6 +56,7 @@ export const proyectos: Proyecto[] = [
     descripcion: "Desarrollo integral de arquitectura residencial moderna con optimización espacial y acabados de alta calidad.",
     ejecucion: "100%",
     anio: 2020,
+    videoId: "1iUeq78m0wk",
     imagen: "/images/proyectos/proyecto1_realidad.jpg",
     comparacion: {
       antesImagen: "/images/proyectos/proyecto1_render.jpg",
