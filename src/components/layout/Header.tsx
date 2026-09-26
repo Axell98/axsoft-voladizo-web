@@ -90,12 +90,17 @@ export default function Header() {
                 priority
               />
             </div>
-            <span
-              className="font-oswald-bold text-2xl sm:text-3xl tracking-[0.12em] text-white uppercase select-none font-bold"
-              style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
-            >
-              VOLADIZO
-            </span>
+            <div className="flex flex-col">
+              <span
+                className="font-oswald-bold text-2xl sm:text-3xl tracking-[0.12em] text-white uppercase select-none font-bold leading-none"
+                style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
+              >
+                VOLADIZO
+              </span>
+              <span className="text-[8.5px] sm:text-[9.5px] font-normal tracking-[0.18em] text-neutral-300/90 uppercase select-none mt-1">
+                Diseño | Construcción
+              </span>
+            </div>
           </Link>
 
           {/* 2. NAVEGACIÓN DESKTOP (Alineada a la Derecha) */}
@@ -231,12 +236,17 @@ export default function Header() {
                   className="object-contain"
                 />
               </div>
-              <span
-                className="font-oswald-bold text-lg font-bold tracking-[0.12em] text-black uppercase"
-                style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
-              >
-                VOLADIZO
-              </span>
+              <div className="flex flex-col">
+                <span
+                  className="font-oswald-bold text-lg font-bold tracking-[0.12em] text-black uppercase leading-none"
+                  style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
+                >
+                  VOLADIZO
+                </span>
+                <span className="text-[7.5px] font-normal tracking-[0.15em] text-neutral-500 uppercase mt-0.5">
+                  Diseño | Construcción
+                </span>
+              </div>
             </div>
             <button
               onClick={() => setMobileMenuOpen(false)}
