@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import BeforeAfterDiagonal from "@/components/inicio/BeforeAfterDiagonal";
 import VideoModal from "@/components/proyectos/VideoModal";
 import { CATEGORIAS, type Proyecto } from "@/features/proyectos/data";
@@ -137,9 +138,20 @@ export default function ProyectosSlider({ proyectos }: ProyectosSliderProps) {
             ))}
           </dl>
 
-          {/* Botón de video, solo si el proyecto tiene uno */}
-          {proyecto.videoId && (
-            <div className="mt-8 flex justify-center">
+          {/* Botones de acción: Ver Detalle y Video (si existe) */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href={`/proyectos/${proyecto.slug}`}
+              className="group relative inline-flex items-center bg-black hover:bg-brand px-7 py-3.5 text-white hover:text-black font-bold uppercase text-xs tracking-[3px] transition-colors duration-300 shadow-md"
+            >
+              <span className="pr-8">Ver Proyecto Completo</span>
+              <span
+                aria-hidden="true"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-[1.5px] bg-current transition-all duration-300 group-hover:w-6"
+              />
+            </Link>
+
+            {proyecto.videoId && (
               <button
                 type="button"
                 onClick={() => setActiveVideo(proyecto.videoId!)}
@@ -150,8 +162,8 @@ export default function ProyectosSlider({ proyectos }: ProyectosSliderProps) {
                 </span>
                 Reproducir video
               </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
         {/* ========================================================= */}

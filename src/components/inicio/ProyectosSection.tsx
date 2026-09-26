@@ -114,7 +114,7 @@ function CruzHover() {
 function TarjetaProyecto({ proyecto }: { proyecto: Proyecto }) {
   return (
     <Link
-      href="/proyectos"
+      href={`/proyectos/${proyecto.slug}`}
       aria-label={`Ver detalles de ${proyecto.titulo}`}
       className="group relative block w-full aspect-2/3 overflow-hidden bg-neutral-900 shadow-lg"
     >

@@ -16,6 +16,13 @@ export interface ProyectoComparacion {
   despuesLabel?: string;
 }
 
+export interface ProyectoSlide {
+  etiqueta: string;
+  fase: string;
+  imagen: string;
+  descripcion: string;
+}
+
 export interface Proyecto {
   slug: string;
   titulo: string;
@@ -29,6 +36,8 @@ export interface Proyecto {
   imagen: string;
   /** Comparación antes/después (o render/realidad, o proceso/realidad) para la interna de proyectos. */
   comparacion?: ProyectoComparacion;
+  /** Slides interactivos de la interna del proyecto (Render vs Realidad vs Detalle) */
+  galeria?: ProyectoSlide[];
   /** ID de YouTube (los 11 caracteres, ej. "dQw4w9WgXcQ"), no la URL completa. Si existe, se muestra el botón de video. */
   videoId?: string;
 }
@@ -47,13 +56,29 @@ export const proyectos: Proyecto[] = [
     descripcion: "Desarrollo integral de arquitectura residencial moderna con optimización espacial y acabados de alta calidad.",
     ejecucion: "100%",
     anio: 2020,
-    imagen: "/images/proyectos/proyecto_01_2.jpg",
+    imagen: "/images/proyectos/proyecto1_realidad.jpg",
     comparacion: {
-      antesImagen: "/images/inicio/servicios/servicio1/1.jpg",
+      antesImagen: "/images/proyectos/proyecto1_render.jpg",
       antesLabel: "Render",
-      despuesImagen: "/images/inicio/servicios/servicio1/3.jpg",
+      despuesImagen: "/images/proyectos/proyecto1_realidad.jpg",
       despuesLabel: "Realidad",
     },
+    galeria: [
+      {
+        etiqueta: "RENDER",
+        fase: "FASE 01: CONCEPCIÓN Y MODELADO 3D",
+        imagen: "/images/proyectos/proyecto1_render.jpg",
+        descripcion:
+          "Desarrollo y modelado volumétrico 3D del edificio multifamiliar, integrando balcones voladizos con celosías de madera, amplios ventanales para iluminación natural y optimización de distribución espacial para cada departamento.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: CONSTRUCCIÓN Y ENTREGA FINAL",
+        imagen: "/images/proyectos/proyecto1_realidad.jpg",
+        descripcion:
+          "Ejecución integral de la obra con total fidelidad al diseño proyectado. Estructura antisísmica de concreto armado, carpintería de aluminio y vidrio templado, y acabados de primera calidad tanto en fachada como en áreas comunes.",
+      },
+    ],
   },
   {
     // Proyecto 2
