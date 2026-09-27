@@ -79,37 +79,36 @@ const featuredLeader: TeamMember = {
   },
 };
 
-const lauraMember: TeamMember = {
-  id: 2,
-  name: "Laura Maglia",
-  role: "Jefe Comercial",
-  image: "/images/inicio/equipo/personal1.jpg",
-  socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
-};
-
-// NOTA: Descomentar y añadir cuando el cliente envíe las fotos y datos del resto del equipo:
-/*
-const futureTeamMembers: TeamMember[] = [
+const teamMembers: TeamMember[] = [
+  {
+    id: 2,
+    name: "Laura Maglia",
+    role: "Jefe Comercial",
+    image: "/images/inicio/equipo/personal1.jpg",
+    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
+  },
   {
     id: 3,
     name: "Taylor Roberts",
     role: "Coordinador de Obra",
     image: "/images/inicio/equipo/pic3.jpg",
+    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
   },
   {
     id: 4,
     name: "Robert Willson",
     role: "Supervisor de Proyectos",
     image: "/images/inicio/equipo/pic4.jpg",
+    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
   },
   {
     id: 5,
     name: "Austin Evon",
     role: "Asociado de Proyectos",
     image: "/images/inicio/equipo/pic5.jpg",
+    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
   },
 ];
-*/
 
 interface GalleryItem {
   id: number;
@@ -502,9 +501,9 @@ export default function QuienesSomosPage() {
         }}
       >
         <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
             
-            {/* COLUMNA IZQUIERDA: TÍTULO Y LÍDER DESTACADO (Renzo) */}
+            {/* COLUMNA IZQUIERDA: TÍTULO Y LÍDER DESTACADO */}
             <div className="lg:col-span-6 flex flex-col items-center lg:items-start">
               {/* Título de sección */}
               <div className="mb-8 w-full text-left">
@@ -520,8 +519,8 @@ export default function QuienesSomosPage() {
               </div>
 
               {/* Tarjeta de Líder Principal */}
-              <div className="w-full max-w-[440px]">
-                <div className="relative w-full h-[440px] sm:h-[500px] lg:h-[520px] bg-neutral-100 overflow-hidden shadow-sm group">
+              <div className="w-full max-w-[480px]">
+                <div className="relative w-full h-[460px] sm:h-[540px] lg:h-[600px] bg-neutral-100 overflow-hidden shadow-sm group">
                   <Image
                     src={featuredLeader.image}
                     alt={featuredLeader.name}
@@ -546,44 +545,96 @@ export default function QuienesSomosPage() {
                   >
                     {featuredLeader.role}
                   </p>
+
+                  {/* Redes Sociales Cuadradas con Borde Fino */}
+                  {/* <ul className="flex items-center justify-center gap-1.5">
+                    <li>
+                      <a
+                        href={featuredLeader.socials?.facebook || "#"}
+                        aria-label="Facebook"
+                        className="w-8 h-8 border border-neutral-300 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-colors"
+                      >
+                        <FacebookIcon className="w-3 h-3" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={featuredLeader.socials?.twitter || "#"}
+                        aria-label="Twitter"
+                        className="w-8 h-8 border border-neutral-300 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-colors"
+                      >
+                        <TwitterIcon className="w-3 h-3" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={featuredLeader.socials?.linkedin || "#"}
+                        aria-label="LinkedIn"
+                        className="w-8 h-8 border border-neutral-300 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-colors"
+                      >
+                        <LinkedInIcon className="w-3 h-3" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={featuredLeader.socials?.youtube || "#"}
+                        aria-label="YouTube"
+                        className="w-8 h-8 border border-neutral-300 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-colors"
+                      >
+                        <YoutubeIcon className="w-3 h-3" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={featuredLeader.socials?.instagram || "#"}
+                        aria-label="Instagram"
+                        className="w-8 h-8 border border-neutral-300 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-colors"
+                      >
+                        <InstagramIcon className="w-3 h-3" />
+                      </a>
+                    </li>
+                  </ul> */}
                 </div>
               </div>
             </div>
 
-            {/* COLUMNA DERECHA: LAURA MAGLIA (Mismo diseño con acento en L) */}
-            <div className="lg:col-span-6 flex justify-center lg:justify-end w-full pt-4 lg:pt-16">
-              <div className="w-full max-w-[420px] relative flex flex-col bg-white shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-neutral-200/90">
-                {/* Contenedor de Imagen */}
-                <div className="relative w-full h-[300px] sm:h-[340px] lg:h-[380px] bg-neutral-100 overflow-hidden">
-                  <Image
-                    src={lauraMember.image}
-                    alt={lauraMember.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 420px"
-                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                    priority
-                  />
-                </div>
+            {/* COLUMNA DERECHA: GRID 2x2 DE INTEGRANTES DEL EQUIPO CON L-BRACKET */}
+            <div className="lg:col-span-6 w-full pt-4 lg:pt-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 w-full">
+                {teamMembers.map((member) => (
+                  <div key={member.id} className="relative flex flex-col">
+                    {/* Contenedor de Imagen */}
+                    <div className="relative w-full h-[230px] sm:h-[260px] bg-neutral-100 overflow-hidden group">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                    </div>
 
-                {/* Info de Laura con Acento Angular en L */}
-                <div className="relative p-6 sm:p-7 text-center bg-white border-t border-neutral-100 flex-1 flex flex-col justify-center">
-                  {/* Acento geométrico en esquina inferior izquierda */}
-                  <div className="absolute left-0 bottom-0 w-8 sm:w-9 h-[3px] bg-black" />
-                  <div className="absolute left-0 bottom-0 w-[3px] h-8 sm:h-9 bg-black" />
+                    {/* Info del Integrante con Acento Angular en L */}
+                    <div className="relative pt-4 pb-2 text-center w-full">
+                      {/* Acento geométrico en esquina inferior izquierda (.wt-team-info:before & :after) */}
+                      <div className="absolute left-0 bottom-0 w-8 h-[2.5px] bg-black" />
+                      <div className="absolute left-0 bottom-0 w-[2.5px] h-8 bg-black" />
 
-                  <h4
-                    className="text-lg sm:text-xl font-bold uppercase tracking-wider text-black leading-snug"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {lauraMember.name}
-                  </h4>
-                  <p
-                    className="text-sm sm:text-base text-neutral-500 mt-1.5 font-normal"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {lauraMember.role}
-                  </p>
-                </div>
+                      <h4
+                        className="text-sm sm:text-base font-bold uppercase tracking-wider text-black"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                      >
+                        {member.name}
+                      </h4>
+                      <p
+                        className="text-xs text-neutral-500 mt-1 font-light pb-3"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                      >
+                        {member.role}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 

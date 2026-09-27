@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { SITE_NAME } from "@/lib/site";
 
+export const dynamic = "force-static";
 export const alt = "Voladizo | Arquitectura y Construcción";
 export const size = {
   width: 1200,

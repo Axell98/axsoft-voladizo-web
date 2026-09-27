@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import ProyectosSlider from "@/components/proyectos/ProyectosSlider";
-import { proyectos } from "@/features/proyectos/data";
+import ProyectosCatalogo from "@/components/proyectos/ProyectosCatalogo";
 import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -48,7 +47,7 @@ export default function ProyectosPage() {
         </div>
       </div>
 
-      <ProyectosSlider proyectos={proyectos} />
+      <ProyectosCatalogo />
     </div>
   );
 }

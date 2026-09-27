@@ -1,5 +1,3 @@
-"use server";
-
 import type { ContactoErrors, ContactoState, ContactoValues } from "./types";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
