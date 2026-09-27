@@ -31,6 +31,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}>
+      <head>
+        {/* Redirección automática a HTTPS en producción */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined' && window.location.protocol === 'http:' && !['localhost', '127.0.0.1'].includes(window.location.hostname)) {
+                window.location.href = window.location.href.replace('http:', 'https:');
+              }
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased">
         {children}
       </body>
