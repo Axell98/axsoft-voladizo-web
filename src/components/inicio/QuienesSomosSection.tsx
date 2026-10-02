@@ -1,40 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import BeforeAfterDiagonal from "./BeforeAfterDiagonal";
 
-interface GalleryItem {
-  id: number;
-  image: string;
-  href: string;
-}
-
-const galleryItems: GalleryItem[] = [
-  { id: 1, image: "/images/inicio/quienes-somos/pic1.jpg", href: "/#quienes-somos" },
-  { id: 2, image: "/images/inicio/quienes-somos/pic2.jpg", href: "/#quienes-somos" },
-  { id: 3, image: "/images/inicio/quienes-somos/pic3.jpg", href: "/#quienes-somos" },
-  { id: 4, image: "/images/inicio/quienes-somos/pic4.jpg", href: "/#quienes-somos" },
-  { id: 5, image: "/images/inicio/quienes-somos/pic5.jpg", href: "/#quienes-somos" },
-];
-
 export default function QuienesSomosSection() {
-  const [mediaMode, setMediaMode] = useState<"beforeAfter" | "carousel">("beforeAfter");
-  const [currentSlide, setCurrentSlide] = useState(1);
-  const total = galleryItems.length;
-
-  const nextGallery = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % total);
-  }, [total]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      nextGallery();
-    }, 5500);
-    return () => clearInterval(timer);
-  }, [nextGallery]);
-
   return (
     <section
       id="quienes-somos"
@@ -94,35 +63,9 @@ export default function QuienesSomosSection() {
             </div>
 
             {/* ========================================================= */}
-            {/* COLUMNA DERECHA: COMPARATIVA ANTES/DESPUÉS O SLIDER       */}
+            {/* COLUMNA DERECHA: COMPARATIVA ANTES Y DESPUÉS              */}
             {/* ========================================================= */}
             <div className="lg:col-span-6">
-              {/* SELECTOR SUTIL DE ESTILOS (ANTES/DESPUÉS vs SLIDER) */}
-              <div className="flex items-center gap-2 mb-4 ml-0 lg:ml-16">
-                <button
-                  type="button"
-                  onClick={() => setMediaMode("beforeAfter")}
-                  className={`px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-                    mediaMode === "beforeAfter"
-                      ? "bg-black text-white shadow-sm"
-                      : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                  }`}
-                >
-                  Antes y Después
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setMediaMode("carousel")}
-                  className={`px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-                    mediaMode === "carousel"
-                      ? "bg-black text-white shadow-sm"
-                      : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                  }`}
-                >
-                  Galería Slider
-                </button>
-              </div>
-
               <div className="relative ml-0 lg:ml-16 mb-16 lg:mb-20">
                 {/* MARCO GRIS DESPLAZADO (.m-carousel-1:after) */}
                 <div
@@ -137,54 +80,15 @@ export default function QuienesSomosSection() {
                   }}
                 />
 
-                {mediaMode === "beforeAfter" ? (
-                  /* COMPARADOR DIAGONAL INTERACTIVO ANTES Y DESPUÉS */
-                  <BeforeAfterDiagonal
-                    beforeImage="/images/inicio/quienes-somos/before.jpg"
-                    afterImage="/images/inicio/quienes-somos/after.jpg"
-                    beforeLabel="Antes"
-                    afterLabel="Después"
-                    initialPos={50}
-                    slantOffset={12}
-                  />
-                ) : (
-                  /* CONTENEDOR DEL SLIDER ORIGINAL (100% PRESERVADO) */
-                  <div className="relative z-10 w-full h-[300px] sm:h-[350px] lg:h-[390px] bg-neutral-100 shadow-xl overflow-hidden group">
-                    {galleryItems.map((item, idx) => (
-                      <div
-                        key={item.id}
-                        className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${
-                          idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                        }`}
-                      >
-                        <Image
-                          src={item.image}
-                          alt={`Building Design ${idx + 1}`}
-                          fill
-                          priority={idx === 1}
-                          sizes="(max-width: 1024px) 100vw, 60vw"
-                          className="object-cover object-center group-hover:scale-105 transition-transform duration-1000 ease-out"
-                        />
-                      </div>
-                    ))}
-
-                    {/* INDICADORES VERTICALES (.owl-dots) */}
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20 flex flex-col items-end gap-3.5 pointer-events-auto pr-0">
-                      {galleryItems.map((_, dotIdx) => (
-                        <button
-                          key={dotIdx}
-                          onClick={() => setCurrentSlide(dotIdx)}
-                          type="button"
-                          aria-label={`Slide ${dotIdx + 1}`}
-                          className="h-[3px] bg-black transition-all duration-300 cursor-pointer"
-                          style={{
-                            width: dotIdx === currentSlide ? "50px" : "14px",
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
+                {/* COMPARADOR DIAGONAL INTERACTIVO ANTES Y DESPUÉS */}
+                <BeforeAfterDiagonal
+                  beforeImage="/images/inicio/quienes-somos/foto_qs_1.png"
+                  afterImage="/images/inicio/quienes-somos/foto_qs_2.png"
+                  beforeLabel="Antes"
+                  afterLabel="Después"
+                  initialPos={50}
+                  slantOffset={12}
+                />
               </div>
             </div>
           </div>

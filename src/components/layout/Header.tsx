@@ -26,9 +26,9 @@ const navItems: NavItem[] = [
     href: "/#servicios",
     children: [
       { name: "Diseño e Ingeniería", href: "/servicios/diseno-e-ingenieria" },
-      { name: "Construcción y Remodelación", href: "/#servicios" },
-      { name: "Diseño Interior y Mobiliario", href: "/#servicios" },
-      { name: "Gestión y Supervisión", href: "/#servicios" },
+      { name: "Construcción y Remodelación", href: "/servicios/construccion-y-remodelacion" },
+      { name: "Diseño Interior y Mobiliario", href: "/servicios/diseno-interior-y-mobiliario" },
+      { name: "Gestión y Supervisión", href: "/servicios/gestion-y-supervision" },
     ],
   },
   {

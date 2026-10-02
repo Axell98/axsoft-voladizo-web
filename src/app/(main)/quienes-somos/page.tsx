@@ -65,11 +65,12 @@ interface TeamMember {
   };
 }
 
+// Integrantes reales activos
 const featuredLeader: TeamMember = {
   id: 1,
   name: "Arq. Renzo Alvarez",
   role: "Gerente General",
-  image: "/images/inicio/equipo/gerente_general.jpg",
+  image: "/images/inicio/equipo/foto_gerente_final.jpeg",
   socials: {
     facebook: "#",
     twitter: "#",
@@ -79,28 +80,31 @@ const featuredLeader: TeamMember = {
   },
 };
 
-const lauraMember: TeamMember = {
-  id: 2,
-  name: "Laura Maglia",
-  role: "Jefe Comercial",
-  image: "/images/inicio/equipo/personal1.jpg",
-  socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
-};
+const otherTeamMembers: TeamMember[] = [
+  {
+    id: 2,
+    name: "Laura Maglia",
+    role: "Jefe Comercial",
+    image: "/images/inicio/equipo/personal1.jpg",
+    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
+  },
+  {
+    id: 3,
+    name: "Renato Álvarez",
+    role: "Supervisor de Proyectos",
+    image: "/images/inicio/equipo/foto_supervisor_final.jpeg",
+    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
+  },
+];
 
 // NOTA: Descomentar y añadir cuando el cliente envíe las fotos y datos del resto del equipo:
 /*
 const futureTeamMembers: TeamMember[] = [
   {
-    id: 3,
+    id: 4,
     name: "Taylor Roberts",
     role: "Coordinador de Obra",
     image: "/images/inicio/equipo/pic3.jpg",
-  },
-  {
-    id: 4,
-    name: "Robert Willson",
-    role: "Supervisor de Proyectos",
-    image: "/images/inicio/equipo/pic4.jpg",
   },
   {
     id: 5,
@@ -111,37 +115,7 @@ const futureTeamMembers: TeamMember[] = [
 ];
 */
 
-interface GalleryItem {
-  id: number;
-  image: string;
-  href?: string;
-}
-
-const galleryItems: GalleryItem[] = [
-  { id: 1, image: "/images/inicio/quienes-somos/pic1.jpg" },
-  { id: 2, image: "/images/inicio/quienes-somos/pic2.jpg" },
-  { id: 3, image: "/images/inicio/quienes-somos/pic3.jpg" },
-  { id: 4, image: "/images/inicio/quienes-somos/pic4.jpg" },
-  { id: 5, image: "/images/inicio/quienes-somos/pic5.jpg" },
-];
-
 export default function QuienesSomosPage() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [mediaMode, setMediaMode] = useState<"beforeAfter" | "carousel">("beforeAfter");
-
-  const total = galleryItems.length;
-  const nextGallery = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % total);
-  }, [total]);
-
-  useEffect(() => {
-    if (mediaMode !== "carousel") return;
-    const timer = setInterval(() => {
-      nextGallery();
-    }, 5500);
-    return () => clearInterval(timer);
-  }, [nextGallery, mediaMode]);
-
   return (
     <div
       className="page-wraper w-full bg-white text-black"
@@ -193,98 +167,33 @@ export default function QuienesSomosPage() {
         <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             
-            {/* COLUMNA IZQUIERDA: CARRUSEL PORTRAIT / ANTES-DESPUÉS */}
-           <div className="lg:col-span-6">
-                         {/* SELECTOR SUTIL DE ESTILOS (ANTES/DESPUÉS vs SLIDER) */}
-                         <div className="flex items-center gap-2 mb-4 ml-0 lg:ml-16">
-                           <button
-                             type="button"
-                             onClick={() => setMediaMode("beforeAfter")}
-                             className={`px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-                               mediaMode === "beforeAfter"
-                                 ? "bg-black text-white shadow-sm"
-                                 : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                             }`}
-                           >
-                             Antes y Después
-                           </button>
-                           <button
-                             type="button"
-                             onClick={() => setMediaMode("carousel")}
-                             className={`px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-                               mediaMode === "carousel"
-                                 ? "bg-black text-white shadow-sm"
-                                 : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                             }`}
-                           >
-                             Galería Slider
-                           </button>
-                         </div>
-           
-                         <div className="relative ml-0 lg:ml-16 mb-16 lg:mb-20">
-                           {/* MARCO GRIS DESPLAZADO (.m-carousel-1:after) */}
-                           <div
-                             className="hidden sm:block absolute pointer-events-none z-0"
-                             style={{
-                               top: "70px",
-                               left: "-70px",
-                               width: "100%",
-                               height: "100%",
-                               border: "30px solid rgba(0, 0, 0, 0.1)",
-                               boxSizing: "border-box",
-                             }}
-                           />
-           
-                           {mediaMode === "beforeAfter" ? (
-                             /* COMPARADOR DIAGONAL INTERACTIVO ANTES Y DESPUÉS */
-                             <BeforeAfterDiagonal
-                               beforeImage="/images/inicio/quienes-somos/before.jpg"
-                               afterImage="/images/inicio/quienes-somos/after.jpg"
-                               beforeLabel="Antes"
-                               afterLabel="Después"
-                               initialPos={50}
-                               slantOffset={12}
-                             />
-                           ) : (
-                             /* CONTENEDOR DEL SLIDER ORIGINAL (100% PRESERVADO) */
-                             <div className="relative z-10 w-full h-[300px] sm:h-[350px] lg:h-[390px] bg-neutral-100 shadow-xl overflow-hidden group">
-                               {galleryItems.map((item, idx) => (
-                                 <div
-                                   key={item.id}
-                                   className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${
-                                     idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                                   }`}
-                                 >
-                                   <Image
-                                     src={item.image}
-                                     alt={`Building Design ${idx + 1}`}
-                                     fill
-                                     priority={idx === 1}
-                                     sizes="(max-width: 1024px) 100vw, 60vw"
-                                     className="object-cover object-center group-hover:scale-105 transition-transform duration-1000 ease-out"
-                                   />
-                                 </div>
-                               ))}
-           
-                               {/* INDICADORES VERTICALES (.owl-dots) */}
-                               <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20 flex flex-col items-end gap-3.5 pointer-events-auto pr-0">
-                                 {galleryItems.map((_, dotIdx) => (
-                                   <button
-                                     key={dotIdx}
-                                     onClick={() => setCurrentSlide(dotIdx)}
-                                     type="button"
-                                     aria-label={`Slide ${dotIdx + 1}`}
-                                     className="h-[3px] bg-black transition-all duration-300 cursor-pointer"
-                                     style={{
-                                       width: dotIdx === currentSlide ? "50px" : "14px",
-                                     }}
-                                   />
-                                 ))}
-                               </div>
-                             </div>
-                           )}
-                         </div>
-                       </div>
+            {/* COLUMNA IZQUIERDA: COMPARATIVA ANTES Y DESPUÉS */}
+            <div className="lg:col-span-6">
+              <div className="relative ml-0 lg:ml-16 mb-16 lg:mb-20">
+                {/* MARCO GRIS DESPLAZADO (.m-carousel-1:after) */}
+                <div
+                  className="hidden sm:block absolute pointer-events-none z-0"
+                  style={{
+                    top: "70px",
+                    left: "-70px",
+                    width: "100%",
+                    height: "100%",
+                    border: "30px solid rgba(0, 0, 0, 0.1)",
+                    boxSizing: "border-box",
+                  }}
+                />
+
+                {/* COMPARADOR DIAGONAL INTERACTIVO ANTES Y DESPUÉS */}
+                <BeforeAfterDiagonal
+                  beforeImage="/images/inicio/quienes-somos/foto_qs_1.png"
+                  afterImage="/images/inicio/quienes-somos/foto_qs_2.png"
+                  beforeLabel="Antes"
+                  afterLabel="Después"
+                  initialPos={50}
+                  slantOffset={12}
+                />
+              </div>
+            </div>
 
             {/* COLUMNA DERECHA: TEXTO ABOUT US (Sincronizado con Inicio) */}
             <div className="lg:col-span-6 space-y-4">
@@ -391,7 +300,7 @@ export default function QuienesSomosPage() {
             <div className="lg:col-span-6 relative">
               <div className="relative h-[380px] sm:h-[480px] w-full bg-neutral-100 shadow-2xl overflow-hidden border border-neutral-200">
                 <Image
-                  src="/images/inicio/quienes-somos/before.jpg"
+                  src="/images/quienes-somos/img-mision.jpg"
                   alt="Nuestra Misión Voladizo"
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
@@ -410,16 +319,32 @@ export default function QuienesSomosPage() {
         <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
-            {/* LADO IZQUIERDO: IMAGEN ARQUITECTÓNICA DE PROYECTO */}
+            {/* LADO IZQUIERDO: COMPARATIVA ANTES Y DESPUÉS (VISIÓN) */}
             <div className="lg:col-span-6 order-2 lg:order-1 relative">
-              <div className="relative h-[380px] sm:h-[480px] w-full bg-neutral-900 border border-neutral-800 shadow-2xl overflow-hidden group">
-                <Image
-                  src="/images/inicio/quienes-somos/after.jpg"
-                  alt="Nuestra Visión Voladizo"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+              <div className="relative ml-0 lg:ml-6 mb-8 lg:mb-0">
+                {/* MARCO DESPLAZADO CON ESTILO ARQUITECTÓNICO */}
+                <div
+                  className="hidden sm:block absolute pointer-events-none z-0"
+                  style={{
+                    top: "40px",
+                    left: "-40px",
+                    width: "100%",
+                    height: "100%",
+                    border: "24px solid rgba(255, 255, 255, 0.05)",
+                    boxSizing: "border-box",
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+                {/* COMPARADOR DIAGONAL INTERACTIVO */}
+                <BeforeAfterDiagonal
+                  beforeImage="/images/quienes-somos/vision-antes.jpg"
+                  afterImage="/images/quienes-somos/vision-despues.jpg"
+                  beforeLabel="Antes"
+                  afterLabel="Después"
+                  initialPos={50}
+                  slantOffset={12}
+                  heightClassName="h-[320px] sm:h-[400px] lg:h-[440px]"
+                />
               </div>
             </div>
 
@@ -505,7 +430,7 @@ export default function QuienesSomosPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             
             {/* COLUMNA IZQUIERDA: TÍTULO Y LÍDER DESTACADO (Renzo) */}
-            <div className="lg:col-span-6 flex flex-col items-center lg:items-start">
+            <div className="lg:col-span-5 flex flex-col items-center lg:items-start">
               {/* Título de sección */}
               <div className="mb-8 w-full text-left">
                 <span className="text-[11px] font-bold uppercase tracking-[3px] text-brand block mb-2">
@@ -521,12 +446,12 @@ export default function QuienesSomosPage() {
 
               {/* Tarjeta de Líder Principal */}
               <div className="w-full max-w-[440px]">
-                <div className="relative w-full h-[440px] sm:h-[500px] lg:h-[520px] bg-neutral-100 overflow-hidden shadow-sm group">
+                <div className="relative w-full h-[420px] sm:h-[480px] lg:h-[500px] bg-neutral-100 overflow-hidden shadow-sm group">
                   <Image
                     src={featuredLeader.image}
                     alt={featuredLeader.name}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 440px"
                     className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                     priority
                   />
@@ -550,40 +475,47 @@ export default function QuienesSomosPage() {
               </div>
             </div>
 
-            {/* COLUMNA DERECHA: LAURA MAGLIA (Mismo diseño con acento en L) */}
-            <div className="lg:col-span-6 flex justify-center lg:justify-end w-full pt-4 lg:pt-16">
-              <div className="w-full max-w-[420px] relative flex flex-col bg-white shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-neutral-200/90">
-                {/* Contenedor de Imagen */}
-                <div className="relative w-full h-[300px] sm:h-[340px] lg:h-[380px] bg-neutral-100 overflow-hidden">
-                  <Image
-                    src={lauraMember.image}
-                    alt={lauraMember.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 420px"
-                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                    priority
-                  />
-                </div>
-
-                {/* Info de Laura con Acento Angular en L */}
-                <div className="relative p-6 sm:p-7 text-center bg-white border-t border-neutral-100 flex-1 flex flex-col justify-center">
-                  {/* Acento geométrico en esquina inferior izquierda */}
-                  <div className="absolute left-0 bottom-0 w-8 sm:w-9 h-[3px] bg-black" />
-                  <div className="absolute left-0 bottom-0 w-[3px] h-8 sm:h-9 bg-black" />
-
-                  <h4
-                    className="text-lg sm:text-xl font-bold uppercase tracking-wider text-black leading-snug"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
+            {/* COLUMNA DERECHA: RESTO DEL EQUIPO */}
+            <div className="lg:col-span-7 flex justify-center lg:justify-end w-full pt-4 lg:pt-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+                {otherTeamMembers.map((member) => (
+                  <div
+                    key={member.id}
+                    className="w-full relative flex flex-col bg-white shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-neutral-200/90"
                   >
-                    {lauraMember.name}
-                  </h4>
-                  <p
-                    className="text-sm sm:text-base text-neutral-500 mt-1.5 font-normal"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {lauraMember.role}
-                  </p>
-                </div>
+                    {/* Contenedor de Imagen */}
+                    <div className="relative w-full h-[280px] sm:h-[300px] lg:h-[320px] bg-neutral-100 overflow-hidden">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
+                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                        priority
+                      />
+                    </div>
+
+                    {/* Info con Acento Angular en L */}
+                    <div className="relative p-5 sm:p-6 text-center bg-white border-t border-neutral-100 flex-1 flex flex-col justify-center">
+                      {/* Acento geométrico en esquina inferior izquierda */}
+                      <div className="absolute left-0 bottom-0 w-7 sm:w-8 h-[3px] bg-black" />
+                      <div className="absolute left-0 bottom-0 w-[3px] h-7 sm:h-8 bg-black" />
+
+                      <h4
+                        className="text-base sm:text-lg font-bold uppercase tracking-wider text-black leading-snug"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                      >
+                        {member.name}
+                      </h4>
+                      <p
+                        className="text-xs sm:text-sm text-neutral-500 mt-1 font-normal"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                      >
+                        {member.role}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 

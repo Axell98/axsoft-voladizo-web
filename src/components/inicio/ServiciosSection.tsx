@@ -28,7 +28,7 @@ const defaultFeatures: FeatureItem[] = [
     title: "CONSTRUCCIÓN Y REMODELACIÓN",
     icon: "/images/iconos/servi2_icon2.svg",
     image: "/images/inicio/servicios/servicio2/servicio_construccion.png",
-    href: "/servicios/diseno-e-ingenieria", // o landing correspondiente
+    href: "/servicios/construccion-y-remodelacion",
     description:
       "Ejecución de proyectos residenciales, comerciales e industriales bajo estrictas normas de seguridad y eficiencia operativa. Renovamos y optimizamos espacios corporativos y comerciales mediante intervenciones de calidad superior.",
   },
@@ -37,7 +37,7 @@ const defaultFeatures: FeatureItem[] = [
     title: "DISEÑO INTERIOR Y MOBILIARIO",
     icon: "/images/iconos/servi2_icon3.svg",
     image: "/images/inicio/servicios/servicio3/servicio_disenio_interior.jpg",
-    href: "/servicios/diseno-e-ingenieria",
+    href: "/servicios/diseno-interior-y-mobiliario",
     description:
       "Creación de ambientes vanguardistas y funcionales que redefinen la experiencia de cada espacio. Integramos diseño estético, estética contemporánea y soluciones de mobiliario a la medida.",
   },
@@ -46,7 +46,7 @@ const defaultFeatures: FeatureItem[] = [
     title: "GESTIÓN Y SUPERVISIÓN",
     icon: "/images/iconos/servi2_icon4.svg",
     image: "/images/inicio/servicios/servicio4/servicio_supervicion.png",
-    href: "/servicios/diseno-e-ingenieria",
+    href: "/servicios/gestion-y-supervision",
     description:
       "Control riguroso de cada etapa del proyecto. Aseguramos el cumplimiento estricto de los plazos, el presupuesto acordado y los más altos estándares de calidad constructiva y seguridad.",
   },

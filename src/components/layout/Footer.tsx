@@ -227,22 +227,22 @@ export default function Footer({ showCta }: FooterProps) {
             </div>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
+                <Link href="/servicios/diseno-e-ingenieria" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
                   Diseño e Ingeniería
                 </Link>
               </li>
               <li>
-                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
+                <Link href="/servicios/construccion-y-remodelacion" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
                   Construcción y Remodelación
                 </Link>
               </li>
               <li>
-                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
+                <Link href="/servicios/diseno-interior-y-mobiliario" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
                   Diseño Interior y Mobiliario
                 </Link>
               </li>
               <li>
-                <Link href="/#servicios" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
+                <Link href="/servicios/gestion-y-supervision" className="text-neutral-400 hover:text-white transition-colors duration-200 block font-light">
                   Gestión y Supervisión de Obra
                 </Link>
               </li>

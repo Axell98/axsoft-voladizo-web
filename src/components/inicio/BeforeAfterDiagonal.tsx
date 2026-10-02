@@ -15,8 +15,8 @@ interface BeforeAfterDiagonalProps {
 }
 
 export default function BeforeAfterDiagonal({
-  beforeImage = "/images/inicio/quienes-somos/before.jpg",
-  afterImage = "/images/inicio/quienes-somos/after.jpg",
+  beforeImage = "/images/inicio/quienes-somos/foto_qs_1.png",
+  afterImage = "/images/inicio/quienes-somos/foto_qs_2.png",
   beforeLabel = "Antes",
   afterLabel = "Después",
   initialPos = 50,
