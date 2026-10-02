@@ -53,7 +53,8 @@ export const proyectos: Proyecto[] = [
     titulo: "Diseño Edificio Multifamiliar",
     categoria: "residencial",
     locacion: "San Borja, Lima",
-    descripcion: "Desarrollo integral de arquitectura residencial moderna con optimización espacial y acabados de alta calidad.",
+    descripcion:
+      "Edificio multifamiliar en San Borja desarrollado de forma integral, desde el modelado 3D hasta la entrega final. Su fachada combina balcones en voladizo con celosías de madera y amplios ventanales que favorecen la iluminación natural. La distribución de cada departamento se optimizó para aprovechar el espacio, y la obra se ejecutó con total fidelidad al diseño proyectado.",
     ejecucion: "100%",
     anio: 2020,
     videoId: "1iUeq78m0wk",
@@ -87,9 +88,28 @@ export const proyectos: Proyecto[] = [
     titulo: "Diseño de Oficinas KIA",
     categoria: "oficinas",
     locacion: "San Luis, Lima",
-    descripcion: "Espacios de trabajo funcionales y vanguardistas diseñados bajo la identidad y dinamismo corporativo de la marca.",
+    ejecucion: "100%",
+    anio: 2021,
+    descripcion:
+      "Diseño de oficinas para KIA en San Luis, pensado para reflejar la identidad y el dinamismo corporativo de la marca. Se priorizaron espacios de trabajo funcionales, ordenados y con una imagen moderna, que acompañan la operación diaria del equipo. El proyecto se concretó fiel al render original, con una ejecución completa al 100%.",
     // TODO: imagen provisional (foto real del proyecto pendiente)
     imagen: "/images/inicio/slider/slider1.jpg",
+    galeria: [
+      {
+        etiqueta: "RENDER",
+        fase: "FASE 01: CONCEPCIÓN Y MODELADO 3D",
+        imagen: "/images/proyectos/KIA_ANTES.jpg",
+        descripcion:
+          "Modelado 3D de las oficinas KIA en San Luis, donde se definió la distribución de los ambientes, la circulación del personal y la imagen corporativa de la marca antes de iniciar la obra.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: CONSTRUCCIÓN Y ENTREGA FINAL",
+        imagen: "/images/inicio/slider/slider1.jpg",
+        descripcion:
+          "Ejecución de las oficinas con total fidelidad al diseño proyectado. Espacios de trabajo funcionales y ordenados, con acabados modernos que reflejan la identidad y el dinamismo de la marca.",
+      },
+    ],
   },
   {
     // Proyecto 3
@@ -97,9 +117,28 @@ export const proyectos: Proyecto[] = [
     titulo: "Diseño y Ejecución Vivienda Unifamiliar",
     categoria: "residencial",
     locacion: "Pucallpa, Ucayali",
-    descripcion: "Diseño bioclimático adaptado al confort térmico regional con integración armónica con el entorno natural.",
+    descripcion:
+      "Vivienda unifamiliar en Pucallpa con diseño y ejecución a cargo de Voladizo. La propuesta bioclimática responde al clima cálido de la selva, buscando confort térmico y una integración armónica con el entorno natural. Se acompañó el proyecto desde el modelado 3D hasta la obra terminada, manteniendo la fidelidad con el diseño original.",
     // TODO: imagen provisional (foto real del proyecto pendiente)
-    imagen: "/images/inicio/quienes-somos/pic5.jpg",
+    imagen: "/images/proyectos/vivienda_unifamiliar_despues.png",
+    ejecucion: "100%",
+    anio: 2021,
+    galeria: [
+      {
+        etiqueta: "RENDER",
+        fase: "FASE 01: CONCEPCIÓN Y MODELADO 3D",
+        imagen: "/images/proyectos/vivienda_unifamiliar_antes.png",
+        descripcion:
+          "Modelado 3D de la vivienda unifamiliar en Pucallpa con enfoque bioclimático, definiendo la orientación, la ventilación y la distribución de los ambientes para lograr confort térmico en el clima regional.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: CONSTRUCCIÓN Y ENTREGA FINAL",
+        imagen: "/images/proyectos/vivienda_unifamiliar_despues.png",
+        descripcion:
+          "Construcción de la vivienda con total fidelidad al diseño proyectado. La obra terminada logra confort térmico y una integración armónica con el entorno natural, con acabados cuidados en toda la vivienda.",
+      },
+    ],
   },
   {
     // Proyecto 4
@@ -107,9 +146,28 @@ export const proyectos: Proyecto[] = [
     titulo: "Diseño de Concesionario Isuzu",
     categoria: "comercial",
     locacion: "San Luis, Lima",
-    descripcion: "Infraestructura comercial y showroom automotriz concebido para optimizar la exhibición y flujo de clientes.",
+    descripcion:
+      "Diseño del concesionario Isuzu en San Luis, un showroom automotriz concebido para destacar la exhibición de los vehículos y facilitar el flujo de clientes. La propuesta equilibra una imagen comercial sólida con espacios amplios y bien iluminados. Del render a la obra construida, el resultado mantiene la esencia del diseño proyectado.",
     // TODO: imagen provisional (foto real del proyecto pendiente)
     imagen: "/images/inicio/slider/slider2.jpg",
+    ejecucion: "100%",
+    anio: 2022,
+    galeria: [
+      {
+        etiqueta: "RENDER",
+        fase: "FASE 01: CONCEPCIÓN Y MODELADO 3D",
+        imagen: "/images/proyectos/izuzu_antes.png",
+        descripcion:
+          "Modelado 3D del concesionario Isuzu en San Luis, concebido como un showroom que destaca la exhibición de los vehículos y organiza el flujo de clientes dentro del local.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: CONSTRUCCIÓN Y ENTREGA FINAL",
+        imagen: "/images/proyectos/izuzu_despues.png",
+        descripcion:
+          "Ejecución del concesionario con total fidelidad al diseño proyectado. Un showroom amplio y bien iluminado, con una imagen comercial sólida que mantiene la esencia del render original.",
+      },
+    ],
   },
   {
     // Proyecto 5
@@ -117,7 +175,8 @@ export const proyectos: Proyecto[] = [
     titulo: "Diseño y Construcción Agencia Bancaria BCP",
     categoria: "comercial",
     locacion: "Lima, Perú",
-    descripcion: "Remodelación integral y acondicionamiento cumpliendo estrictos estándares de seguridad y eficiencia operativa.",
+    descripcion:
+      "Diseño y construcción de una agencia bancaria BCP, con remodelación integral y acondicionamiento de los ambientes. El proyecto cumple los estrictos estándares de seguridad que exige el sector financiero, sin perder de vista la eficiencia operativa y la comodidad de clientes y colaboradores. Se muestra el proceso de ejecución frente al resultado final.",
     imagen: "/images/inicio/servicios/servicio1/servicio_disenio.png",
     comparacion: {
       antesImagen: "/images/inicio/servicios/servicio2/servicio_construccion.jpg",
@@ -132,18 +191,23 @@ export const proyectos: Proyecto[] = [
     // pero no tenemos una foto de la obra terminada todavía.
     // TODO: confirmar título exacto, locación, año y agregar la foto de la obra terminada.
     slug: "vivienda-en-ejecucion",
-    titulo: "Vivienda Unifamiliar en Ejecución",
+    titulo: "Diseño y ejeución local La Choza de la Anconda",
     categoria: "en-ejecucion",
+    anio: 2021,
+    descripcion:
+      "Vivienda unifamiliar actualmente en construcción, con un avance de obra del 60%. Se trabaja sobre una estructura metálica y con el personal de Voladizo en obra, siguiendo el cronograma y las especificaciones del diseño. Es una muestra del proceso constructivo que acompañamos de principio a fin.",
     ejecucion: "60%",
-    imagen: "/images/inicio/servicios/servicio2/servicio_construccion.png",
+    imagen: "/images/proyectos/LA_CHOZA_DESPUES.jpg",
   },
   {
     // Proyecto 7
     // TODO: proyecto pendiente de información y foto real del cliente.
     slug: "proyecto-07",
-    titulo: "Proyecto 7",
+    titulo: "DISEÑO Y EJECUCION PLANTA PRODUCCION AMAZON",
     categoria: "residencial",
-    imagen: "/images/inicio/quienes-somos/pic1.jpg",
+    imagen: "/images/inicio/trayectoria/trayectoria_innovacion.jpg",
+    descripcion:
+      "Vivienda unifamiliar actualmente en construcción, con un avance de obra del 60%. Se trabaja sobre una estructura metálica y con el personal de Voladizo en obra, siguiendo el cronograma y las especificaciones del diseño. Es una muestra del proceso constructivo que acompañamos de principio a fin.",
   },
   {
     // Proyecto 8
@@ -162,6 +226,8 @@ export const proyectos: Proyecto[] = [
     titulo: "Diseño y Ejecución Vivienda en Quinta Doña Angélica",
     categoria: "residencial",
     locacion: "Jesús María, Lima",
+    descripcion:
+      "Diseño y ejecución de una vivienda en Quinta Doña Angélica, en Jesús María, finalizada en 2024. El proyecto aprovecha con criterio el espacio disponible en un lote de quinta, logrando ambientes funcionales, cómodos y bien ventilados. Se documenta todo el proceso, desde la ejecución en obra hasta el resultado final entregado al cliente.",
     ejecucion: "100%",
     anio: 2024,
     // TODO: imágenes provisionales (fotos reales del proyecto pendientes)

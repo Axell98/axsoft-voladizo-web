@@ -143,13 +143,6 @@ export default function ProyectoDetalleInteractivo({ proyecto }: Props) {
                     className="object-cover transition-all duration-700 ease-out"
                   />
 
-                  {/* Badge en la esquina superior de la imagen */}
-                  <div className="absolute top-4 left-4 z-20">
-                    <span className="px-3.5 py-1.5 bg-black/90 backdrop-blur-sm text-white text-[11px] font-bold uppercase tracking-[2.5px] border border-white/20">
-                      {currentSlide.etiqueta}
-                    </span>
-                  </div>
-
                   {/* Flechas de navegación */}
                   {slides.length > 1 && (
                     <>

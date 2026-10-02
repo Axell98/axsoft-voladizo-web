@@ -4,7 +4,7 @@ import Image from "next/image";
 import { REVEAL_BASE, useReveal } from "@/lib/use-reveal";
 
 // TODO: reemplazar por la imagen del brochure (p. ej. /images/inicio/trayectoria/trayectoria.jpg)
-const TRAYECTORIA_IMAGE = "/images/inicio/servicios/servicio1/1.jpg";
+const TRAYECTORIA_IMAGE = "/images/inicio/trayectoria/trayectoria_innovacion.jpg";
 
 interface TrayectoriaCard {
   id: number;
