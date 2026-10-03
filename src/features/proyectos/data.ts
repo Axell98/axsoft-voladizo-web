@@ -49,7 +49,7 @@ export interface Proyecto {
 export const proyectos: Proyecto[] = [
   {
     // Proyecto 1
-    slug: "edificio-multifamiliar-san-borja",
+    slug: "diseno-edificio-multifamiliar",
     titulo: "Diseño Edificio Multifamiliar",
     categoria: "residencial",
     locacion: "San Borja, Lima",
@@ -71,20 +71,20 @@ export const proyectos: Proyecto[] = [
         fase: "FASE 01: CONCEPCIÓN Y MODELADO 3D",
         imagen: "/images/proyectos/proyecto1_render.jpg",
         descripcion:
-          "Desarrollo y modelado volumétrico 3D del edificio multifamiliar, integrando balcones voladizos con celosías de madera, amplios ventanales para iluminación natural y optimización de distribución espacial para cada departamento.",
+          "Propuesta 3D del edificio multifamiliar: volúmenes blancos ordenados alrededor de una celosía vertical de madera. Los balcones en voladizo con barandas de vidrio e iluminación empotrada dan ritmo a la fachada, y las terrazas con jardineras coronan el conjunto.",
       },
       {
         etiqueta: "REALIDAD",
         fase: "FASE 02: CONSTRUCCIÓN Y ENTREGA FINAL",
         imagen: "/images/proyectos/proyecto1_realidad.jpg",
         descripcion:
-          "Ejecución integral de la obra con total fidelidad al diseño proyectado. Estructura antisísmica de concreto armado, carpintería de aluminio y vidrio templado, y acabados de primera calidad tanto en fachada como en áreas comunes.",
+          "El edificio construido conserva la composición diseñada: celosía de madera, balcones en voladizo con vidrio y amplios ventanales que llenan los departamentos de luz natural. Un ingreso sobrio, con muro de concreto y portón de madera, completa una fachada elegante.",
       },
     ],
   },
   {
     // Proyecto 2
-    slug: "oficinas-kia",
+    slug: "diseno-de-oficinas-kia",
     titulo: "Diseño de Oficinas KIA",
     categoria: "oficinas",
     locacion: "San Luis, Lima",
@@ -100,20 +100,20 @@ export const proyectos: Proyecto[] = [
         fase: "FASE 01: CONCEPCIÓN Y MODELADO 3D",
         imagen: "/images/proyectos/KIA_ANTES.jpg",
         descripcion:
-          "Modelado 3D de las oficinas KIA en San Luis, donde se definió la distribución de los ambientes, la circulación del personal y la imagen corporativa de la marca antes de iniciar la obra.",
+          "Propuesta 3D del área de atención KIA: un ambiente cálido con paneles de madera, mostrador curvo con tres puestos de atención y el logotipo de la marca como punto focal. Una zona de espera y un frente de vidrio completan el espacio.",
       },
       {
         etiqueta: "REALIDAD",
         fase: "FASE 02: CONSTRUCCIÓN Y ENTREGA FINAL",
         imagen: "/images/inicio/slider/slider1.jpg",
         descripcion:
-          "Ejecución de las oficinas con total fidelidad al diseño proyectado. Espacios de trabajo funcionales y ordenados, con acabados modernos que reflejan la identidad y el dinamismo de la marca.",
+          "La versión final mantiene la distribución y refuerza la ambientación: logotipo retroiluminado, piso de madera y una sala de espera acogedora. Los ventanales llenan el espacio de luz natural y conectan la atención con la zona de vehículos.",
       },
     ],
   },
   {
     // Proyecto 3
-    slug: "vivienda-unifamiliar-pucallpa",
+    slug: "diseno-y-ejecucion-vivienda-unifamiliar",
     titulo: "Diseño y Ejecución Vivienda Unifamiliar",
     categoria: "residencial",
     locacion: "Pucallpa, Ucayali",
@@ -129,20 +129,20 @@ export const proyectos: Proyecto[] = [
         fase: "FASE 01: CONCEPCIÓN Y MODELADO 3D",
         imagen: "/images/proyectos/vivienda_unifamiliar_antes.png",
         descripcion:
-          "Modelado 3D de la vivienda unifamiliar en Pucallpa con enfoque bioclimático, definiendo la orientación, la ventilación y la distribución de los ambientes para lograr confort térmico en el clima regional.",
+          "Propuesta 3D de una vivienda de dos niveles elevada sobre columnas, que libera el nivel de acceso. Las celosías de madera filtran el sol y favorecen la ventilación, mientras el amplio ventanal aprovecha la luz natural, pensado para el clima de Pucallpa.",
       },
       {
         etiqueta: "REALIDAD",
         fase: "FASE 02: CONSTRUCCIÓN Y ENTREGA FINAL",
         imagen: "/images/proyectos/vivienda_unifamiliar_despues.png",
         descripcion:
-          "Construcción de la vivienda con total fidelidad al diseño proyectado. La obra terminada logra confort térmico y una integración armónica con el entorno natural, con acabados cuidados en toda la vivienda.",
+          "La vivienda construida respeta el diseño bioclimático: volumen blanco con paramento de ladrillo, celosías de madera y un cerco de listones que aporta privacidad. Rodeada de vegetación tropical, logra confort térmico y se integra con su entorno.",
       },
     ],
   },
   {
     // Proyecto 4
-    slug: "concesionario-isuzu",
+    slug: "diseno-de-concesionario-isuzu",
     titulo: "Diseño de Concesionario Isuzu",
     categoria: "comercial",
     locacion: "San Luis, Lima",
@@ -158,20 +158,20 @@ export const proyectos: Proyecto[] = [
         fase: "FASE 01: CONCEPCIÓN Y MODELADO 3D",
         imagen: "/images/proyectos/izuzu_antes.png",
         descripcion:
-          "Modelado 3D del concesionario Isuzu en San Luis, concebido como un showroom que destaca la exhibición de los vehículos y organiza el flujo de clientes dentro del local.",
+          "Propuesta 3D del concesionario Isuzu: un showroom de fachada acristalada y techo curvo en rojo corporativo, pensado para exhibir los vehículos a la vista y comunicar sus servicios de venta, centro de servicios y repuestos.",
       },
       {
         etiqueta: "REALIDAD",
         fase: "FASE 02: CONSTRUCCIÓN Y ENTREGA FINAL",
         imagen: "/images/proyectos/izuzu_despues.png",
         descripcion:
-          "Ejecución del concesionario con total fidelidad al diseño proyectado. Un showroom amplio y bien iluminado, con una imagen comercial sólida que mantiene la esencia del render original.",
+          "El concesionario construido mantiene la identidad de Isuzu: techo curvo rojo, fachada de vidrio, tótems de señalización y un amplio patio de exhibición y estacionamiento que facilita el acceso y el flujo de clientes.",
       },
     ],
   },
   {
     // Proyecto 5
-    slug: "agencia-bancaria-bcp",
+    slug: "diseno-y-construccion-agencia-bancaria-bcp",
     titulo: "Diseño y Construcción Agencia Bancaria BCP",
     categoria: "comercial",
     locacion: "Lima, Perú",
@@ -190,39 +190,41 @@ export const proyectos: Proyecto[] = [
     // También es una foto real de obra (estructura metálica, personal con logo Voladizo),
     // pero no tenemos una foto de la obra terminada todavía.
     // TODO: confirmar título exacto, locación, año y agregar la foto de la obra terminada.
-    slug: "vivienda-en-ejecucion",
+    slug: "diseno-y-ejecucion-local-la-choza-de-la-anconda",
     titulo: "Diseño y ejeución local La Choza de la Anconda",
     categoria: "en-ejecucion",
     anio: 2021,
     descripcion:
-      "Vivienda unifamiliar actualmente en construcción, con un avance de obra del 60%. Se trabaja sobre una estructura metálica y con el personal de Voladizo en obra, siguiendo el cronograma y las especificaciones del diseño. Es una muestra del proceso constructivo que acompañamos de principio a fin.",
+      "Diseño y ejecución del local La Choza de la Anconda, una obra en curso con un avance del 60%. Se trabaja sobre una estructura metálica, con el personal de Voladizo en obra y siguiendo las especificaciones del diseño proyectado. El proyecto muestra el proceso constructivo que acompañamos de principio a fin.",
     ejecucion: "60%",
     imagen: "/images/proyectos/LA_CHOZA_DESPUES.jpg",
   },
   {
     // Proyecto 7
     // TODO: proyecto pendiente de información y foto real del cliente.
-    slug: "proyecto-07",
+    slug: "diseno-y-ejecucion-planta-produccion-amazon",
     titulo: "DISEÑO Y EJECUCION PLANTA PRODUCCION AMAZON",
     categoria: "residencial",
     imagen: "/images/inicio/trayectoria/trayectoria_innovacion.jpg",
     descripcion:
-      "Vivienda unifamiliar actualmente en construcción, con un avance de obra del 60%. Se trabaja sobre una estructura metálica y con el personal de Voladizo en obra, siguiendo el cronograma y las especificaciones del diseño. Es una muestra del proceso constructivo que acompañamos de principio a fin.",
+      "Diseño y ejecución de una planta de producción, desarrollada con un enfoque en la funcionalidad y la eficiencia operativa. La distribución de las áreas se pensó para ordenar el flujo de trabajo y garantizar condiciones seguras para el personal. Voladizo acompañó el proyecto desde la concepción del diseño hasta la construcción de la obra.",
   },
   {
     // Proyecto 8
     // TODO: proyecto pendiente de información y foto real del cliente.
     // videoId es un video de muestra (charla pública de Google I/O) solo para probar que el
     // botón "Reproducir video" y el modal funcionan; reemplazar por el video real del proyecto.
-    slug: "proyecto-08",
-    titulo: "Proyecto 8",
-    categoria: "comercial",
+    slug: "diseno-y-ejecucion-departamento-linkce",
+    titulo: "DISEÑO Y EJECUCION DEPARTAMENTO LINKCE",
+    categoria: "residencial",
+    descripcion:
+      "Diseño y ejecución integral de un departamento para Linkce, pensado para aprovechar al máximo cada espacio y lograr ambientes cómodos y funcionales. Se cuidó la distribución, los acabados y la coherencia estética de todo el conjunto. Voladizo se encargó tanto del diseño como de la construcción hasta la entrega final.",
     imagen: "/images/inicio/quienes-somos/pic2.jpg",
     videoId: "M7lc1UVf-VE",
   },
   {
     // Proyecto 9
-    slug: "vivienda-quinta-dona-angelica",
+    slug: "diseno-y-ejecucion-vivienda-en-quinta-dona-angelica",
     titulo: "Diseño y Ejecución Vivienda en Quinta Doña Angélica",
     categoria: "residencial",
     locacion: "Jesús María, Lima",
@@ -231,7 +233,7 @@ export const proyectos: Proyecto[] = [
     ejecucion: "100%",
     anio: 2024,
     // TODO: imágenes provisionales (fotos reales del proyecto pendientes)
-    imagen: "/images/inicio/quienes-somos/after.jpg",
+    imagen: "/images/proyectos/RM_JESUS_MARIA_DESPUES.png",
     comparacion: {
       antesImagen: "/images/inicio/quienes-somos/before.jpg",
       antesLabel: "Proceso de Ejecución",
@@ -242,18 +244,43 @@ export const proyectos: Proyecto[] = [
   {
     // Proyecto 10
     // TODO: proyecto pendiente de información y foto real del cliente.
-    slug: "proyecto-10",
-    titulo: "Proyecto 10",
-    categoria: "oficinas",
-    imagen: "/images/inicio/quienes-somos/pic3.jpg",
+    slug: "diseno-y-remodelacion-oficinas-chocopro",
+    titulo: "DISEÑO Y REMODELACION OFICINAS CHOCOPRO",
+    categoria: "comercial",
+    descripcion:
+      "Diseño y remodelación de las oficinas de Chocopro, orientado a crear espacios de trabajo ordenados, funcionales y acordes con la imagen de la empresa. Se replanteó la distribución de los ambientes para mejorar la comodidad y el desempeño diario del equipo. Voladizo estuvo a cargo del diseño y de la ejecución de la remodelación.",
+    imagen: "/images/proyectos/chocopro_despues.jpg",
+    ejecucion: "100%",
+    anio: 2025,
+    locacion: "SAN ISIDRO, LIMA",
+    galeria: [
+      {
+        etiqueta: "RENDER",
+        fase: "FASE 01: CONCEPCIÓN Y MODELADO 3D",
+        imagen: "/images/proyectos/chocopro_antes.jpg",
+        descripcion:
+          "Estado inicial del ambiente antes de la intervención: un espacio amplio, desmontado y con las instalaciones a la vista, listo para replantear su distribución. Es el punto de partida para crear un área moderna y funcional.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: CONSTRUCCIÓN Y ENTREGA FINAL",
+        imagen: "/images/proyectos/chocopro_despues.jpg",
+        descripcion:
+          "Resultado final: un área de cocina y comedor de estética contemporánea, con isla central de acabado en mármol, muebles blancos de alto brillo y paneles oscuros acanalados. La iluminación LED y de rieles realza un ambiente cómodo y práctico.",
+      },
+    ],
   },
   {
     // Proyecto 11
     // TODO: proyecto pendiente de información y foto real del cliente.
-    slug: "proyecto-11",
-    titulo: "Proyecto 11",
-    categoria: "en-ejecucion",
-    imagen: "/images/inicio/quienes-somos/pic4.jpg",
+    slug: "diseno-y-remodelacion-kitchenette",
+    titulo: "DISEÑO Y REMODELACION KITCHENNETTE",
+    categoria: "residencial",
+    descripcion:
+      "Diseño y remodelación de un kitchenette, concebido para aprovechar el espacio disponible con una distribución práctica y funcional. Se renovaron los acabados y el mobiliario para lograr un ambiente cómodo, ordenado y de fácil uso. El proyecto se completó al 100% en 2026.",
+    imagen: "/images/proyectos/KITCHENNETTE_despues.png",
+    ejecucion: "100%",
+    anio: 2026,
   },
 ];
 
