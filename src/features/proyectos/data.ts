@@ -171,56 +171,139 @@ export const proyectos: Proyecto[] = [
   },
   {
     // Proyecto 5
-    slug: "diseno-y-construccion-agencia-bancaria-bcp",
-    titulo: "Diseño y Construcción Agencia Bancaria BCP",
+    slug: "diseno-y-ejecucion-local-la-choza-de-la-anaconda",
+    titulo: "Diseño y Ejecución Local La Choza de la Anaconda",
     categoria: "comercial",
-    locacion: "Lima, Perú",
+    locacion: "Los Olivos, Lima",
+    ejecucion: "100%",
+    anio: 2021,
     descripcion:
-      "Diseño y construcción de una agencia bancaria BCP, con remodelación integral y acondicionamiento de los ambientes. El proyecto cumple los estrictos estándares de seguridad que exige el sector financiero, sin perder de vista la eficiencia operativa y la comodidad de clientes y colaboradores. Se muestra el proceso de ejecución frente al resultado final.",
-    imagen: "/images/inicio/servicios/servicio1/servicio_disenio.png",
+      "Diseño y ejecución integral del local gastronómico La Choza de la Anaconda en Los Olivos, Lima. El proyecto abarcó desde la adecuación estructural y montaje de instalaciones hasta los acabados comerciales de alto impacto, integrando iluminación cálida, revestimientos de madera y áreas de servicio optimizadas para una operación eficiente.",
+    imagen: "/images/proyectos/LA_CHOZA_DESPUES.jpg",
     comparacion: {
-      antesImagen: "/images/inicio/servicios/servicio2/servicio_construccion.jpg",
+      antesImagen: "/images/proyectos/LA_CHOZA_DESPUES.jpg",
       antesLabel: "Proceso de Ejecución",
-      despuesImagen: "/images/inicio/servicios/servicio1/servicio_disenio.png",
+      despuesImagen: "/images/proyectos/LA_CHOZA_DESPUES.jpg",
       despuesLabel: "Realidad",
     },
+    galeria: [
+      {
+        etiqueta: "PROCESO DE EJECUCIÓN",
+        fase: "FASE 01: MONTAJE Y ESTRUCTURA",
+        imagen: "/images/proyectos/LA_CHOZA_DESPUES.jpg",
+        descripcion:
+          "Adecuación estructural, montaje de redes e instalaciones y habilitación general del local en obra.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: ACABADOS Y ENTREGA FINAL",
+        imagen: "/images/proyectos/LA_CHOZA_DESPUES.jpg",
+        descripcion:
+          "Local gastronómico concluido al 100%: mostrador de madera iluminado, barra de atención y ambientación de marca.",
+      },
+    ],
   },
   {
     // Proyecto 6
-    // También es una foto real de obra (estructura metálica, personal con logo Voladizo),
-    // pero no tenemos una foto de la obra terminada todavía.
-    // TODO: confirmar título exacto, locación, año y agregar la foto de la obra terminada.
-    slug: "diseno-y-ejecucion-local-la-choza-de-la-anconda",
-    titulo: "Diseño y ejeución local La Choza de la Anconda",
-    categoria: "en-ejecucion",
-    anio: 2021,
+    slug: "diseno-y-ejecucion-planta-produccion-amazon",
+    titulo: "Diseño y Ejecución Planta Producción Amazon",
+    categoria: "comercial",
+    locacion: "Mala, Lima",
+    ejecucion: "100%",
+    anio: 2022,
+    imagen: "/images/proyectos/amazon_despues.jpg",
     descripcion:
-      "Diseño y ejecución del local La Choza de la Anconda, una obra en curso con un avance del 60%. Se trabaja sobre una estructura metálica, con el personal de Voladizo en obra y siguiendo las especificaciones del diseño proyectado. El proyecto muestra el proceso constructivo que acompañamos de principio a fin.",
-    ejecucion: "60%",
-    imagen: "/images/proyectos/LA_CHOZA_DESPUES.jpg",
+      "Diseño y ejecución integral de la planta de producción Amazon en Mala, Lima. Desarrollada con un enfoque de máxima eficiencia operativa, seguridad y durabilidad industrial, optimizando la nave de producción, accesos y áreas técnicas con acabados de alto impacto.",
+    comparacion: {
+      antesImagen: "/images/proyectos/amazon_antes.png",
+      antesLabel: "Proceso de Ejecución",
+      despuesImagen: "/images/proyectos/amazon_despues.jpg",
+      despuesLabel: "Realidad",
+    },
+    galeria: [
+      {
+        etiqueta: "PROCESO DE EJECUCIÓN",
+        fase: "FASE 01: MONTAJE Y ESTRUCTURA",
+        imagen: "/images/proyectos/amazon_antes.png",
+        descripcion:
+          "Montaje de estructuras metálicas, cerramientos, pasarelas técnicas y habilitación integral de la nave en obra.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: ACABADOS Y ENTREGA FINAL",
+        imagen: "/images/proyectos/amazon_despues.jpg",
+        descripcion:
+          "Planta de producción ejecutada al 100%, con fachada industrial en color corporativo negro y verde, balcón técnico superior y accesos operativos listos.",
+      },
+    ],
   },
   {
     // Proyecto 7
-    // TODO: proyecto pendiente de información y foto real del cliente.
-    slug: "diseno-y-ejecucion-planta-produccion-amazon",
-    titulo: "DISEÑO Y EJECUCION PLANTA PRODUCCION AMAZON",
+    slug: "diseno-y-ejecucion-casa-de-campo-familia-paredes",
+    titulo: "Diseño y Ejecución de Casa de Campo Familia Paredes",
     categoria: "residencial",
-    imagen: "/images/inicio/trayectoria/trayectoria_innovacion.jpg",
+    locacion: "Cañete, Lima",
+    ejecucion: "100% Prefabricado",
+    anio: 2023,
+    imagen: "/images/proyectos/campo_familia_paredes_despues.jpeg",
     descripcion:
-      "Diseño y ejecución de una planta de producción, desarrollada con un enfoque en la funcionalidad y la eficiencia operativa. La distribución de las áreas se pensó para ordenar el flujo de trabajo y garantizar condiciones seguras para el personal. Voladizo acompañó el proyecto desde la concepción del diseño hasta la construcción de la obra.",
+      "Diseño y ejecución integral de casa de campo para la familia Paredes en Cañete, Lima. Desarrollada mediante un sistema constructivo prefabricado de alta eficiencia y sostenibilidad, optimizando los tiempos de obra y garantizando un excelente confort térmico e integración con el entorno natural.",
+    comparacion: {
+      antesImagen: "/images/proyectos/campo_familia_paredes_antes.jpeg",
+      antesLabel: "Proceso de Ejecución",
+      despuesImagen: "/images/proyectos/campo_familia_paredes_despues.jpeg",
+      despuesLabel: "Realidad",
+    },
+    galeria: [
+      {
+        etiqueta: "PROCESO DE EJECUCIÓN",
+        fase: "FASE 01: ESTRUCTURA Y MONTAJE",
+        imagen: "/images/proyectos/campo_familia_paredes_antes.jpeg",
+        descripcion:
+          "Montaje de estructura prefabricada, cerramientos exteriores y habilitación de los dos niveles en obra.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: ACABADOS Y ENTREGA FINAL",
+        imagen: "/images/proyectos/campo_familia_paredes_despues.jpeg",
+        descripcion:
+          "Casa de campo concluida al 100%: amplias mamparas de vidrio, balcón superior, jardín y armonía con el paisaje campestre.",
+      },
+    ],
   },
   {
     // Proyecto 8
-    // TODO: proyecto pendiente de información y foto real del cliente.
-    // videoId es un video de muestra (charla pública de Google I/O) solo para probar que el
-    // botón "Reproducir video" y el modal funcionan; reemplazar por el video real del proyecto.
-    slug: "diseno-y-ejecucion-departamento-linkce",
-    titulo: "DISEÑO Y EJECUCION DEPARTAMENTO LINKCE",
+    slug: "diseno-y-ejecucion-departamento-lince",
+    titulo: "Diseño y Ejecución Departamento Lince",
     categoria: "residencial",
+    locacion: "Lince, Lima",
+    ejecucion: "100%",
+    anio: 2024,
+    imagen: "/images/proyectos/linkce_despues.jpeg",
     descripcion:
-      "Diseño y ejecución integral de un departamento para Linkce, pensado para aprovechar al máximo cada espacio y lograr ambientes cómodos y funcionales. Se cuidó la distribución, los acabados y la coherencia estética de todo el conjunto. Voladizo se encargó tanto del diseño como de la construcción hasta la entrega final.",
-    imagen: "/images/inicio/quienes-somos/pic2.jpg",
-    videoId: "M7lc1UVf-VE",
+      "Diseño y ejecución integral de departamento en Lince, Lima. Se optimizó cada metro cuadrado mediante una distribución contemporánea y mobiliario a medida, integrando centro de entretenimiento, iluminación técnica y cocina abierta en un ambiente sofisticado y altamente funcional.",
+    comparacion: {
+      antesImagen: "/images/proyectos/linkce_antes.jpeg",
+      antesLabel: "Proceso de Ejecución",
+      despuesImagen: "/images/proyectos/linkce_despues.jpeg",
+      despuesLabel: "Realidad",
+    },
+    galeria: [
+      {
+        etiqueta: "PROCESO DE EJECUCIÓN",
+        fase: "FASE 01: INSTALACIONES Y OBRA INTERIOR",
+        imagen: "/images/proyectos/linkce_antes.jpeg",
+        descripcion:
+          "Adecuación de rieles de iluminación, cableado estructurado y preparación de pisos y muros.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: MOBILIARIO Y ENTREGA FINAL",
+        imagen: "/images/proyectos/linkce_despues.jpeg",
+        descripcion:
+          "Departamento terminado al 100%: centro de entretenimiento con madera cálida, iluminación LED focal y cocina integrada.",
+      },
+    ],
   },
   {
     // Proyecto 9
@@ -228,59 +311,101 @@ export const proyectos: Proyecto[] = [
     titulo: "Diseño y Ejecución Vivienda en Quinta Doña Angélica",
     categoria: "residencial",
     locacion: "Jesús María, Lima",
-    descripcion:
-      "Diseño y ejecución de una vivienda en Quinta Doña Angélica, en Jesús María, finalizada en 2024. El proyecto aprovecha con criterio el espacio disponible en un lote de quinta, logrando ambientes funcionales, cómodos y bien ventilados. Se documenta todo el proceso, desde la ejecución en obra hasta el resultado final entregado al cliente.",
     ejecucion: "100%",
     anio: 2024,
-    // TODO: imágenes provisionales (fotos reales del proyecto pendientes)
-    imagen: "/images/proyectos/RM_JESUS_MARIA_DESPUES.png",
+    imagen: "/images/proyectos/quinta_angelica_despues.jpeg",
+    descripcion:
+      "Diseño y ejecución integral de una vivienda unifamiliar en Quinta Doña Angélica, Jesús María. Se optimizó el espacio disponible logrando una distribución funcional, moderna y con excelente ventilación e iluminación natural.",
     comparacion: {
-      antesImagen: "/images/inicio/quienes-somos/before.jpg",
+      antesImagen: "/images/proyectos/quinta_angelica_antes.jpeg",
       antesLabel: "Proceso de Ejecución",
-      despuesImagen: "/images/inicio/quienes-somos/after.jpg",
+      despuesImagen: "/images/proyectos/quinta_angelica_despues.jpeg",
       despuesLabel: "Realidad",
     },
-  },
-  {
-    // Proyecto 10
-    // TODO: proyecto pendiente de información y foto real del cliente.
-    slug: "diseno-y-remodelacion-oficinas-chocopro",
-    titulo: "DISEÑO Y REMODELACION OFICINAS CHOCOPRO",
-    categoria: "comercial",
-    descripcion:
-      "Diseño y remodelación de las oficinas de Chocopro, orientado a crear espacios de trabajo ordenados, funcionales y acordes con la imagen de la empresa. Se replanteó la distribución de los ambientes para mejorar la comodidad y el desempeño diario del equipo. Voladizo estuvo a cargo del diseño y de la ejecución de la remodelación.",
-    imagen: "/images/proyectos/chocopro_despues.jpg",
-    ejecucion: "100%",
-    anio: 2025,
-    locacion: "SAN ISIDRO, LIMA",
     galeria: [
       {
-        etiqueta: "RENDER",
-        fase: "FASE 01: CONCEPCIÓN Y MODELADO 3D",
-        imagen: "/images/proyectos/chocopro_antes.jpg",
+        etiqueta: "PROCESO DE EJECUCIÓN",
+        fase: "FASE 01: EJECUCIÓN Y MONTAJE",
+        imagen: "/images/proyectos/quinta_angelica_antes.jpeg",
         descripcion:
-          "Estado inicial del ambiente antes de la intervención: un espacio amplio, desmontado y con las instalaciones a la vista, listo para replantear su distribución. Es el punto de partida para crear un área moderna y funcional.",
+          "Proceso constructivo y adecuación estructural en obra, habilitando muros, instalaciones y distribución interior.",
       },
       {
         etiqueta: "REALIDAD",
-        fase: "FASE 02: CONSTRUCCIÓN Y ENTREGA FINAL",
-        imagen: "/images/proyectos/chocopro_despues.jpg",
+        fase: "FASE 02: ACABADOS Y ENTREGA FINAL",
+        imagen: "/images/proyectos/quinta_angelica_despues.jpeg",
         descripcion:
-          "Resultado final: un área de cocina y comedor de estética contemporánea, con isla central de acabado en mármol, muebles blancos de alto brillo y paneles oscuros acanalados. La iluminación LED y de rieles realza un ambiente cómodo y práctico.",
+          "Vivienda finalizada al 100% con acabados de calidad superior, integración lumínica y confort habitacional completo.",
       },
     ],
   },
   {
-    // Proyecto 11
-    // TODO: proyecto pendiente de información y foto real del cliente.
-    slug: "diseno-y-remodelacion-kitchenette",
-    titulo: "DISEÑO Y REMODELACION KITCHENNETTE",
-    categoria: "residencial",
-    descripcion:
-      "Diseño y remodelación de un kitchenette, concebido para aprovechar el espacio disponible con una distribución práctica y funcional. Se renovaron los acabados y el mobiliario para lograr un ambiente cómodo, ordenado y de fácil uso. El proyecto se completó al 100% en 2026.",
-    imagen: "/images/proyectos/KITCHENNETTE_despues.png",
+    // Proyecto 10
+    slug: "diseno-y-remodelacion-oficinas-chocopro",
+    titulo: "Diseño y Remodelación Oficinas Chocopro",
+    categoria: "comercial",
+    locacion: "San Isidro, Lima",
     ejecucion: "100%",
-    anio: 2026,
+    anio: 2025,
+    imagen: "/images/proyectos/chocopro_despues.png",
+    descripcion:
+      "Diseño y remodelación de las oficinas corporativas Chocopro en San Isidro, Lima. Se replanteó integralmente el espacio para crear un kitchenette y comedor de vanguardia, integrando isla central con iluminación LED perimetral, muebles de alto brillo y paneles acanalados.",
+    comparacion: {
+      antesImagen: "/images/proyectos/chocopro_antes.png",
+      antesLabel: "Proceso de Ejecución",
+      despuesImagen: "/images/proyectos/chocopro_despues.png",
+      despuesLabel: "Realidad",
+    },
+    galeria: [
+      {
+        etiqueta: "PROCESO DE EJECUCIÓN",
+        fase: "FASE 01: MONTAJE Y ADECUACIÓN EN OBRA",
+        imagen: "/images/proyectos/chocopro_antes.png",
+        descripcion:
+          "Estado inicial y desmontaje de muros, nivelación de superficies e instalación de perfiles metálicos y redes técnicas.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: ACABADOS Y ENTREGA FINAL",
+        imagen: "/images/proyectos/chocopro_despues.png",
+        descripcion:
+          "Kitchenette corporativo terminado al 100%: isla en mármol con luz cálida inferior, muebles blancos y rieles de iluminación en techo.",
+      },
+    ],
+  },
+
+  {
+    // Proyecto 11
+    slug: "diseno-y-remodelacion-kitchenette",
+    titulo: "Diseño y Remodelación Kitchenette",
+    categoria: "residencial",
+    ejecucion: "100%",
+    anio: 2025,
+    descripcion:
+      "Diseño y remodelación integral de kitchenette residencial, optimizando el espacio con una distribución moderna, ergonómica y de alta funcionalidad. Se renovaron completamente los acabados, incorporando muebles en tono verde salvia y blanco, iluminación LED bajo reposteros y encimeras de cuarzo.",
+    imagen: "/images/proyectos/KITCHENNETTE_despues.png",
+    comparacion: {
+      antesImagen: "/images/proyectos/KITCHENNETTE_antes.jpg",
+      antesLabel: "Proceso de Ejecución",
+      despuesImagen: "/images/proyectos/KITCHENNETTE_despues.png",
+      despuesLabel: "Realidad",
+    },
+    galeria: [
+      {
+        etiqueta: "PROCESO DE EJECUCIÓN",
+        fase: "FASE 01: ESTADO INICIAL Y DESMONTAJE",
+        imagen: "/images/proyectos/KITCHENNETTE_antes.jpg",
+        descripcion:
+          "Estado previo a la intervención: mobiliario tradicional e instalaciones antiguas que requerían renovación funcional y estética.",
+      },
+      {
+        etiqueta: "REALIDAD",
+        fase: "FASE 02: ACABADOS Y ENTREGA FINAL",
+        imagen: "/images/proyectos/KITCHENNETTE_despues.png",
+        descripcion:
+          "Kitchenette moderno terminado al 100%: iluminación LED cálida, combinación cromática elegante y máxima optimización de almacenamiento.",
+      },
+    ],
   },
 ];
 

@@ -5,6 +5,7 @@ import ServiciosSection from "@/components/inicio/ServiciosSection";
 import ProyectosSection from "@/components/inicio/ProyectosSection";
 import PorQueElegirnosSection from "@/components/inicio/PorQueElegirnosSection";
 import EquipoSection from "@/components/inicio/EquipoSection";
+import TestimoniosSection from "@/components/inicio/TestimoniosSection";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <ProyectosSection />
       <PorQueElegirnosSection />
       <EquipoSection />
+      <TestimoniosSection />
     </div>
   );
 }
