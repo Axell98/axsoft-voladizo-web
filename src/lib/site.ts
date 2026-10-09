@@ -16,3 +16,9 @@ export const SITE_CONTACT = {
 
 // TODO: confirmar el dominio definitivo del cliente (o definir NEXT_PUBLIC_SITE_URL).
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://voladizo.pe";
+
+export const SITE_SOCIALS = {
+  instagram: "https://www.instagram.com/voladizo.construcciones/",
+  facebook: "https://www.facebook.com/share/1Bvqxkcpv2/?mibextid=wwXIfr",
+  tiktok: "https://vt.tiktok.com/ZSbsNtfLW/",
+};
