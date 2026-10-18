@@ -3,7 +3,7 @@
 import { useActionState, useState } from "react";
 import { enviarContacto } from "@/features/contacto/actions";
 import { contactoInitialState } from "@/features/contacto/types";
-import { SITE_CONTACT } from "@/lib/site";
+import { useCompany } from "@/context/CompanyContext";
 import { revealProps, useReveal } from "@/lib/use-reveal";
 
 // =========================================================
@@ -59,20 +59,21 @@ const CheckIcon = (p: IconProps) => (
   </Icon>
 );
 
-const contactItems = [
-  { label: "Teléfono", value: SITE_CONTACT.phone, href: SITE_CONTACT.phoneHref, Icon: PhoneIcon },
-  { label: "Correo", value: SITE_CONTACT.email, href: `mailto:${SITE_CONTACT.email}`, Icon: MailIcon },
-  { label: "Oficina", value: SITE_CONTACT.address, Icon: PinIcon },
-  { label: "Horario de atención", value: SITE_CONTACT.hours, Icon: ClockIcon },
-];
-
 // =========================================================
 // SECCIÓN
 // =========================================================
 export default function ContactoSection() {
+  const { contact } = useCompany();
   const { ref, visible } = useReveal<HTMLElement>();
   // Cambiar la key remonta el formulario y reinicia su estado ("Enviar otro mensaje")
   const [formKey, setFormKey] = useState(0);
+
+  const contactItems = [
+    { label: "Teléfono", value: contact.phone, href: contact.phoneHref, Icon: PhoneIcon },
+    { label: "Correo", value: contact.email, href: `mailto:${contact.email}`, Icon: MailIcon },
+    { label: "Oficina", value: contact.address, Icon: PinIcon },
+    ...(contact.hours ? [{ label: "Horario de atención", value: contact.hours, Icon: ClockIcon }] : []),
+  ];
 
   const reveal = (delay: number) => revealProps(visible, delay);
 

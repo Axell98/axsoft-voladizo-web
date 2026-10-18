@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { SITE_SOCIALS } from "@/lib/site";
+import { useCompany } from "@/context/CompanyContext";
 
 function FacebookIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -63,6 +63,7 @@ const navItems: NavItem[] = [
 ];
 
 export default function Header() {
+  const { company, social } = useCompany();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -102,11 +103,12 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-3 sm:gap-4 group">
             <div className="relative w-12 h-9 sm:w-16 sm:h-11 lg:w-[68px] lg:h-[46px] flex-shrink-0 transition-transform group-hover:scale-105">
               <Image
-                src="/images/iconos/logo2.svg"
-                alt="Voladizo Logo"
+                src={company.logoUrl || "/images/iconos/logo2.svg"}
+                alt={`${company.name} Logo`}
                 fill
                 className="object-contain"
                 priority
+                unoptimized
               />
             </div>
             <div className="flex flex-col">
@@ -114,10 +116,10 @@ export default function Header() {
                 className="font-oswald-bold text-2xl sm:text-3xl tracking-[0.12em] text-white uppercase select-none font-bold leading-none"
                 style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
               >
-                VOLADIZO
+                {company.name.toUpperCase()}
               </span>
               <span className="text-[8.5px] sm:text-[9.5px] font-normal tracking-[0.18em] text-neutral-300/90 uppercase select-none mt-1">
-                Diseño | Construcción
+                {company.slogan || "Diseño | Construcción"}
               </span>
             </div>
           </Link>
@@ -249,10 +251,11 @@ export default function Header() {
             <div className="flex items-center gap-2">
               <div className="relative w-11 h-8 flex-shrink-0">
                 <Image
-                  src="/images/iconos/logo2.svg"
-                  alt="Voladizo Logo"
+                  src={company.logoUrl || "/images/iconos/logo2.svg"}
+                  alt={`${company.name} Logo`}
                   fill
                   className="object-contain"
+                  unoptimized
                 />
               </div>
               <div className="flex flex-col">
@@ -260,10 +263,10 @@ export default function Header() {
                   className="font-oswald-bold text-lg font-bold tracking-[0.12em] text-black uppercase leading-none"
                   style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
                 >
-                  VOLADIZO
+                  {company.name.toUpperCase()}
                 </span>
                 <span className="text-[7.5px] font-normal tracking-[0.15em] text-neutral-500 uppercase mt-0.5">
-                  Diseño | Construcción
+                  {company.slogan || "Diseño | Construcción"}
                 </span>
               </div>
             </div>
@@ -366,33 +369,39 @@ export default function Header() {
           </Link>
 
           <div className="flex items-center justify-center gap-3 pt-2">
-            <a
-              href={SITE_SOCIALS.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="w-9 h-9 border border-gray-200 bg-gray-50 text-neutral-800 hover:bg-black hover:text-white flex items-center justify-center transition-colors"
-            >
-              <InstagramIcon className="w-3.5 h-3.5" />
-            </a>
-            <a
-              href={SITE_SOCIALS.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="w-9 h-9 border border-gray-200 bg-gray-50 text-neutral-800 hover:bg-black hover:text-white flex items-center justify-center transition-colors"
-            >
-              <FacebookIcon className="w-3.5 h-3.5" />
-            </a>
-            <a
-              href={SITE_SOCIALS.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="TikTok"
-              className="w-9 h-9 border border-gray-200 bg-gray-50 text-neutral-800 hover:bg-black hover:text-white flex items-center justify-center transition-colors"
-            >
-              <TikTokIcon className="w-3.5 h-3.5" />
-            </a>
+            {social.instagram && (
+              <a
+                href={social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 border border-gray-200 bg-gray-50 text-neutral-800 hover:bg-black hover:text-white flex items-center justify-center transition-colors"
+              >
+                <InstagramIcon className="w-3.5 h-3.5" />
+              </a>
+            )}
+            {social.facebook && (
+              <a
+                href={social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-9 h-9 border border-gray-200 bg-gray-50 text-neutral-800 hover:bg-black hover:text-white flex items-center justify-center transition-colors"
+              >
+                <FacebookIcon className="w-3.5 h-3.5" />
+              </a>
+            )}
+            {social.tiktok && (
+              <a
+                href={social.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                className="w-9 h-9 border border-gray-200 bg-gray-50 text-neutral-800 hover:bg-black hover:text-white flex items-center justify-center transition-colors"
+              >
+                <TikTokIcon className="w-3.5 h-3.5" />
+              </a>
+            )}
           </div>
         </div>
       </aside>

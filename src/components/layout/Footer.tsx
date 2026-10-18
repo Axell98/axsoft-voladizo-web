@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { SITE_CONTACT, SITE_SOCIALS } from "@/lib/site";
+import { useCompany } from "@/context/CompanyContext";
 
 // =========================================================
 // ICONOS SVG LIMPIOS Y ELEGANTES (Sin dependencias externas)
@@ -61,6 +61,7 @@ interface FooterProps {
 }
 
 export default function Footer({ showCta }: FooterProps) {
+  const { contact, social, company } = useCompany();
   const pathname = usePathname();
   const isHome = pathname === "/";
   const shouldShowCta = showCta !== undefined ? showCta : !isHome;
@@ -125,17 +126,18 @@ export default function Footer({ showCta }: FooterProps) {
             <Link href="/" className="inline-flex items-center gap-3.5 group">
               <div className="relative w-12 h-9 sm:w-14 sm:h-10 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
                 <Image
-                  src="/images/iconos/logo2.svg"
-                  alt="Voladizo Logo"
+                  src={company.logoUrl || "/images/iconos/logo2.svg"}
+                  alt={`${company.name} Logo`}
                   fill
                   className="object-contain"
+                  unoptimized
                 />
               </div>
               <span
                 className="text-2xl sm:text-3xl tracking-[0.14em] text-white uppercase font-bold"
                 style={{ fontFamily: "'Oswald-Bold', 'Oswald', sans-serif" }}
               >
-                VOLADIZO
+                {company.name.toUpperCase()}
               </span>
             </Link>
 
@@ -152,33 +154,39 @@ export default function Footer({ showCta }: FooterProps) {
                 <div className="flex-1 h-[1px] bg-neutral-800" />
               </div>
               <div className="flex items-center gap-2.5">
-                <a
-                  href={SITE_SOCIALS.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
-                >
-                  <InstagramIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href={SITE_SOCIALS.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
-                >
-                  <FacebookIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href={SITE_SOCIALS.tiktok}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="TikTok"
-                  className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
-                >
-                  <TikTokIcon className="w-4 h-4" />
-                </a>
+                {social.instagram && (
+                  <a
+                    href={social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
+                  >
+                    <InstagramIcon className="w-4 h-4" />
+                  </a>
+                )}
+                {social.facebook && (
+                  <a
+                    href={social.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
+                  >
+                    <FacebookIcon className="w-4 h-4" />
+                  </a>
+                )}
+                {social.tiktok && (
+                  <a
+                    href={social.tiktok}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="TikTok"
+                    className="w-10 h-10 border border-neutral-800 bg-neutral-900/60 hover:bg-white hover:text-black hover:border-white text-neutral-300 flex items-center justify-center transition-all duration-300 group"
+                  >
+                    <TikTokIcon className="w-4 h-4" />
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -273,15 +281,15 @@ export default function Footer({ showCta }: FooterProps) {
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
                   Oficina Principal
                 </span>
-                <p>{SITE_CONTACT.address}</p>
+                <p>{contact.address}</p>
               </div>
 
               <div>
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
                   Celular 
                 </span>
-                <a href={SITE_CONTACT.phoneHref} className="hover:text-white transition-colors font-medium">
-                  {SITE_CONTACT.phone}
+                <a href={contact.phoneHref} className="hover:text-white transition-colors font-medium">
+                  {contact.phone}
                 </a>
               </div>
 
@@ -289,17 +297,19 @@ export default function Footer({ showCta }: FooterProps) {
                 <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
                   Consultas & Cotizaciones
                 </span>
-                <a href={`mailto:${SITE_CONTACT.email}`} className="hover:text-white transition-colors">
-                  {SITE_CONTACT.email}
+                <a href={`mailto:${contact.email}`} className="hover:text-white transition-colors">
+                  {contact.email}
                 </a>
               </div>
 
-              {/* <div>
-                <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
-                  Horario de Atención
-                </span>
-                <p>{SITE_CONTACT.hours}</p>
-              </div> */}
+              {contact.hours && (
+                <div>
+                  <span className="block text-white text-[11px] font-bold uppercase tracking-[1.5px] mb-1">
+                    Horario de Atención
+                  </span>
+                  <p>{contact.hours}</p>
+                </div>
+              )}
             </div>
           </div>
 
@@ -313,7 +323,7 @@ export default function Footer({ showCta }: FooterProps) {
         <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-light">
             <p>
-              © {new Date().getFullYear()} <span className="text-neutral-300 font-medium tracking-wider">VOLADIZO</span> Arquitectura & Construcción. Todos los derechos reservados.
+              © {new Date().getFullYear()} <span className="text-neutral-300 font-medium tracking-wider">{company.name.toUpperCase()}</span> {company.slogan || "Arquitectura & Construcción"}. Todos los derechos reservados.
             </p>
 
             <div className="flex items-center gap-6">

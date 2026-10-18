@@ -17,6 +17,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
+  icons: {
+    icon: [
+      { url: "/images/iconos/logo2.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/images/iconos/logo2.svg",
+    apple: "/images/iconos/logo2.svg",
+  },
   openGraph: {
     siteName: SITE_NAME,
     locale: "es_PE",
@@ -32,6 +39,8 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}>
       <head>
+        <link rel="icon" type="image/svg+xml" href="/images/iconos/logo2.svg" />
+        <link rel="apple-touch-icon" href="/images/iconos/logo2.svg" />
         {/* Redirección automática a HTTPS en producción */}
         <script
           dangerouslySetInnerHTML={{

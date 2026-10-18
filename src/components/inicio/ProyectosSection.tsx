@@ -1,9 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TarjetaProyecto from "@/components/proyectos/TarjetaProyecto";
 import { proyectos, TOTAL_PROYECTOS, type Proyecto } from "@/features/proyectos/data";
+import { getProjects } from "@/lib/api";
+import { apiProjectToProyecto } from "@/lib/project-mapper";
 import { REVEAL_BASE, revealProps, useReveal } from "@/lib/use-reveal";
 
 // El home solo adelanta los primeros 5 proyectos; los 11 completos están en /proyectos.
@@ -11,6 +14,21 @@ const PROYECTOS_HOME = proyectos.slice(0, 5);
 
 export default function ProyectosSection() {
   const { ref, visible } = useReveal<HTMLElement>();
+  const [items, setItems] = useState<Proyecto[]>(PROYECTOS_HOME);
+
+  useEffect(() => {
+    async function loadApiProjects() {
+      try {
+        const res = await getProjects({ per_page: 5 });
+        if (res && res.data && res.data.length > 0) {
+          setItems(res.data.map(apiProjectToProyecto));
+        }
+      } catch (err) {
+        console.error("[ProyectosSection] Error cargando proyectos:", err);
+      }
+    }
+    loadApiProjects();
+  }, []);
 
   return (
     <section
@@ -53,7 +71,7 @@ export default function ProyectosSection() {
         {/* GRILLA DE PROYECTOS (5, centrados, sin slider)            */}
         {/* ========================================================= */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-          {PROYECTOS_HOME.map((p, idx) => {
+          {items.map((p, idx) => {
             const anim = revealProps(visible, 200 + idx * 120);
             return (
               <div key={p.slug} className={anim.className} style={anim.style}>

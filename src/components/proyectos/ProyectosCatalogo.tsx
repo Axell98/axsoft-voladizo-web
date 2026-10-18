@@ -2,16 +2,33 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import TarjetaProyecto from "@/components/proyectos/TarjetaProyecto";
-import { proyectos } from "@/features/proyectos/data";
+import { proyectos, type Proyecto } from "@/features/proyectos/data";
+import { getProjects } from "@/lib/api";
+import { apiProjectToProyecto } from "@/lib/project-mapper";
 
 export default function ProyectosCatalogo() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [items, setItems] = useState<Proyecto[]>(proyectos);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeftState, setScrollLeftState] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    async function loadApiProjects() {
+      try {
+        const res = await getProjects({ per_page: 50 });
+        if (res && res.data && res.data.length > 0) {
+          setItems(res.data.map(apiProjectToProyecto));
+        }
+      } catch (err) {
+        console.error("[ProyectosCatalogo] Error cargando proyectos:", err);
+      }
+    }
+    loadApiProjects();
+  }, []);
 
   // Actualizar estado de botones y progreso al hacer scroll
   const handleScroll = useCallback(() => {
@@ -138,7 +155,7 @@ export default function ProyectosCatalogo() {
             msOverflowStyle: "none",
           }}
         >
-          {proyectos.map((proyecto) => (
+          {items.map((proyecto) => (
             <div
               key={proyecto.slug}
               className="flex-none w-[82vw] sm:w-[46vw] md:w-[35vw] lg:w-[28vw] xl:w-[22vw] 2xl:w-[19vw] snap-start"
@@ -160,7 +177,7 @@ export default function ProyectosCatalogo() {
           </div>
 
           <p className="text-xs text-neutral-400 uppercase tracking-[2px] font-medium flex items-center gap-2">
-            <span>Desliza para explorar los {proyectos.length} proyectos</span>
+            <span>Desliza para explorar los {items.length} proyectos</span>
             <span className="text-neutral-600">↔</span>
           </p>
         </div>

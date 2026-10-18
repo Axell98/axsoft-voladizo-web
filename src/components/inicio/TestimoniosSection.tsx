@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
+import { getTestimonials, resolveMediaUrl } from "@/lib/api";
 
 interface TestimonialItem {
   id: number;
@@ -11,7 +12,7 @@ interface TestimonialItem {
   content: string;
 }
 
-const testimonials: TestimonialItem[] = [
+const defaultTestimonials: TestimonialItem[] = [
   {
     id: 1,
     name: "Aurelio Loret de Mola",
@@ -31,10 +32,39 @@ const testimonials: TestimonialItem[] = [
 ];
 
 export default function TestimoniosSection() {
+  const [items, setItems] = useState<TestimonialItem[]>(defaultTestimonials);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(2);
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
+
+  // Cargar testimonios dinámicos de la API del administrador
+  useEffect(() => {
+    async function loadApiTestimonials() {
+      try {
+        const apiData = await getTestimonials();
+        if (apiData !== null) {
+          if (apiData.length > 0) {
+            setItems(
+              apiData.map((t, idx) => ({
+                id: idx + 1,
+                name: t.name,
+                position: t.role || "",
+                image: t.image_url ? resolveMediaUrl(t.image_url) : "/images/testimonials/loret.jpeg",
+                content: t.content,
+              }))
+            );
+          } else {
+            // Si el admin los desactivó todos deliberadamente
+            setItems([]);
+          }
+        }
+      } catch (err) {
+        console.error("[Testimonios] Error cargando testimonios:", err);
+      }
+    }
+    loadApiTestimonials();
+  }, []);
 
   // Responsive: 1 card on mobile, 2 cards on md+
   useEffect(() => {
@@ -50,7 +80,7 @@ export default function TestimoniosSection() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const maxIndex = Math.max(0, testimonials.length - slidesToShow);
+  const maxIndex = Math.max(0, items.length - slidesToShow);
 
   const nextSlide = useCallback(() => {
     if (maxIndex === 0) return;
@@ -88,6 +118,10 @@ export default function TestimoniosSection() {
   };
 
   const totalDots = maxIndex + 1;
+
+  if (items.length === 0) {
+    return null;
+  }
 
   return (
     <section
@@ -127,7 +161,7 @@ export default function TestimoniosSection() {
               transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)`,
             }}
           >
-            {testimonials.map((item) => (
+            {items.map((item) => (
               <div
                 key={item.id}
                 className="w-full md:w-1/2 flex-shrink-0 px-3 sm:px-4 lg:px-6"
@@ -147,6 +181,7 @@ export default function TestimoniosSection() {
                         alt={item.name}
                         fill
                         sizes="80px"
+                        unoptimized={item.image.startsWith("http")}
                         className="object-cover object-center"
                       />
                     </div>

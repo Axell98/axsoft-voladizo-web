@@ -6,6 +6,7 @@ import ProyectosSection from "@/components/inicio/ProyectosSection";
 import PorQueElegirnosSection from "@/components/inicio/PorQueElegirnosSection";
 import EquipoSection from "@/components/inicio/EquipoSection";
 import TestimoniosSection from "@/components/inicio/TestimoniosSection";
+import PromotionalPopup from "@/components/common/PromotionalPopup";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <PorQueElegirnosSection />
       <EquipoSection />
       <TestimoniosSection />
+      <PromotionalPopup />
     </div>
   );
 }

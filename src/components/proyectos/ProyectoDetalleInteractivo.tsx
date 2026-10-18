@@ -60,6 +60,7 @@ export default function ProyectoDetalleInteractivo({ proyecto }: Props) {
           alt={proyecto.titulo}
           fill
           priority
+          unoptimized={proyecto.imagen.startsWith("http")}
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/80" />
@@ -139,6 +140,7 @@ export default function ProyectoDetalleInteractivo({ proyecto }: Props) {
                     alt={`${proyecto.titulo} - ${currentSlide.etiqueta}`}
                     fill
                     priority
+                    unoptimized={currentSlide.imagen.startsWith("http")}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 45vw"
                     className="object-cover transition-all duration-700 ease-out"
                   />
@@ -273,18 +275,20 @@ export default function ProyectoDetalleInteractivo({ proyecto }: Props) {
                   />
                 </Link>
 
-                <button
-                  type="button"
-                  onClick={() => setActiveVideo(proyecto.videoId || "1iUeq78m0wk")}
-                  className="group inline-flex items-center gap-3 bg-neutral-100 hover:bg-neutral-200 border border-neutral-300 px-7 py-4 text-xs font-bold uppercase tracking-[2.5px] text-neutral-900 transition-all duration-300 cursor-pointer shadow-xs"
-                >
-                  <span className="w-6 h-6 rounded-full bg-brand text-black flex items-center justify-center transition-transform group-hover:scale-110">
-                    <svg className="w-3 h-3 ml-0.5" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5.14v13.72c0 .8.87 1.29 1.55.87l10.72-6.86a1 1 0 000-1.72L9.55 4.27A1 1 0 008 5.14z" />
-                    </svg>
-                  </span>
-                  Ver Video
-                </button>
+                {proyecto.videoId && (
+                  <button
+                    type="button"
+                    onClick={() => setActiveVideo(proyecto.videoId!)}
+                    className="group inline-flex items-center gap-3 bg-neutral-100 hover:bg-neutral-200 border border-neutral-300 px-7 py-4 text-xs font-bold uppercase tracking-[2.5px] text-neutral-900 transition-all duration-300 cursor-pointer shadow-xs"
+                  >
+                    <span className="w-6 h-6 rounded-full bg-brand text-black flex items-center justify-center transition-transform group-hover:scale-110">
+                      <svg className="w-3 h-3 ml-0.5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5.14v13.72c0 .8.87 1.29 1.55.87l10.72-6.86a1 1 0 000-1.72L9.55 4.27A1 1 0 008 5.14z" />
+                      </svg>
+                    </span>
+                    Ver Video
+                  </button>
+                )}
               </div>
             </div>
 

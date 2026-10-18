@@ -1,16 +1,14 @@
 "use client";
 
-import { SITE_CONTACT } from "@/lib/site";
+import { useCompany } from "@/context/CompanyContext";
 import { REVEAL_BASE, revealProps, useReveal } from "@/lib/use-reveal";
 
-// TODO: este embed usa una búsqueda por dirección (sin API key, funciona igual).
-// Cuando el cliente confirme el pin exacto en Google Maps, reemplazar por el código
-// que da la opción "Compartir → Insertar un mapa" para apuntar al lugar preciso.
-const MAPS_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(SITE_CONTACT.address)}&output=embed`;
-const MAPS_DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(SITE_CONTACT.address)}`;
-
 export default function UbicacionSection() {
+  const { contact } = useCompany();
   const { ref, visible } = useReveal<HTMLElement>();
+
+  const directionsUrl = contact.mapsUrl || contact.mapsDirectionsUrl;
+  const embedSrc = contact.mapsEmbedSrc;
 
   return (
     <section
@@ -50,10 +48,10 @@ export default function UbicacionSection() {
           className={`text-center text-neutral-400 font-light mb-12 lg:mb-14 ${revealProps(visible, 100).className}`}
           style={revealProps(visible, 100).style}
         >
-          {SITE_CONTACT.address}
+          {contact.address}
           <span className="mx-2 text-neutral-600">·</span>
           <a
-            href={MAPS_DIRECTIONS_URL}
+            href={directionsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-brand hover:text-white underline underline-offset-4 decoration-brand/40 hover:decoration-white transition-colors"
@@ -80,7 +78,7 @@ export default function UbicacionSection() {
 
           <div className="relative h-[380px] sm:h-[440px] lg:h-[500px] w-full overflow-hidden bg-neutral-900 shadow-2xl grayscale-[15%] contrast-[1.05]">
             <iframe
-              src={MAPS_EMBED_SRC}
+              src={embedSrc}
               title="Ubicación de Voladizo en Google Maps"
               className="absolute inset-0 w-full h-full border-0"
               loading="lazy"

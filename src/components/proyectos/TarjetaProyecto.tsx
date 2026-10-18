@@ -23,6 +23,8 @@ export function CruzHover() {
 }
 
 export default function TarjetaProyecto({ proyecto }: { proyecto: Proyecto }) {
+  const isDynamic = proyecto.imagen?.startsWith("http");
+
   return (
     <Link
       href={`/proyectos/${proyecto.slug}`}
@@ -33,6 +35,7 @@ export default function TarjetaProyecto({ proyecto }: { proyecto: Proyecto }) {
         src={proyecto.imagen}
         alt={proyecto.titulo}
         fill
+        unoptimized={isDynamic}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
       />

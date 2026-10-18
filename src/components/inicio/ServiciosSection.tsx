@@ -133,6 +133,7 @@ export default function ServiciosSection({ items = defaultFeatures }: ServiciosS
                       alt={item.title}
                       width={64}
                       height={64}
+                      style={{ width: "auto", height: "auto" }}
                       className="object-contain filter drop-shadow-md"
                     />
                   </div>

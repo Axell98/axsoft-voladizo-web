@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "@/lib/api";
 import type { ContactoErrors, ContactoState, ContactoValues } from "./types";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -59,17 +60,55 @@ export async function enviarContacto(
     };
   }
 
-  // TODO: conectar el envío real (Resend, SMTP, CRM, etc.).
-  // Mientras no exista, en producción se devuelve un error para no aparentar que
-  // el mensaje llegó, y en desarrollo solo se registra en la consola del servidor.
-  if (process.env.NODE_ENV === "production") {
+  try {
+    const res = await fetch(`${API_BASE_URL}/contacto`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        ...values,
+        website: texto(formData.get("website")),
+      }),
+    });
+
+    const data = await res.json().catch(() => null);
+
+    if (!res.ok) {
+      if (res.status === 422 && data?.errors) {
+        const apiErrors: ContactoErrors = {};
+        for (const [key, msgArray] of Object.entries(data.errors)) {
+          if (Array.isArray(msgArray) && msgArray.length > 0) {
+            apiErrors[key as keyof ContactoValues] = String(msgArray[0]);
+          }
+        }
+        return {
+          status: "error",
+          message: data.message || "Revisa los datos ingresados.",
+          errors: apiErrors,
+          values,
+        };
+      }
+
+      return {
+        status: "error",
+        message:
+          data?.message ||
+          "No pudimos enviar tu mensaje en este momento. Por favor contáctanos por WhatsApp.",
+        values,
+      };
+    }
+
+    return { status: "success" };
+  } catch (err) {
+    console.error("[contacto] Error al conectar con la API:", err);
     return {
       status: "error",
-      message: "No pudimos enviar tu mensaje en este momento. Inténtalo más tarde.",
+      message:
+        "Ocurrió un problema de conexión con el servidor. Por favor comunícate directamente por teléfono o WhatsApp.",
       values,
     };
   }
-
-  console.log("[contacto] Nuevo mensaje recibido:", values);
-  return { status: "success" };
 }
+

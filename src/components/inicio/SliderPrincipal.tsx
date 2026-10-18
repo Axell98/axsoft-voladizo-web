@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
+import { getBanners, resolveMediaUrl } from "@/lib/api";
 
 export interface SlideItem {
   id: number;
@@ -13,6 +14,9 @@ export interface SlideItem {
   href: string;
   image: string;
   overlay?: number;
+  type?: "image" | "video" | "youtube";
+  embed_url?: string | null;
+  video_url?: string | null;
 }
 
 export const defaultArctitSlides: SlideItem[] = [
@@ -42,18 +46,93 @@ interface SliderPrincipalProps {
 }
 
 export default function SliderPrincipal({
-  slides = defaultArctitSlides,
+  slides: initialSlides = defaultArctitSlides,
   autoPlayInterval = 6500,
 }: SliderPrincipalProps) {
-  // Inicializado en la diapositiva 1 (Bloom Office interior, id 2) o según preferencia
+  const [slides, setSlides] = useState<SlideItem[]>(initialSlides);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const total = slides.length;
 
   const isAnimatingRef = useRef(false);
-  const activeIndexRef = useRef(1);
+  const activeIndexRef = useRef(0);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const touchStartX = useRef<number | null>(null);
+
+  // Control de audio para videos de YouTube y archivos de video
+  const [isMuted, setIsMuted] = useState(true);
+  const iframeRefs = useRef<(HTMLIFrameElement | null)[]>([]);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const toggleAudio = () => {
+    const currentSlide = slides[activeIndex];
+    if (currentSlide?.type === "youtube") {
+      const iframe = iframeRefs.current[activeIndex];
+      if (iframe && iframe.contentWindow) {
+        if (isMuted) {
+          iframe.contentWindow.postMessage(
+            JSON.stringify({ event: "command", func: "unMute", args: [] }),
+            "*"
+          );
+          iframe.contentWindow.postMessage(
+            JSON.stringify({ event: "command", func: "setVolume", args: [100] }),
+            "*"
+          );
+          setIsMuted(false);
+        } else {
+          iframe.contentWindow.postMessage(
+            JSON.stringify({ event: "command", func: "mute", args: [] }),
+            "*"
+          );
+          setIsMuted(true);
+        }
+      }
+    } else if (currentSlide?.type === "video") {
+      const video = videoRefs.current[activeIndex];
+      if (video) {
+        video.muted = !video.muted;
+        setIsMuted(video.muted);
+      }
+    }
+  };
+
+  // Carga dinámica desde la API de Laravel
+  useEffect(() => {
+    async function loadBanners() {
+      try {
+        const data = await getBanners();
+        if (data && data.slides && data.slides.length > 0) {
+          const mappedSlides: SlideItem[] = data.slides.map((s, idx) => {
+            const rawUrl = s.url || s.image_url || "";
+            const imageUrl = s.thumbnail_url || (rawUrl ? resolveMediaUrl(rawUrl) : defaultArctitSlides[idx % defaultArctitSlides.length]?.image || "");
+
+            const metaParts = s.description
+              ? s.description.split(/[,|]/).map((m) => m.trim()).filter(Boolean)
+              : [];
+
+            return {
+              id: idx + 1,
+              number: String(idx + 1).padStart(2, "0"),
+              meta: metaParts,
+              title: s.title || "",
+              href: s.link_url || "/proyectos",
+              image: imageUrl,
+              overlay: 5,
+              type: s.type || "image",
+              embed_url: s.embed_url || null,
+              video_url: rawUrl ? resolveMediaUrl(rawUrl) : null,
+            };
+          });
+          setSlides(mappedSlides);
+          setActiveIndex(0);
+        }
+      } catch (err) {
+        console.warn("[SliderPrincipal] Error al cargar banners dinámicos, usando fallback:", err);
+      }
+    }
+
+    loadBanners();
+  }, []);
 
   useEffect(() => {
     activeIndexRef.current = activeIndex;
@@ -224,9 +303,9 @@ export default function SliderPrincipal({
     >
       <div className="dsn-root-slider content-slider relative w-full h-full overflow-hidden bg-[#141414]">
         {/* =================================================================== */}
-        {/* 1. HORIZONTAL TRACK DE IMÁGENES (Termina 80px antes del fondo)      */}
+        {/* 1. HORIZONTAL TRACK DE IMÁGENES / VIDEOS */}
         {/* =================================================================== */}
-        <div className="bg-container relative w-full h-[calc(100%-80px)] overflow-hidden">
+        <div className={`bg-container relative w-full ${total > 1 ? "h-[calc(100%-80px)]" : "h-full"} overflow-hidden`}>
           <div className="slide-inner h-full w-full overflow-hidden relative">
             <div
               className="swiper-wrapper flex h-full transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
@@ -249,16 +328,48 @@ export default function SliderPrincipal({
                         transform: `scale(${isActive ? 1 : 1.12}) translate3d(${offset}%, 0px, 0px)`,
                       }}
                     >
-                      <Image
-                        src={slide.image}
-                        alt={slide.title}
-                        fill
-                        priority={idx === 0 || idx === 1}
-                        sizes="100vw"
-                        className="cover-bg-img object-cover object-center"
-                      />
-                      {/* data-overlay="5" (50% oscuridad cinematográfica) */}
-                      <div className="absolute inset-0 bg-black/50" />
+                      {slide.type === "youtube" && slide.embed_url ? (
+                        <div className="w-full h-full relative overflow-hidden pointer-events-auto">
+                          <iframe
+                            ref={(el) => {
+                              iframeRefs.current[idx] = el;
+                            }}
+                            src={`${slide.embed_url}?autoplay=1&mute=1&loop=1&playlist=${slide.embed_url.split("/").pop()}&controls=1&modestbranding=1&rel=0&enablejsapi=1`}
+                            title={slide.title || "Video de portada"}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="w-full h-full object-cover border-0 pointer-events-auto"
+                          />
+                        </div>
+                      ) : slide.type === "video" && slide.video_url ? (
+                        <div className="w-full h-full relative overflow-hidden">
+                          <video
+                            ref={(el) => {
+                              videoRefs.current[idx] = el;
+                            }}
+                            src={slide.video_url}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+                        </div>
+                      ) : (
+                        <>
+                          <Image
+                            src={slide.image}
+                            alt={slide.title || "Banner Voladizo"}
+                            fill
+                            priority={idx === 0 || idx === 1}
+                            sizes="100vw"
+                            className="cover-bg-img object-cover object-center"
+                          />
+                          {/* data-overlay="5" (50% oscuridad cinematográfica) */}
+                          <div className="absolute inset-0 bg-black/50" />
+                        </>
+                      )}
                     </div>
                   </div>
                 );
@@ -269,8 +380,7 @@ export default function SliderPrincipal({
 
         {/* =================================================================== */}
         {/* 2. CAPA FLOTANTE DE TÍTULOS Y METAS (Totalmente Responsive)          */}
-        {/* =================================================================== */}
-        <div className="dsn-slider-content absolute inset-0 w-full h-[calc(100%-80px)] pointer-events-none z-10 flex flex-col justify-end pb-6 sm:pb-10 lg:pb-14 px-6 sm:px-12 lg:px-16">
+        <div className={`dsn-slider-content absolute inset-0 w-full ${total > 1 ? "h-[calc(100%-80px)]" : "h-full"} pointer-events-none z-10 flex flex-col justify-end pb-6 sm:pb-10 lg:pb-14 px-6 sm:px-12 lg:px-16`}>
           {slides.map((slide, idx) => {
             const isActive = idx === activeIndex;
             const words = slide.title.split(" ");
@@ -288,25 +398,26 @@ export default function SliderPrincipal({
               >
                 <div className="content relative">
                   {/* Metas: OFICINA | ARQUITECTURA con separador vertical blanco */}
-                  <div className="metas inline-flex items-center gap-3 mb-3 sm:mb-4 lg:mb-5">
-                    {slide.meta.map((m, mIdx) => (
-                      <span
-                        key={mIdx}
-                        className="relative uppercase text-[11px] sm:text-xs lg:text-[13px] tracking-[2.5px] font-semibold text-white/90 pr-3 mr-1 last:pr-0 last:mr-0 after:content-[''] after:absolute after:top-1/2 after:-translate-y-1/2 after:right-0 after:w-[1.5px] after:h-3.5 after:bg-white/70 last:after:hidden"
+                  {slide.meta && slide.meta.length > 0 && (
+                    <div className="metas inline-flex items-center gap-3 mb-3 sm:mb-4 lg:mb-5">
+                      {slide.meta.map((m, mIdx) => (
+                        <span
+                          key={mIdx}
+                          className="relative uppercase text-[11px] sm:text-xs lg:text-[13px] tracking-[2.5px] font-semibold text-white/90 pr-3 mr-1 last:pr-0 last:mr-0 after:content-[''] after:absolute after:top-1/2 after:-translate-y-1/2 after:right-0 after:w-[1.5px] after:h-3.5 after:bg-white/70 last:after:hidden"
+                        >
+                          {m}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Título adaptativo con tipografía fluida */}
+                  {slide.title ? (
+                    <h1 className="title line-title user-no-selection text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-bold text-white leading-[1.12] sm:leading-[1.08] tracking-tight">
+                      <Link
+                        href={slide.href}
+                        className="effect-ajax hover:text-neutral-200 transition-colors inline-block"
                       >
-                        {m}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="block" />
-
-                  {/* Título adaptativo con tipografía fluida y sin colisiones */}
-                  <h1 className="title line-title user-no-selection text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-bold text-white leading-[1.12] sm:leading-[1.08] tracking-tight">
-                    <Link
-                      href={slide.href}
-                      className="effect-ajax hover:text-neutral-200 transition-colors inline-block"
-                    >
                       {words.map((word, wIdx) => (
                         <span
                           key={wIdx}
@@ -329,7 +440,8 @@ export default function SliderPrincipal({
                       ))}
                     </Link>
                   </h1>
-                </div>
+                ) : null}
+              </div>
               </div>
             );
           })}
@@ -338,25 +450,25 @@ export default function SliderPrincipal({
         {/* =================================================================== */}
         {/* 3. BARRA INFERIOR CONTINUA (80px fondo oscuro #141414)              */}
         {/* =================================================================== */}
-        <div className="bottom-bar-strip absolute bottom-0 left-0 w-full h-[80px] bg-[#141414] border-t border-white/5 z-20 flex items-center justify-between px-6 sm:px-12 lg:px-16">
-          {/* LADO IZQUIERDO: Progreso y número actual */}
-          <div className="progress-nav w-[35%] sm:w-[28%] lg:w-[22%] max-w-[280px]">
-            <div
-              className="progress-number text-[#666666] text-xs sm:text-sm font-semibold mb-2"
-              style={{ fontFamily: "'Oswald', sans-serif" }}
-            >
-              <span>{slides[activeIndex].number}</span>
-            </div>
-            <div className="progress-w relative w-full h-[2px] bg-[#2a2a2a] rounded-full overflow-hidden">
+        {total > 1 && (
+          <div className="bottom-bar-strip absolute bottom-0 left-0 w-full h-[80px] bg-[#141414] border-t border-white/5 z-20 flex items-center justify-between px-6 sm:px-12 lg:px-16">
+            {/* LADO IZQUIERDO: Progreso y número actual */}
+            <div className="progress-nav w-[35%] sm:w-[28%] lg:w-[22%] max-w-[280px]">
               <div
-                className="progress-w-affter absolute top-0 left-0 h-full bg-white transition-all duration-700 ease-out"
-                style={{ width: `${progressPercent}%` }}
-              />
+                className="progress-number text-[#666666] text-xs sm:text-sm font-semibold mb-2"
+                style={{ fontFamily: "'Oswald', sans-serif" }}
+              >
+                <span>{slides[activeIndex].number}</span>
+              </div>
+              <div className="progress-w relative w-full h-[2px] bg-[#2a2a2a] rounded-full overflow-hidden">
+                <div
+                  className="progress-w-affter absolute top-0 left-0 h-full bg-white transition-all duration-700 ease-out"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
             </div>
-          </div>
 
-          {/* CENTRO-DERECHA: Botones Circulares SVG (justo a la izquierda de la caja siguiente) */}
-          {total > 1 && (
+            {/* CENTRO-DERECHA: Botones Circulares SVG (justo a la izquierda de la caja siguiente) */}
             <div className="control-nav flex items-center gap-3 mr-auto ml-12 sm:ml-20 lg:ml-28">
               {/* Botón Prev */}
               <button
@@ -424,8 +536,8 @@ export default function SliderPrincipal({
                 </svg>
               </button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* =================================================================== */}
         {/* 4. CAJA NEXT-SLIDE-BOX: Miniatura sobresale hacia arriba (20vh)     */}
@@ -464,6 +576,41 @@ export default function SliderPrincipal({
               </div>
             </div>
           </div>
+        )}
+
+        {/* =================================================================== */}
+        {/* 5. BOTÓN FLOTANTE DE CONTROL DE AUDIO (Lejos del Header)            */}
+        {/* =================================================================== */}
+        {(slides[activeIndex]?.type === "youtube" || slides[activeIndex]?.type === "video") && (
+          <button
+            type="button"
+            onClick={toggleAudio}
+            aria-label={isMuted ? "Activar audio" : "Silenciar audio"}
+            className={`absolute z-40 flex items-center gap-2.5 px-4 py-2.5 rounded-full backdrop-blur-md shadow-2xl transition-all duration-300 border cursor-pointer group ${
+              total > 1 ? "bottom-24 right-6 sm:right-10" : "bottom-8 right-6 sm:bottom-10 sm:right-10"
+            } ${
+              isMuted
+                ? "bg-black/80 hover:bg-[#73BA78] text-white hover:text-black border-white/20 hover:border-[#73BA78]"
+                : "bg-[#73BA78] text-black border-[#73BA78] hover:bg-white hover:text-black hover:border-white shadow-emerald-500/20"
+            }`}
+          >
+            {isMuted ? (
+              <>
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                </svg>
+                <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider">Activar Audio</span>
+              </>
+            ) : (
+              <>
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:scale-110 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                </svg>
+                <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider">Silenciar</span>
+              </>
+            )}
+          </button>
         )}
       </div>
     </div>
