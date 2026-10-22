@@ -5,13 +5,21 @@
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # 2. Manejo de rutas limpias para exportación estática de Next.js (SSG)
+  # 2. Fallback dinámico para proyectos creados después del último build
+  # Si /proyectos/SLUG no existe como archivo estático, sirve el fallback client-side
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html !-f
+  RewriteRule ^proyectos/([^/]+)/?$ proyectos/_fallback.html [L]
+
+  # 3. Manejo de rutas limpias para exportación estática de Next.js (SSG)
   # Permite que /proyectos, /contacto, etc. sirvan /proyectos.html sin mostrar la extensión
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L]
 </IfModule>
+
 
 # Cabeceras de seguridad recomendadas
 <IfModule mod_headers.c>
