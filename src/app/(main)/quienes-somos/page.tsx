@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BeforeAfterDiagonal from "@/components/inicio/BeforeAfterDiagonal";
 import PageBanner from "@/components/common/PageBanner";
+import { useEquipo } from "@/features/equipo/useEquipo";
 
 // =========================================================
 // ICONOS DE REDES SOCIALES ESTILO SQUARE EXACTOS
@@ -49,74 +50,9 @@ function InstagramIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
   );
 }
 
-// =========================================================
-// DATOS DE EQUIPO
-// =========================================================
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-  socials?: {
-    facebook?: string;
-    twitter?: string;
-    linkedin?: string;
-    youtube?: string;
-    instagram?: string;
-  };
-}
-
-// Integrantes reales activos
-const featuredLeader: TeamMember = {
-  id: 1,
-  name: "Arq. Renzo Alvarez",
-  role: "Gerente General",
-  image: "/images/inicio/equipo/foto_gerente_final.jpeg",
-  socials: {
-    facebook: "#",
-    twitter: "#",
-    linkedin: "#",
-    youtube: "#",
-    instagram: "#",
-  },
-};
-
-const otherTeamMembers: TeamMember[] = [
-  {
-    id: 2,
-    name: "Laura Maglia",
-    role: "Jefe Comercial",
-    image: "/images/inicio/equipo/personal1.jpg",
-    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
-  },
-  {
-    id: 3,
-    name: "Renato Álvarez",
-    role: "Supervisor de Proyectos",
-    image: "/images/inicio/equipo/foto_supervisor_final.jpeg",
-    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
-  },
-];
-
-// NOTA: Descomentar y añadir cuando el cliente envíe las fotos y datos del resto del equipo:
-/*
-const futureTeamMembers: TeamMember[] = [
-  {
-    id: 4,
-    name: "Taylor Roberts",
-    role: "Coordinador de Obra",
-    image: "/images/inicio/equipo/pic3.jpg",
-  },
-  {
-    id: 5,
-    name: "Austin Evon",
-    role: "Asociado de Proyectos",
-    image: "/images/inicio/equipo/pic5.jpg",
-  },
-];
-*/
-
 export default function QuienesSomosPage() {
+  const { lider, resto } = useEquipo();
+
   return (
     <div
       className="page-wraper w-full bg-white text-black"
@@ -422,14 +358,17 @@ export default function QuienesSomosPage() {
               {/* Tarjeta de Líder Principal */}
               <div className="w-full max-w-[440px]">
                 <div className="relative w-full h-[420px] sm:h-[480px] lg:h-[500px] bg-neutral-100 overflow-hidden shadow-sm group">
-                  <Image
-                    src={featuredLeader.image}
-                    alt={featuredLeader.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 440px"
-                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                    priority
-                  />
+                  {lider.image && (
+                    <Image
+                      src={lider.image}
+                      alt={lider.name}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 440px"
+                      unoptimized={lider.dinamica}
+                      className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                      priority
+                    />
+                  )}
                 </div>
 
                 {/* Información del Líder */}
@@ -438,13 +377,13 @@ export default function QuienesSomosPage() {
                     className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-black"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
-                    {featuredLeader.name}
+                    {lider.name}
                   </h3>
                   <p
                     className="text-sm sm:text-base text-neutral-500 mt-1 mb-4 font-light"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
-                    {featuredLeader.role}
+                    {lider.role}
                   </p>
                 </div>
               </div>
@@ -453,21 +392,24 @@ export default function QuienesSomosPage() {
             {/* COLUMNA DERECHA: RESTO DEL EQUIPO */}
             <div className="lg:col-span-7 flex justify-center lg:justify-end w-full pt-4 lg:pt-16">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-                {otherTeamMembers.map((member) => (
+                {resto.map((member) => (
                   <div
                     key={member.id}
                     className="w-full relative flex flex-col bg-white shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-neutral-200/90"
                   >
                     {/* Contenedor de Imagen */}
                     <div className="relative w-full h-[280px] sm:h-[300px] lg:h-[320px] bg-neutral-100 overflow-hidden">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
-                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                        priority
-                      />
+                      {member.image && (
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
+                          unoptimized={member.dinamica}
+                          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                          priority
+                        />
+                      )}
                     </div>
 
                     {/* Info con Acento Angular en L */}

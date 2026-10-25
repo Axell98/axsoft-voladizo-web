@@ -170,6 +170,12 @@ export interface ApiTestimonial {
   image_url: string | null;
 }
 
+export interface ApiStaffMember {
+  name: string;
+  role: string | null;
+  image_url: string | null;
+}
+
 export interface PaginationLinks {
   first: string | null;
   last: string | null;
@@ -303,6 +309,14 @@ export async function getProjectCategories(): Promise<ApiProjectCategory[] | nul
  */
 export async function getTestimonials(): Promise<ApiTestimonial[] | null> {
   const res = await fetchApi<{ data: ApiTestimonial[] }>("/testimonials");
+  return res?.data ?? null;
+}
+
+/**
+ * Obtiene el equipo de la empresa, ya ordenado según el campo "Orden" del panel (sin paginación)
+ */
+export async function getStaff(): Promise<ApiStaffMember[] | null> {
+  const res = await fetchApi<{ data: ApiStaffMember[] }>("/staff");
   return res?.data ?? null;
 }
 

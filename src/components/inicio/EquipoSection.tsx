@@ -1,75 +1,11 @@
 "use client";
 
 import Image from "next/image";
-
-// =========================================================
-// DATOS DE EQUIPO
-// =========================================================
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-  socials?: {
-    facebook?: string;
-    twitter?: string;
-    linkedin?: string;
-    youtube?: string;
-    instagram?: string;
-  };
-}
-
-// Integrantes reales activos
-const featuredLeader: TeamMember = {
-  id: 1,
-  name: "Arq. Renzo Alvarez",
-  role: "Gerente General",
-  image: "/images/inicio/equipo/foto_gerente_final.jpeg",
-  socials: {
-    facebook: "#",
-    twitter: "#",
-    linkedin: "#",
-    youtube: "#",
-    instagram: "#",
-  },
-};
-
-const otherTeamMembers: TeamMember[] = [
-  {
-    id: 2,
-    name: "Laura Maglia",
-    role: "Jefe Comercial",
-    image: "/images/inicio/equipo/personal1.jpg",
-    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
-  },
-  {
-    id: 3,
-    name: "Renato Álvarez",
-    role: "Supervisor de Proyectos",
-    image: "/images/inicio/equipo/foto_supervisor_final.jpeg",
-    socials: { facebook: "#", twitter: "#", linkedin: "#", youtube: "#", instagram: "#" },
-  },
-];
-
-// NOTA: Descomentar y añadir cuando el cliente envíe las fotos y datos del resto del equipo:
-/*
-const futureTeamMembers: TeamMember[] = [
-  {
-    id: 4,
-    name: "Taylor Roberts",
-    role: "Coordinador de Obra",
-    image: "/images/inicio/equipo/pic3.jpg",
-  },
-  {
-    id: 5,
-    name: "Austin Evon",
-    role: "Asociado de Proyectos",
-    image: "/images/inicio/equipo/pic5.jpg",
-  },
-];
-*/
+import { useEquipo } from "@/features/equipo/useEquipo";
 
 export default function EquipoSection() {
+  const { lider, resto } = useEquipo();
+
   return (
     <section
       id="equipo"
@@ -102,14 +38,17 @@ export default function EquipoSection() {
             {/* Tarjeta de Líder Principal */}
             <div className="w-full">
               <div className="relative w-full h-[400px] sm:h-[460px] lg:h-[480px] xl:h-[500px] bg-neutral-900 overflow-hidden shadow-2xl group border border-neutral-800">
-                <Image
-                  src={featuredLeader.image}
-                  alt={featuredLeader.name}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 440px"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                  priority
-                />
+                {lider.image && (
+                  <Image
+                    src={lider.image}
+                    alt={lider.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 440px"
+                    unoptimized={lider.dinamica}
+                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                    priority
+                  />
+                )}
               </div>
 
               {/* Información del Líder */}
@@ -118,13 +57,13 @@ export default function EquipoSection() {
                   className="text-xl sm:text-2xl font-semibold text-white tracking-wide leading-tight"
                   style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
-                  {featuredLeader.name}
+                  {lider.name}
                 </h3>
                 <p
                   className="text-neutral-300 text-sm sm:text-base mt-1 font-light"
                   style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
-                  {featuredLeader.role}
+                  {lider.role}
                 </p>
               </div>
             </div>
@@ -137,21 +76,24 @@ export default function EquipoSection() {
         <div className="w-full lg:w-1/2 bg-[#f5f5f5] text-black py-16 sm:py-20 lg:py-24 xl:py-28 px-6 sm:px-12 lg:px-8 xl:px-14 flex justify-center lg:justify-start items-center">
           <div className="w-full max-w-[660px] lg:ml-2 xl:ml-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-7 w-full">
-              {otherTeamMembers.map((member) => (
+              {resto.map((member) => (
                 <div
                   key={member.id}
                   className="w-full bg-white shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group flex flex-col border border-neutral-200/90"
                 >
                   {/* Contenedor de Imagen */}
                   <div className="relative w-full h-[280px] sm:h-[300px] lg:h-[320px] xl:h-[340px] overflow-hidden bg-neutral-200">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
-                      className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                      priority
-                    />
+                    {member.image && (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
+                        unoptimized={member.dinamica}
+                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                        priority
+                      />
+                    )}
                   </div>
 
                   {/* Info con acento angular en L */}
