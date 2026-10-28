@@ -6,18 +6,12 @@
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # 2. Fallback dinámico para proyectos creados después del último build
-  # Si /proyectos/SLUG no existe como archivo estático, sirve el fallback client-side
+  # (el sitio se exporta con trailingSlash: cada ruta es /ruta/index.html).
+  # Si /proyectos/SLUG/ no existe como carpeta, sirve el fallback client-side.
+  # Apache ya redirige /ruta -> /ruta/ por sí solo (DirectorySlash).
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME}.html !-f
-  RewriteRule ^proyectos/([^/]+)/?$ proyectos/_fallback.html [L]
-
-  # 3. Manejo de rutas limpias para exportación estática de Next.js (SSG)
-  # Permite que /proyectos, /contacto, etc. sirvan /proyectos.html sin mostrar la extensión
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME}.html -f
-  RewriteRule ^(.*)$ $1.html [L]
+  RewriteRule ^proyectos/([^/]+)/?$ proyectos/_fallback/index.html [L]
 </IfModule>
 
 
@@ -27,3 +21,6 @@
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
 </IfModule>
+
+# Página 404 del sitio exportado
+ErrorDocument 404 /404.html

@@ -3,8 +3,11 @@
 import Image from "next/image";
 import { useEquipo } from "@/features/equipo/useEquipo";
 
+// Máximo de integrantes en el home (líder destacado + 4 en la cuadrícula)
+const MAX_EQUIPO_HOME = 5;
+
 export default function EquipoSection() {
-  const { lider, resto } = useEquipo();
+  const { lider, resto } = useEquipo(MAX_EQUIPO_HOME);
 
   return (
     <section

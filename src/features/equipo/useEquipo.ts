@@ -40,8 +40,9 @@ const EQUIPO_RESPALDO: MiembroEquipo[] = [
 /**
  * Equipo dinámico desde `GET /staff`. El primer integrante (menor "Orden" en el panel)
  * es el líder destacado; el resto va en la cuadrícula.
+ * `max` limita el total de integrantes mostrados (líder incluido); sin `max` se muestran todos.
  */
-export function useEquipo() {
+export function useEquipo(max?: number) {
   const [equipo, setEquipo] = useState<MiembroEquipo[]>(EQUIPO_RESPALDO);
 
   useEffect(() => {
@@ -65,6 +66,6 @@ export function useEquipo() {
     };
   }, []);
 
-  const [lider, ...resto] = equipo;
-  return { lider, resto };
+  const [lider, ...resto] = max ? equipo.slice(0, max) : equipo;
+  return { equipo: max ? equipo.slice(0, max) : equipo, lider, resto };
 }

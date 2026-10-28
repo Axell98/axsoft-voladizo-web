@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BeforeAfterDiagonal from "@/components/inicio/BeforeAfterDiagonal";
 import PageBanner from "@/components/common/PageBanner";
-import { useEquipo } from "@/features/equipo/useEquipo";
+import EquipoSlider from "@/components/quienes-somos/EquipoSlider";
 
 // =========================================================
 // ICONOS DE REDES SOCIALES ESTILO SQUARE EXACTOS
@@ -51,8 +51,6 @@ function InstagramIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
 }
 
 export default function QuienesSomosPage() {
-  const { lider, resto } = useEquipo();
-
   return (
     <div
       className="page-wraper w-full bg-white text-black"
@@ -338,105 +336,7 @@ export default function QuienesSomosPage() {
         }}
       >
         <div className="max-w-[1340px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-            
-            {/* COLUMNA IZQUIERDA: TÍTULO Y LÍDER DESTACADO (Renzo) */}
-            <div className="lg:col-span-5 flex flex-col items-center lg:items-start">
-              {/* Título de sección */}
-              <div className="mb-8 w-full text-left">
-                <span className="text-[11px] font-bold uppercase tracking-[3px] text-brand block mb-2">
-                  Conoce a
-                </span>
-                <h2
-                  className="font-oswald-bold uppercase text-3xl sm:text-4xl lg:text-[42px] leading-[1.1] tracking-tight text-neutral-950 mb-3"
-                >
-                  NUESTRO <span className="text-brand">EQUIPO</span>
-                </h2>
-                <div className="w-16 h-[3px] bg-black" />
-              </div>
-
-              {/* Tarjeta de Líder Principal */}
-              <div className="w-full max-w-[440px]">
-                <div className="relative w-full h-[420px] sm:h-[480px] lg:h-[500px] bg-neutral-100 overflow-hidden shadow-sm group">
-                  {lider.image && (
-                    <Image
-                      src={lider.image}
-                      alt={lider.name}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 440px"
-                      unoptimized={lider.dinamica}
-                      className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                      priority
-                    />
-                  )}
-                </div>
-
-                {/* Información del Líder */}
-                <div className="text-center pt-6 pb-2">
-                  <h3
-                    className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-black"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {lider.name}
-                  </h3>
-                  <p
-                    className="text-sm sm:text-base text-neutral-500 mt-1 mb-4 font-light"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {lider.role}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* COLUMNA DERECHA: RESTO DEL EQUIPO */}
-            <div className="lg:col-span-7 flex justify-center lg:justify-end w-full pt-4 lg:pt-16">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-                {resto.map((member) => (
-                  <div
-                    key={member.id}
-                    className="w-full relative flex flex-col bg-white shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-neutral-200/90"
-                  >
-                    {/* Contenedor de Imagen */}
-                    <div className="relative w-full h-[280px] sm:h-[300px] lg:h-[320px] bg-neutral-100 overflow-hidden">
-                      {member.image && (
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
-                          unoptimized={member.dinamica}
-                          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                          priority
-                        />
-                      )}
-                    </div>
-
-                    {/* Info con Acento Angular en L */}
-                    <div className="relative p-5 sm:p-6 text-center bg-white border-t border-neutral-100 flex-1 flex flex-col justify-center">
-                      {/* Acento geométrico en esquina inferior izquierda */}
-                      <div className="absolute left-0 bottom-0 w-7 sm:w-8 h-[3px] bg-black" />
-                      <div className="absolute left-0 bottom-0 w-[3px] h-7 sm:h-8 bg-black" />
-
-                      <h4
-                        className="text-base sm:text-lg font-bold uppercase tracking-wider text-black leading-snug"
-                        style={{ fontFamily: "'Poppins', sans-serif" }}
-                      >
-                        {member.name}
-                      </h4>
-                      <p
-                        className="text-xs sm:text-sm text-neutral-500 mt-1 font-normal"
-                        style={{ fontFamily: "'Poppins', sans-serif" }}
-                      >
-                        {member.role}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
+          <EquipoSlider />
         </div>
       </section>
 
